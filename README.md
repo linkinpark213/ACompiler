@@ -29,18 +29,18 @@ As long as some procedures are called, they are defined.
 With a text file as the input, a sequence of quadruples (which can be easily transferred to assembly language) will be generated. Invalid code in the text file will cause the compiler to report error type and error position. Also, an output file will be generated along with the analyzation result on the screen.
 
 ## Language Example
-int a, b;
-while a<20 && b>8 do {
-  if a>10 || b<16 then {
-    if a<15 then {
-      a := 19;
-      b := 15
-    } else {
-      a := 11;
-      b := 9
-    };
-  } else {
-    a := 1;
-    b := 17
-  };
-}
+    int a, b;
+    while a<20 && b>8 do {
+        if a>10 || b<16 then {
+            if a<15 then {
+                a := 19;
+                b := 15
+            } else {
+                a := 11;
+                b := 9
+            };
+        } else {
+            a := 1;
+            b := 17
+        };
+    }
