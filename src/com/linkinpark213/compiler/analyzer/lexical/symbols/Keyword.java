@@ -29,7 +29,12 @@ public class Keyword implements Symbol {
     }
 
     @Override
-    public String toString() {
+    public String fullString() {
         return "Keyword: " + symbol;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
     }
 }

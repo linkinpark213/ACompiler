@@ -17,6 +17,8 @@ public class LexicalAnalyzer {
             char secondChar = tempCode.charAt(1);
             while (firstChar == ' ') {
                 tempCode = tempCode.substring(1);
+                firstChar = tempCode.charAt(0);
+                secondChar = tempCode.charAt(1);
             }
             if (firstChar == '-' && secondChar >= '0' && secondChar <= '9' || firstChar >= '0' && firstChar <= '9') {
                 //  Constant Value
@@ -29,7 +31,9 @@ public class LexicalAnalyzer {
             } else {
                 Symbol nextSymbol = IdentifierDFD.getInstance().nextSymbol(tempCode);
                 symbolList.add(nextSymbol);
-                tempCode = tempCode.substring(nextSymbol.toString().length());
+                if (tempCode.length() > nextSymbol.toString().length())
+                    tempCode = tempCode.substring(nextSymbol.toString().length());
+                else tempCode = "";
             }
         } while (tempCode.length() > 0);
         return symbolList;

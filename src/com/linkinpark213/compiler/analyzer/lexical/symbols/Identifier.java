@@ -12,11 +12,11 @@ public class Identifier implements Symbol {
         this.symbol = symbol;
     }
 
+    @Override
     public String fullString() {
         return "Identifier: " + symbol;
     }
 
-    @Override
     public String toString() {
         return symbol;
     }
