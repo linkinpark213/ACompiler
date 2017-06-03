@@ -24,6 +24,15 @@ public class OperatorDFD implements DFD {
         State multipleState = new State(5);
         State colonState = new State(6);
         State assignmentState = new State(7);
+        State greaterState = new State(8);
+        State greaterEqualState = new State(9);
+        State lowerState = new State(10);
+        State lowerEqualState = new State(11);
+        State equalState = new State(12);
+        State notState = new State(13);
+        State notEqualState = new State(14);
+        State andState = new State(15);
+        State orState = new State(16);
         initialState.addNextState(singlePlusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
@@ -48,6 +57,42 @@ public class OperatorDFD implements DFD {
                 return c == ':';
             }
         });
+        initialState.addNextState(greaterState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '>';
+            }
+        });
+        initialState.addNextState(lowerState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '<';
+            }
+        });
+        initialState.addNextState(equalState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '=';
+            }
+        });
+        initialState.addNextState(notState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '!';
+            }
+        });
+        initialState.addNextState(andState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '&';
+            }
+        });
+        initialState.addNextState(orState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '|';
+            }
+        });
         singlePlusState.addNextState(doublePlusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
@@ -66,12 +111,39 @@ public class OperatorDFD implements DFD {
                 return c == '=';
             }
         });
+        greaterState.addNextState(greaterEqualState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '=';
+            }
+        });
+        lowerState.addNextState(lowerEqualState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '=';
+            }
+        });
+        notState.addNextState(notEqualState, new InputHandler() {
+            @Override
+            public boolean handle(char c) {
+                return c == '=';
+            }
+        });
         finalStates.add(singlePlusState);
         finalStates.add(singleMinusState);
         finalStates.add(doublePlusState);
         finalStates.add(doubleMinusState);
         finalStates.add(multipleState);
         finalStates.add(assignmentState);
+        finalStates.add(greaterState);
+        finalStates.add(greaterEqualState);
+        finalStates.add(lowerState);
+        finalStates.add(lowerEqualState);
+        finalStates.add(equalState);
+        finalStates.add(notState);
+        finalStates.add(notEqualState);
+        finalStates.add(andState);
+        finalStates.add(orState);
     }
 
     public static OperatorDFD getInstance() {

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class ConstantDFD implements DFD {
     private State initialState;
     ArrayList<State> finalStates;
+    public static ConstantDFD theOnlyConstantDFD;
 
     private ConstantDFD() {
         initialState = new State(0);
@@ -91,6 +92,13 @@ public class ConstantDFD implements DFD {
         finalStates.add(intState);
         finalStates.add(floatState);
         finalStates.add(doubleQuoteState);
+    }
+
+    public static ConstantDFD getInstance() {
+        if(theOnlyConstantDFD == null) {
+            theOnlyConstantDFD = new ConstantDFD();
+        }
+        return theOnlyConstantDFD;
     }
 
     @Override

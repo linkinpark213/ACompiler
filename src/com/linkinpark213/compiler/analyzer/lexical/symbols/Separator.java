@@ -4,8 +4,27 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
  * Created by ooo on 2017/6/2 0002.
  */
 public class Separator implements Symbol {
+    private char symbol;
+    private static final char[] separators = {'{', '}', '(', ')', ';', ','};
+
+    public Separator(char symbol) {
+        this.symbol = symbol;
+    }
+
+    public static boolean isSeparator(char c) {
+        for (int i = 0; i < separators.length; i++) {
+            if (c == separators[i]) return true;
+        }
+        return false;
+    }
+
     @Override
     public String fullString() {
-        return null;
+        return "Separator: " + symbol;
+    }
+
+    @Override
+    public String toString() {
+        return "" + symbol;
     }
 }

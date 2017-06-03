@@ -14,7 +14,8 @@ public class Constant implements Symbol {
     public static final int TYPE_CHAR = 2;
     public static final int TYPE_BOOL = 3;
     public static final ArrayList<String> boolConstants;
-    static  {
+
+    static {
         boolConstants = new ArrayList<String>();
         boolConstants.add("true");
         boolConstants.add("false");
@@ -40,9 +41,27 @@ public class Constant implements Symbol {
         }
     }
 
+    public static boolean isDigit(char c) {
+        return (c >= '0' && c <= '9');
+    }
+
     @Override
     public String fullString() {
-        return "Constant value: " + symbol;
+        String typeString = "";
+        switch (type) {
+            case TYPE_INT:
+                typeString = "Integer";
+                break;
+            case TYPE_FLOAT:
+                typeString = "Real";
+                break;
+            case TYPE_CHAR:
+                typeString = "Character";
+                break;
+            case TYPE_BOOL:
+                typeString = "Boolean";
+        }
+        return "Constant value (" + typeString + "): " + symbol;
     }
 
     @Override
