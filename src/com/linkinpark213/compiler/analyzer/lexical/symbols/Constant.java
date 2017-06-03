@@ -1,5 +1,7 @@
 package com.linkinpark213.compiler.analyzer.lexical.symbols;
 
+import java.util.ArrayList;
+
 /**
  * Created by ooo on 2017/6/2 0002.
  */
@@ -11,6 +13,12 @@ public class Constant implements Symbol {
     public static final int TYPE_FLOAT = 1;
     public static final int TYPE_CHAR = 2;
     public static final int TYPE_BOOL = 3;
+    public static final ArrayList<String> boolConstants;
+    static  {
+        boolConstants = new ArrayList<String>();
+        boolConstants.add("true");
+        boolConstants.add("false");
+    }
 
     public Constant(String symbol, int type) {
         this.symbol = symbol;

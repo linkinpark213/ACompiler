@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
+import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Identifier;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Keyword;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
@@ -19,18 +20,18 @@ public class IdentifierDFD implements DFD {
         this.initialState = new State(0);
         State middleState = new State(1);
         finalStates = new ArrayList<State>();
-        this.initialState.addInputHandler(new InputHandler() {
+        this.initialState.addNextState(middleState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c == '_');
             }
-        }, middleState);
-        middleState.addInputHandler(new InputHandler() {
+        });
+        middleState.addNextState(middleState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' || c == '_' || c >= '0' && c <= '9');
             }
-        }, middleState);
+        });
         finalStates.add(middleState);
     }
 
@@ -66,6 +67,8 @@ public class IdentifierDFD implements DFD {
             if (finalStates.contains(statePointer)) {
                 if (Keyword.keyWords.contains(symbolBuilder.toString())) {
                     return new Keyword(symbolBuilder.toString());
+                } else if (Constant.boolConstants.contains(symbolBuilder.toString())) {
+                    return new Constant(symbolBuilder.toString(), Constant.TYPE_BOOL);
                 } else {
                     return new Identifier(symbolBuilder.toString());
                 }

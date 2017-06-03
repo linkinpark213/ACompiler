@@ -25,7 +25,7 @@ public class LexicalAnalyzer {
                 secondChar = tempCode.charAt(1);
             }
             Symbol nextSymbol = null;
-            if (firstChar == '-' && secondChar >= '0' && secondChar <= '9' || firstChar >= '0' && firstChar <= '9') {
+            if (firstChar == '-' && secondChar >= '0' && secondChar <= '9' || firstChar >= '0' && firstChar <= '9' || firstChar == '\'') {
                 //  Constant Value
 
             } else if (firstChar == '+' || firstChar == '-' || firstChar == '*' || firstChar == ':') {

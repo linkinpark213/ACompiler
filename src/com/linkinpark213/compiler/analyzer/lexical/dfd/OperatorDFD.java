@@ -24,48 +24,48 @@ public class OperatorDFD implements DFD {
         State multipleState = new State(5);
         State colonState = new State(6);
         State assignmentState = new State(7);
-        initialState.addInputHandler(new InputHandler() {
+        initialState.addNextState(singlePlusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '+';
             }
-        }, singlePlusState);
-        initialState.addInputHandler(new InputHandler() {
+        });
+        initialState.addNextState(singleMinusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '-';
             }
-        }, singleMinusState);
-        initialState.addInputHandler(new InputHandler() {
+        });
+        initialState.addNextState(multipleState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '*';
             }
-        }, multipleState);
-        initialState.addInputHandler(new InputHandler() {
+        });
+        initialState.addNextState(colonState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == ':';
             }
-        }, colonState);
-        singlePlusState.addInputHandler(new InputHandler() {
+        });
+        singlePlusState.addNextState(doublePlusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '+';
             }
-        }, doublePlusState);
-        singleMinusState.addInputHandler(new InputHandler() {
+        });
+        singleMinusState.addNextState(doubleMinusState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '-';
             }
-        }, doubleMinusState);
-        colonState.addInputHandler(new InputHandler() {
+        });
+        colonState.addNextState(assignmentState, new InputHandler() {
             @Override
             public boolean handle(char c) {
                 return c == '=';
             }
-        }, assignmentState);
+        });
         finalStates.add(singlePlusState);
         finalStates.add(singleMinusState);
         finalStates.add(doublePlusState);

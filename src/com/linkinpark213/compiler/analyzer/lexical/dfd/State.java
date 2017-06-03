@@ -16,7 +16,7 @@ public class State {
         nextStateList = new ArrayList<State>();
     }
 
-    public void addInputHandler(InputHandler e, State nextState) {
+    public void addNextState(State nextState, InputHandler e) {
         inputHandlers.add(e);
         nextStateList.add(nextState);
     }

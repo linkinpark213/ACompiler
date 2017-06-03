@@ -16,5 +16,7 @@ public class CompilerTest {
         for (int i = 0; i < symbols.size(); i++) {
             System.out.println(symbols.get(i).fullString());
         }
+
+        System.out.println(Integer.parseInt("-1"));
     }
 }
