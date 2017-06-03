@@ -36,10 +36,9 @@ public class IdentifierDFD implements DFD {
 
     public static IdentifierDFD getInstance() {
         if (theOnlyIdentifierDFD == null) {
-            return new IdentifierDFD();
-        } else {
-            return theOnlyIdentifierDFD;
+            theOnlyIdentifierDFD = new IdentifierDFD();
         }
+        return theOnlyIdentifierDFD;
     }
 
     public State getInitialState() {
@@ -59,10 +58,10 @@ public class IdentifierDFD implements DFD {
             while (statePointer != null && symbolBuilder.length() < string.length()) {
                 if (string.charAt(symbolBuilder.length()) == ' ') break;
                 State nextState = statePointer.nextState(string.charAt(symbolBuilder.length()));
-                symbolBuilder.append(string.charAt(symbolBuilder.length()));
                 if (nextState != null) {
                     statePointer = nextState;
-                } else throw new InvalidIdentifierException();
+                    symbolBuilder.append(string.charAt(symbolBuilder.length()));
+                } else break;
             }
             if (finalStates.contains(statePointer)) {
                 if (Keyword.keyWords.contains(symbolBuilder.toString())) {
