@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
+import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Operator;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
@@ -9,12 +10,12 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class OperatorDFD implements DFD {
-    private static OperatorDFD theOnlyOperatorDFD;
+public class OperatorDFA implements DFA {
+    private static OperatorDFA theOnlyOperatorDFD;
     private State initialState;
     private ArrayList<State> finalStates;
 
-    private OperatorDFD() {
+    private OperatorDFA() {
         this.initialState = new State(0);
         this.finalStates = new ArrayList<State>();
         State singlePlusState = new State(1);
@@ -146,38 +147,33 @@ public class OperatorDFD implements DFD {
         finalStates.add(orState);
     }
 
-    public static OperatorDFD getInstance() {
+    public static OperatorDFA getInstance() {
         if (theOnlyOperatorDFD == null) {
-            theOnlyOperatorDFD = new OperatorDFD();
+            theOnlyOperatorDFD = new OperatorDFA();
         }
         return theOnlyOperatorDFD;
     }
 
     @Override
-    public Symbol nextSymbol(String string) {
+    public Symbol nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidOperatorException {
         State statePointer = initialState;
         State nextStatePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
 
-        try {
-            nextStatePointer = statePointer.nextState(string.charAt(0));
-            symbolBuilder.append(string.charAt(0));
+        nextStatePointer = statePointer.nextState(string.charAt(0));
+        symbolBuilder.append(string.charAt(0));
+        statePointer = nextStatePointer;
+        nextStatePointer = statePointer.nextState(string.charAt(1));
+        if (finalStates.contains(nextStatePointer)) {
             statePointer = nextStatePointer;
-            nextStatePointer = statePointer.nextState(string.charAt(1));
-            if (finalStates.contains(nextStatePointer)) {
-                statePointer = nextStatePointer;
-                symbolBuilder.append(string.charAt(1));
+            symbolBuilder.append(string.charAt(1));
+            return new Operator(symbolBuilder.toString());
+        } else {
+            if (finalStates.contains(statePointer)) {
                 return new Operator(symbolBuilder.toString());
             } else {
-                if (finalStates.contains(statePointer)) {
-                    return new Operator(symbolBuilder.toString());
-                } else {
-                    throw new InvalidOperatorException();
-                }
+                throw new InvalidOperatorException("Invalid Operator \"" + symbolBuilder.toString() + "\"");
             }
-        } catch (InvalidOperatorException e) {
-            System.out.println("Invalid Operator \"" + symbolBuilder.toString() + "\"");
         }
-        return null;
     }
 }

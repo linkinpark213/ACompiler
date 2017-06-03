@@ -1,7 +1,6 @@
 package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.dfd.IdentifierDFD;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class CompilerTest {
     public static void main(String[] args) {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("{a:= true + 3 & 2   )"));
+        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("{a:= true\n + 3 &# 2   )"));
         compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("do{var := 4 + false;} while a"));
         compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("if a = 2 then { k = k *3 | d;}  "));
     }

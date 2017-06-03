@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
+import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Identifier;
@@ -11,12 +12,12 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class IdentifierDFD implements DFD {
-    private static IdentifierDFD theOnlyIdentifierDFD;
+public class IdentifierDFA implements DFA {
+    private static IdentifierDFA theOnlyIdentifierDFD;
     private State initialState;
     private ArrayList<State> finalStates;
 
-    private IdentifierDFD() {
+    private IdentifierDFA() {
         this.initialState = new State(0);
         State middleState = new State(1);
         finalStates = new ArrayList<State>();
@@ -35,9 +36,9 @@ public class IdentifierDFD implements DFD {
         finalStates.add(middleState);
     }
 
-    public static IdentifierDFD getInstance() {
+    public static IdentifierDFA getInstance() {
         if (theOnlyIdentifierDFD == null) {
-            theOnlyIdentifierDFD = new IdentifierDFD();
+            theOnlyIdentifierDFD = new IdentifierDFA();
         }
         return theOnlyIdentifierDFD;
     }
@@ -51,34 +52,29 @@ public class IdentifierDFD implements DFD {
     }
 
     @Override
-    public Symbol nextSymbol(String string) {
+    public Symbol nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidIdentifierException {
         State statePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
 
-        try {
-            while (statePointer != null && symbolBuilder.length() < string.length()) {
-                if (string.charAt(symbolBuilder.length()) == ' ') break;
-                State nextState = statePointer.nextState(string.charAt(symbolBuilder.length()));
-                if (nextState != null) {
-                    statePointer = nextState;
-                    symbolBuilder.append(string.charAt(symbolBuilder.length()));
-                } else break;
-            }
-            if (finalStates.contains(statePointer)) {
-                if (Keyword.keyWords.contains(symbolBuilder.toString())) {
-                    return new Keyword(symbolBuilder.toString());
-                } else if (Constant.boolConstants.contains(symbolBuilder.toString())) {
-                    return new Constant(symbolBuilder.toString(), Constant.TYPE_BOOL);
-                } else {
-                    return new Identifier(symbolBuilder.toString());
-                }
-            } else {
-                throw new InvalidIdentifierException();
-            }
-        } catch (InvalidIdentifierException e) {
-            System.out.println("Invalid identifier \"" + symbolBuilder.toString() + "\"");
-            System.exit(0);
+        while (statePointer != null && symbolBuilder.length() < string.length()) {
+            if (string.charAt(symbolBuilder.length()) == ' ') break;
+            State nextState = statePointer.nextState(string.charAt(symbolBuilder.length()));
+            if (nextState != null) {
+                statePointer = nextState;
+                symbolBuilder.append(string.charAt(symbolBuilder.length()));
+            } else break;
         }
-        return null;
+        if (finalStates.contains(statePointer)) {
+            if (Keyword.keyWords.contains(symbolBuilder.toString())) {
+                return new Keyword(symbolBuilder.toString());
+            } else if (Constant.boolConstants.contains(symbolBuilder.toString())) {
+                return new Constant(symbolBuilder.toString(), Constant.TYPE_BOOL);
+            } else {
+                return new Identifier(symbolBuilder.toString());
+            }
+        } else {
+            symbolBuilder.append(string.charAt(symbolBuilder.length()));
+            throw new InvalidIdentifierException("Invalid identifier \"" + symbolBuilder.toString() + "\"");
+        }
     }
 }
