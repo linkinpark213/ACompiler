@@ -71,7 +71,7 @@ public class Operator implements Symbol {
                 typeString = "Relation";
                 break;
             case TYPE_ASSIGNMENT:
-                typeString = "Assignment";
+                typeString = "AssignmentStatement";
                 break;
         }
         return "Operator (" + typeString + "): " + symbol;

@@ -11,14 +11,13 @@ import com.linkinpark213.compiler.analyzer.lexical.symbols.Operator;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Separator;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * Created by ooo on 2017/6/2 0002.
  */
 public class LexicalAnalyzer {
-    private ArrayList<Symbol> symbolList;
+    private ArrayList<Symbol> symbolQueue;
     private int row;
     private int col;
 
@@ -29,7 +28,7 @@ public class LexicalAnalyzer {
     private void clear() {
         row = 1;
         col = 1;
-        symbolList = new ArrayList<Symbol>();
+        symbolQueue = new ArrayList<Symbol>();
     }
 
     public void reportError(String message) {
@@ -56,7 +55,7 @@ public class LexicalAnalyzer {
                         col = 1;
                     }
                     if (tempCode.length() == 0)
-                        return symbolList;
+                        return symbolQueue;
                     firstChar = tempCode.charAt(0);
                     if (tempCode.length() > 1)
                         secondChar = tempCode.charAt(1);
@@ -69,19 +68,19 @@ public class LexicalAnalyzer {
                     if (nextSymbol.getType() == Constant.TYPE_CHAR) {
                         tempCode = tempCode.substring(2);
                     }
-                    symbolList.add(nextSymbol);
+                    symbolQueue.add(nextSymbol);
                 } else if (Separator.isSeparator(firstChar)) {
                     //  Separator
                     nextSymbol = new Separator(firstChar);
-                    symbolList.add(nextSymbol);
+                    symbolQueue.add(nextSymbol);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
                     //  Operator
                     nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
-                    symbolList.add(nextSymbol);
+                    symbolQueue.add(nextSymbol);
                 } else {
                     //  Identifier or keyword
                     nextSymbol = IdentifierDFA.getInstance().nextSymbol(tempCode, this);
-                    symbolList.add(nextSymbol);
+                    symbolQueue.add(nextSymbol);
                 }
                 nextSymbol.setRow(row);
                 nextSymbol.setColumn(col);
@@ -96,8 +95,8 @@ public class LexicalAnalyzer {
             } while (tempCode.length() > 0);
         } catch (InvalidConstantException | InvalidIdentifierException | InvalidOperatorException e) {
             System.out.println("Compile Error: (" + row + ", " + col + "): " + e.getMessage());
-            return symbolList;
+            return symbolQueue;
         }
-        return symbolList;
+        return symbolQueue;
     }
 }
