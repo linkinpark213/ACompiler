@@ -5,6 +5,7 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
  */
 public class Identifier implements Symbol {
     public String symbol;
+    public static final int TYPE_IDENTIFIER = 104;
 
     public Identifier(String symbol) {
         this.symbol = symbol;
@@ -17,5 +18,10 @@ public class Identifier implements Symbol {
 
     public String toString() {
         return symbol;
+    }
+
+    @Override
+    public int getType() {
+        return TYPE_IDENTIFIER;
     }
 }

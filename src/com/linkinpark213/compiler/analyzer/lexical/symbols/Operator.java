@@ -12,10 +12,10 @@ public class Operator implements Symbol {
     private static final ArrayList<String> relationOperators;
     private static final ArrayList<String> boolOperators;
     private static final String assignmentOperator = ":=";
-    private static final int TYPE_ARITHMETIC = 0;
-    private static final int TYPE_RELATION = 1;
-    private static final int TYPE_BOOL = 2;
-    private static final int TYPE_ASSIGNMENT = 3;
+    private static final int TYPE_ARITHMETIC = 106;
+    private static final int TYPE_RELATION = 107;
+    private static final int TYPE_BOOL = 108;
+    private static final int TYPE_ASSIGNMENT = 109;
 
     static {
         arithmeticOperators = new ArrayList<String>();
@@ -90,5 +90,10 @@ public class Operator implements Symbol {
     @Override
     public String toString() {
         return symbol;
+    }
+
+    @Override
+    public int getType() {
+        return type;
     }
 }

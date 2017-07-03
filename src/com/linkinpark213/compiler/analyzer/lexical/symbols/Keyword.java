@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Keyword implements Symbol {
     public String symbol;
     public static final ArrayList<String> keyWords;
+    public static final int TYPE_KEYWORD = 105;
 
     static {
         keyWords = new ArrayList<String>();
@@ -36,5 +37,10 @@ public class Keyword implements Symbol {
     @Override
     public String toString() {
         return symbol;
+    }
+
+    @Override
+    public int getType() {
+        return TYPE_KEYWORD;
     }
 }

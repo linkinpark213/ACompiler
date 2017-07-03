@@ -9,10 +9,10 @@ public class Constant implements Symbol {
     private String symbol;
     private int type;
     private float value;
-    public static final int TYPE_INT = 0;
-    public static final int TYPE_FLOAT = 1;
-    public static final int TYPE_CHAR = 2;
-    public static final int TYPE_BOOL = 3;
+    public static final int TYPE_INT = 100;
+    public static final int TYPE_FLOAT = 101;
+    public static final int TYPE_CHAR = 102;
+    public static final int TYPE_BOOL = 103;
     public static final ArrayList<String> boolConstants;
 
     static {
@@ -67,5 +67,10 @@ public class Constant implements Symbol {
     @Override
     public String toString() {
         return symbol;
+    }
+
+    @Override
+    public int getType() {
+        return type;
     }
 }

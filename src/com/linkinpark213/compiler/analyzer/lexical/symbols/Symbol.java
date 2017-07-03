@@ -5,4 +5,5 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
  */
 public interface Symbol {
     public String fullString();
+    public int getType();
 }

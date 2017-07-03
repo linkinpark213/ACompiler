@@ -15,3 +15,4 @@ git branch --set-upstream-to origin/master master
 git add -A
 git add -A
 git pull origin master
+git push origin master

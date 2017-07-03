@@ -6,6 +6,7 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
 public class Separator implements Symbol {
     private char symbol;
     private static final char[] separators = {'{', '}', '(', ')', ';', ','};
+    public static final int TYPE_SEPARATOR = 110;
 
     public Separator(char symbol) {
         this.symbol = symbol;
@@ -26,5 +27,10 @@ public class Separator implements Symbol {
     @Override
     public String toString() {
         return "" + symbol;
+    }
+
+    @Override
+    public int getType() {
+        return TYPE_SEPARATOR;
     }
 }

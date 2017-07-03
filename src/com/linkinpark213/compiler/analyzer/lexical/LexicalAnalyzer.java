@@ -11,6 +11,7 @@ import com.linkinpark213.compiler.analyzer.lexical.symbols.Operator;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Separator;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -65,6 +66,8 @@ public class LexicalAnalyzer {
                         || Constant.isDigit(firstChar) || firstChar == '\'') {
                     //  Constant Value
                     nextSymbol = ConstantDFA.getInstance().nextSymbol(tempCode, this);
+                    if (nextSymbol.getType() == Constant.TYPE_CHAR)
+                        tempCode = tempCode.substring(2);
                     symbolList.add(nextSymbol);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
                     //  Operator
