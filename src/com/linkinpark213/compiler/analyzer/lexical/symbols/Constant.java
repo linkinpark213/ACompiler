@@ -9,6 +9,8 @@ public class Constant implements Symbol {
     private String symbol;
     private int type;
     private float value;
+    private int row;
+    private int col;
     public static final int TYPE_INT = 100;
     public static final int TYPE_FLOAT = 101;
     public static final int TYPE_CHAR = 102;
@@ -72,5 +74,25 @@ public class Constant implements Symbol {
     @Override
     public int getType() {
         return type;
+    }
+
+    @Override
+    public int getRow() {
+        return row;
+    }
+
+    @Override
+    public int getColumn() {
+        return col;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.col = column;
     }
 }

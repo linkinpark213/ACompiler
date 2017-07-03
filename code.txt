@@ -1,3 +1,3 @@
-{a:= 'a' + 3 &# 2   )
+{a:= 'a' + 32   )
 do{var := 4 + false;} while a
-if a = 2 then { k = k *3 | d;}  
+if a = 2 then { k&# = k *3 | d;}  

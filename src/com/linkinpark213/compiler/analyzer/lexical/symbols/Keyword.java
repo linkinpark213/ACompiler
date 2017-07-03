@@ -7,6 +7,9 @@ import java.util.ArrayList;
  */
 public class Keyword implements Symbol {
     public String symbol;
+    private int row;
+    private int column;
+
     public static final ArrayList<String> keyWords;
     public static final int TYPE_KEYWORD = 105;
 
@@ -42,5 +45,25 @@ public class Keyword implements Symbol {
     @Override
     public int getType() {
         return TYPE_KEYWORD;
+    }
+
+    @Override
+    public int getRow() {
+        return row;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @Override
+    public int getColumn() {
+        return column;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.column = column;
     }
 }

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class Operator implements Symbol {
     private String symbol;
     private int type;
+    private int row;
+    private int column;
     private static final ArrayList<String> arithmeticOperators;
     private static final ArrayList<String> relationOperators;
     private static final ArrayList<String> boolOperators;
@@ -95,5 +97,25 @@ public class Operator implements Symbol {
     @Override
     public int getType() {
         return type;
+    }
+
+    @Override
+    public int getRow() {
+        return row;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @Override
+    public int getColumn() {
+        return column;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.column = column;
     }
 }

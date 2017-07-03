@@ -66,8 +66,9 @@ public class LexicalAnalyzer {
                         || Constant.isDigit(firstChar) || firstChar == '\'') {
                     //  Constant Value
                     nextSymbol = ConstantDFA.getInstance().nextSymbol(tempCode, this);
-                    if (nextSymbol.getType() == Constant.TYPE_CHAR)
+                    if (nextSymbol.getType() == Constant.TYPE_CHAR) {
                         tempCode = tempCode.substring(2);
+                    }
                     symbolList.add(nextSymbol);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
                     //  Operator
@@ -82,9 +83,15 @@ public class LexicalAnalyzer {
                     nextSymbol = IdentifierDFA.getInstance().nextSymbol(tempCode, this);
                     symbolList.add(nextSymbol);
                 }
+                nextSymbol.setRow(row);
+                nextSymbol.setColumn(col);
                 if (tempCode.length() > nextSymbol.toString().length())
                     tempCode = tempCode.substring(nextSymbol.toString().length());
                 else tempCode = "";
+                if (nextSymbol.getType() == Constant.TYPE_CHAR) {
+                    tempCode = tempCode.substring(2);
+                    col += 2;
+                }
                 col += nextSymbol.toString().length();
             } while (tempCode.length() > 0);
         } catch (InvalidConstantException | InvalidIdentifierException | InvalidOperatorException e) {

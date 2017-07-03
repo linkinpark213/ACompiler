@@ -28,6 +28,7 @@ public class CompilerTest {
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 stringBuilder.append(scanner.nextLine());
+                stringBuilder.append("\n");
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -38,7 +39,7 @@ public class CompilerTest {
     public static void main(String[] args) {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("a:='a' + 3"));
-//        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt"))));
+//        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("a:='a' + 3"));
+        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt"))));
     }
 }

@@ -5,6 +5,8 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
  */
 public class Identifier implements Symbol {
     public String symbol;
+    private int row;
+    private int column;
     public static final int TYPE_IDENTIFIER = 104;
 
     public Identifier(String symbol) {
@@ -23,5 +25,25 @@ public class Identifier implements Symbol {
     @Override
     public int getType() {
         return TYPE_IDENTIFIER;
+    }
+
+    @Override
+    public int getRow() {
+        return row;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @Override
+    public int getColumn() {
+        return column;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.column = column;
     }
 }

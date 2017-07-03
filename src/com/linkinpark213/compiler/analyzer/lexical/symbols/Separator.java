@@ -5,6 +5,8 @@ package com.linkinpark213.compiler.analyzer.lexical.symbols;
  */
 public class Separator implements Symbol {
     private char symbol;
+    private int row;
+    private int column;
     private static final char[] separators = {'{', '}', '(', ')', ';', ','};
     public static final int TYPE_SEPARATOR = 110;
 
@@ -32,5 +34,25 @@ public class Separator implements Symbol {
     @Override
     public int getType() {
         return TYPE_SEPARATOR;
+    }
+
+    @Override
+    public int getRow() {
+        return row;
+    }
+
+    @Override
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @Override
+    public int getColumn() {
+        return column;
+    }
+
+    @Override
+    public void setColumn(int column) {
+        this.column = column;
     }
 }
