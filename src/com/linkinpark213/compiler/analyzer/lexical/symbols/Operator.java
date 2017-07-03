@@ -59,22 +59,22 @@ public class Operator implements Symbol {
     }
 
     public String fullString() {
-        String typeSring = new String();
+        String typeString = new String();
         switch (type) {
             case TYPE_ARITHMETIC:
-                typeSring = "Arithmetic";
+                typeString = "Arithmetic";
                 break;
             case TYPE_BOOL:
-                typeSring = "Boolean";
+                typeString = "Boolean";
                 break;
             case TYPE_RELATION:
-                typeSring = "Relation";
+                typeString = "Relation";
                 break;
             case TYPE_ASSIGNMENT:
-                typeSring = "Assignment";
+                typeString = "Assignment";
                 break;
         }
-        return "Operator (" + typeSring + "): " + symbol;
+        return "Operator (" + typeString + "): " + symbol;
     }
 
     public Operator(String symbol) {

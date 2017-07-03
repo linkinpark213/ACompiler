@@ -70,13 +70,13 @@ public class LexicalAnalyzer {
                         tempCode = tempCode.substring(2);
                     }
                     symbolList.add(nextSymbol);
-                } else if (Operator.isOperatorBeginning(firstChar)) {
-                    //  Operator
-                    nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
-                    symbolList.add(nextSymbol);
                 } else if (Separator.isSeparator(firstChar)) {
                     //  Separator
                     nextSymbol = new Separator(firstChar);
+                    symbolList.add(nextSymbol);
+                } else if (Operator.isOperatorBeginning(firstChar)) {
+                    //  Operator
+                    nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
                     symbolList.add(nextSymbol);
                 } else {
                     //  Identifier or keyword

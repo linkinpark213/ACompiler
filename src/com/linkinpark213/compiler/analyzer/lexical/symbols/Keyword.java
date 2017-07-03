@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Keyword implements Symbol {
     public String symbol;
+    public boolean typeDef;
     private int row;
     private int column;
 
@@ -29,6 +30,10 @@ public class Keyword implements Symbol {
     }
 
     public Keyword(String symbol) {
+        if(symbol.equals("int")) this.setTypeDef(true);
+        if(symbol.equals("float")) this.setTypeDef(true);
+        if(symbol.equals("char")) this.setTypeDef(true);
+        if(symbol.equals("bool")) this.setTypeDef(true);
         this.symbol = symbol;
     }
 
@@ -65,5 +70,13 @@ public class Keyword implements Symbol {
     @Override
     public void setColumn(int column) {
         this.column = column;
+    }
+
+    public boolean isTypeDef() {
+        return typeDef;
+    }
+
+    public void setTypeDef(boolean typeDef) {
+        this.typeDef = typeDef;
     }
 }
