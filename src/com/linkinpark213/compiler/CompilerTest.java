@@ -2,7 +2,8 @@ package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
-import com.sun.xml.internal.ws.addressing.WsaTubeHelperImpl;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword.IfKeyword;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,6 +41,13 @@ public class CompilerTest {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
 //        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("a:='a' + 3"));
-        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt"))));
+        ArrayList<Symbol> symbolQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
+        compilerTest.printAnalyzeResult(symbolQueue);
+        IfKeyword ifKeyword = new IfKeyword();
+        System.out.println(ifKeyword.checkSymbol(symbolQueue.get(0)));
+        symbolQueue.remove(0);
+        Separator separator = new Separator();
+        System.out.println(separator.checkSymbol(symbolQueue.get(0)));
+
     }
 }
