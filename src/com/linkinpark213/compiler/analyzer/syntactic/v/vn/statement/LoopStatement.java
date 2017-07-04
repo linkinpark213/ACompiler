@@ -9,6 +9,6 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/7/3 0003.
  */
-public class LoopStatement extends Statement {
+public class LoopStatement extends VN {
 }
 

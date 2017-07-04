@@ -9,5 +9,5 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/7/3 0003.
  */
-public class BranchStatement extends Statement {
+public class BranchStatement extends VN {
 }

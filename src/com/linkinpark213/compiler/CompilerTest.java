@@ -2,6 +2,7 @@ package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword.IfKeyword;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 
@@ -42,5 +43,7 @@ public class CompilerTest {
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
         ArrayList<Symbol> symbolQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
         compilerTest.printAnalyzeResult(symbolQueue);
+        StatementString root = new StatementString();
+        System.out.println(root.analyze(root, symbolQueue));
     }
 }
