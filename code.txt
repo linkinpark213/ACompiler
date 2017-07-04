@@ -1,3 +1,1 @@
-case 3 : {a:= 'a' + 32   )
-do{var := 4 + false;} while a
-if a = 2 then { k&# = k *3 | d;}  
+a := a + 3

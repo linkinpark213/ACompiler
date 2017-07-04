@@ -172,7 +172,7 @@ public class OperatorDFA implements DFA {
             if (finalStates.contains(statePointer)) {
                 return new Operator(symbolBuilder.toString());
             } else {
-                throw new InvalidOperatorException("Invalid Operator \"" + symbolBuilder.toString() + "\"");
+                throw new InvalidOperatorException("Invalid ArithmeticOperator \"" + symbolBuilder.toString() + "\"");
             }
         }
     }

@@ -74,7 +74,7 @@ public class Operator implements Symbol {
                 typeString = "AssignmentStatement";
                 break;
         }
-        return "Operator (" + typeString + "): " + symbol;
+        return "ArithmeticOperator (" + typeString + "): " + symbol;
     }
 
     public Operator(String symbol) {

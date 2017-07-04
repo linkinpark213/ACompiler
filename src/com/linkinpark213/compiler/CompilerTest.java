@@ -40,14 +40,7 @@ public class CompilerTest {
     public static void main(String[] args) {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-//        compilerTest.printAnalyzeResult(lexicalAnalyzer.analyze("a:='a' + 3"));
         ArrayList<Symbol> symbolQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
         compilerTest.printAnalyzeResult(symbolQueue);
-        IfKeyword ifKeyword = new IfKeyword();
-        System.out.println(ifKeyword.checkSymbol(symbolQueue.get(0)));
-        symbolQueue.remove(0);
-        Separator separator = new Separator();
-        System.out.println(separator.checkSymbol(symbolQueue.get(0)));
-
     }
 }

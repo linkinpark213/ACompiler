@@ -74,7 +74,7 @@ public class LexicalAnalyzer {
                     nextSymbol = new Separator(firstChar);
                     symbolQueue.add(nextSymbol);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
-                    //  Operator
+                    //  ArithmeticOperator
                     nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
                     symbolQueue.add(nextSymbol);
                 } else {
