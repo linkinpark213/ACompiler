@@ -7,17 +7,27 @@ import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
  */
 public class Separator extends VT {
     public Separator() {
+        acceptableSymbols.add(":");
+        acceptableSymbols.add(";");
         acceptableSymbols.add("{");
         acceptableSymbols.add("}");
         acceptableSymbols.add("(");
         acceptableSymbols.add(")");
-        acceptableSymbols.add(":");
-        acceptableSymbols.add(";");
-        acceptableSymbols.add("\'");
+        acceptableSymbols.add(",");
+    }
+
+    public Separator(String... symbols) {
+        for (String symbol : symbols) {
+            acceptableSymbols.add(symbol);
+        }
     }
 
     @Override
     public boolean checkSymbol(Symbol symbol) {
+        for (String acceptableSymbol : acceptableSymbols) {
+            if (acceptableSymbol.equals(symbol))
+                return true;
+        }
         return false;
     }
 }

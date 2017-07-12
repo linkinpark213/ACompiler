@@ -21,24 +21,33 @@ public class VN implements V, Cloneable {
     public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
+            ArrayList<Symbol> removedSymbols = new ArrayList<Symbol>();
             for (int j = 0; j < production.size(); j++) {
                 V v = production.get(j);
                 if (v instanceof VN) {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
+                    if (symbolQueue.size() == 0) break;
                     if (vn.analyze(this, symbolQueue)) {
                         this.addChild(vn.getClone());
                     } else break;
                 } else {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
+                    if (symbolQueue.size() == 0) break;
                     if (vt.checkSymbol(symbolQueue.get(0))) {
-                        symbolQueue.remove(0);
+                        removedSymbols.add(0, symbolQueue.remove(0));
                         this.addChild(vt.getClone());
                     } else break;
                 }
-                if (j == production.size() - 1)
+                if (j == production.size() - 1) {
+                    //  If production-check is finished
                     return true;
+                }
+            }
+            for (Symbol removedSymbol : removedSymbols
+                    ) {
+                symbolQueue.add(0, removedSymbol);
             }
         }
         return false;

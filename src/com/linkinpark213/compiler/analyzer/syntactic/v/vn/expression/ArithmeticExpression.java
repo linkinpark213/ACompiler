@@ -19,6 +19,7 @@ public class ArithmeticExpression extends VN {
         * <Arithmetic Expression> ::= <Identifier> <Arithmetic Operator> <Arithmetic Expression>
         *                           | <Identifier>
         *                           | <Constant>
+        *                           | ( <Arithmetic Expression> )
         * */
         ArrayList<V> identifierWithOperatorProduction = new ArrayList<V>();
         ArrayList<V> singleIdentifierProduction = new ArrayList<V>();
