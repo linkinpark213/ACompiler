@@ -5,6 +5,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
 
 import java.util.ArrayList;
@@ -16,20 +17,22 @@ public class ArithmeticExpression extends VN {
     @Override
     public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         /*
-        * <Arithmetic Expression> ::= <Identifier> <Arithmetic Operator> <Arithmetic Expression>
-        *                           | <Identifier>
-        *                           | <Constant>
-        *                           | ( <Arithmetic Expression> )
+        * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
+        *                           | <Identifier> <Alter>
+        *                           | <Constant> <Alter>
         * */
-        ArrayList<V> identifierWithOperatorProduction = new ArrayList<V>();
+        ArrayList<V> expressionWithBracketsProduction = new ArrayList<V>();
         ArrayList<V> singleIdentifierProduction = new ArrayList<V>();
         ArrayList<V> constantProduction = new ArrayList<V>();
-        identifierWithOperatorProduction.add(new Identifier());
-        identifierWithOperatorProduction.add(new ArithmeticOperator());
-        identifierWithOperatorProduction.add(new ArithmeticExpression());
+        expressionWithBracketsProduction.add(new Separator("("));
+        expressionWithBracketsProduction.add(new ArithmeticExpression());
+        expressionWithBracketsProduction.add(new Separator(")"));
+        expressionWithBracketsProduction.add(new ArithmeticExpressionAlter());
         singleIdentifierProduction.add(new Identifier());
+        singleIdentifierProduction.add(new ArithmeticExpressionAlter());
         constantProduction.add(new Constant());
-        productions.add(identifierWithOperatorProduction);
+        constantProduction.add(new ArithmeticExpressionAlter());
+        productions.add(expressionWithBracketsProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
         return super.analyze(parent, symbolQueue);

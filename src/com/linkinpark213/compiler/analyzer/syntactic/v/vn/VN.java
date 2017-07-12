@@ -12,22 +12,25 @@ import java.util.ArrayList;
 public class VN implements V, Cloneable {
     protected ArrayList<V> children;
     protected ArrayList<ArrayList<V>> productions;
+    protected boolean nullable;
 
     public VN() {
         children = new ArrayList<V>();
         productions = new ArrayList<ArrayList<V>>();
+        nullable = false;
     }
 
     public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
+            if (production.size() == 0) return true;
             ArrayList<Symbol> removedSymbols = new ArrayList<Symbol>();
             for (int j = 0; j < production.size(); j++) {
                 V v = production.get(j);
                 if (v instanceof VN) {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
-                    if (symbolQueue.size() == 0) break;
+                    if (symbolQueue.size() == 0 && !((VN) v).isNullable()) break;
                     if (vn.analyze(this, symbolQueue)) {
                         this.addChild(vn.getClone());
                     } else break;
@@ -68,5 +71,9 @@ public class VN implements V, Cloneable {
 
     public void addChild(V child) {
         children.add(child);
+    }
+
+    public boolean isNullable() {
+        return nullable;
     }
 }

@@ -25,7 +25,7 @@ public class Separator extends VT {
     @Override
     public boolean checkSymbol(Symbol symbol) {
         for (String acceptableSymbol : acceptableSymbols) {
-            if (acceptableSymbol.equals(symbol))
+            if (acceptableSymbol.equals(symbol.toString()))
                 return true;
         }
         return false;

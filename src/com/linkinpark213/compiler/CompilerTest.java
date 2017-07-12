@@ -45,5 +45,6 @@ public class CompilerTest {
         compilerTest.printAnalyzeResult(symbolQueue);
         StatementString root = new StatementString();
         System.out.println(root.analyze(root, symbolQueue));
+        root.getChildren();
     }
 }
