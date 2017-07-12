@@ -9,5 +9,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class IfKeyword extends Keyword {
     public IfKeyword() {
         acceptableSymbols.add("if");
+        this.setValue("if");
     }
 }

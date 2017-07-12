@@ -45,6 +45,11 @@ public class CompilerTest {
         compilerTest.printAnalyzeResult(symbolQueue);
         StatementString root = new StatementString();
         System.out.println(root.analyze(root, symbolQueue));
+        if (symbolQueue.size() > 0) {
+            Symbol symbol = symbolQueue.get(1);
+            System.out.println("Syntax Error at Row " + symbol.getRow() + ", Column " + symbol.getColumn());
+        }
+        root.printTree(0);
         root.getChildren();
     }
 }

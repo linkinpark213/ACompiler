@@ -8,5 +8,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class ThenKeyword extends Keyword {
     public ThenKeyword() {
         acceptableSymbols.add("then");
+        this.setValue("then");
     }
 }

@@ -9,5 +9,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class ElseKeyword extends Keyword {
     public ElseKeyword() {
         acceptableSymbols.add("else");
+        this.setValue("else");
     }
 }

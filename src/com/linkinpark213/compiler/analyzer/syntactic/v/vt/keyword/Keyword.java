@@ -7,6 +7,15 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
  * Created by ooo on 2017/7/12 0012.
  */
 public class Keyword extends VT {
+    private String value;
+
+    public Keyword(String... symbols) {
+        super();
+        for (String symbol : symbols) {
+            acceptableSymbols.add(symbol);
+        }
+    }
+
     @Override
     public boolean checkSymbol(Symbol symbol) {
         for (int i = 0; i < acceptableSymbols.size(); i++) {
@@ -14,5 +23,18 @@ public class Keyword extends VT {
                 return true;
         }
         return false;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }

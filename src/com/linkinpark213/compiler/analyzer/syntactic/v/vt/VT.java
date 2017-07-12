@@ -36,4 +36,12 @@ public abstract class VT implements V, Cloneable {
             return null;
         }
     }
+
+    @Override
+    public void printTree(int depth) {
+        for (int i = 0; i < depth; i++) {
+            System.out.print("\t\t");
+        }
+        System.out.println(this.toString());
+    }
 }

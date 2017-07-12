@@ -8,5 +8,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class DoKeyword extends Keyword {
     public DoKeyword() {
         acceptableSymbols.add("do");
+        this.setValue("do");
     }
 }

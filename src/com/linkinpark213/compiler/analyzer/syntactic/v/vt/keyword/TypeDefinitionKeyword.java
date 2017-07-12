@@ -13,4 +13,10 @@ public class TypeDefinitionKeyword extends Keyword {
         acceptableSymbols.add("char");
         acceptableSymbols.add("bool");
     }
+
+    @Override
+    public boolean checkSymbol(Symbol symbol) {
+        this.setValue(symbol.toString());
+        return super.checkSymbol(symbol);
+    }
 }

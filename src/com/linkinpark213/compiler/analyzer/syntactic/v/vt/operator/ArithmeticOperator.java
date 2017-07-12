@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator;
 
+import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
 /**
@@ -19,5 +20,11 @@ public class ArithmeticOperator extends Operator {
                 ) {
             acceptableSymbols.add(symbol);
         }
+    }
+
+    @Override
+    public boolean checkSymbol(Symbol symbol) {
+        this.setSymbol(symbol.toString());
+        return super.checkSymbol(symbol);
     }
 }

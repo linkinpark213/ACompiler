@@ -9,5 +9,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class CaseKeyword extends Keyword {
     public CaseKeyword() {
         acceptableSymbols.add("case");
+        this.setValue("case");
     }
 }

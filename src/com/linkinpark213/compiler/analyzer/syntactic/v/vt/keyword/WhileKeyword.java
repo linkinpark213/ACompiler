@@ -8,5 +8,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class WhileKeyword extends Keyword {
     public WhileKeyword() {
         acceptableSymbols.add("while");
+        this.setValue("while");
     }
 }

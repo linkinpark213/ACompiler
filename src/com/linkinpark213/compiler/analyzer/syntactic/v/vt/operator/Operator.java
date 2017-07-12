@@ -7,6 +7,8 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
  * Created by ooo on 2017/7/12 0012.
  */
 public class Operator extends VT {
+    private String symbol;
+
     @Override
     public boolean checkSymbol(Symbol symbol) {
         for (int i = 0; i < acceptableSymbols.size(); i++) {
@@ -14,5 +16,18 @@ public class Operator extends VT {
                 return true;
         }
         return false;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
     }
 }

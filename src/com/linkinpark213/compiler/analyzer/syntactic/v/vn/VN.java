@@ -76,4 +76,20 @@ public class VN implements V, Cloneable {
     public boolean isNullable() {
         return nullable;
     }
+
+    @Override
+    public String toString() {
+        return "VN";
+    }
+
+    @Override
+    public void printTree(int depth) {
+        for (int i = 0; i < depth; i++) {
+            System.out.print("\t\t");
+        }
+        System.out.println(this.getClass().getSimpleName());
+        for (int i = 0; i < children.size(); i++) {
+            children.get(i).printTree(depth + 1);
+        }
+    }
 }

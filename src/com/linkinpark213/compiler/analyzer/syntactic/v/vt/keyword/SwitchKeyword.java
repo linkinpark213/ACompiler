@@ -8,5 +8,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 public class SwitchKeyword extends Keyword {
     public SwitchKeyword() {
         acceptableSymbols.add("switch");
+        this.setValue("switch");
     }
 }
