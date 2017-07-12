@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/7/3 0003.
  */
-public class VN implements V {
+public class VN implements V, Cloneable {
     protected ArrayList<V> children;
     protected ArrayList<ArrayList<V>> productions;
 
@@ -27,14 +27,14 @@ public class VN implements V {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
                     if (vn.analyze(this, symbolQueue)) {
-                        this.addChild(vn.clone());
+                        this.addChild(vn.getClone());
                     } else break;
                 } else {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
                     if (vt.checkSymbol(symbolQueue.get(0))) {
                         symbolQueue.remove(0);
-                        this.addChild(vt.clone());
+                        this.addChild(vt.getClone());
                     } else break;
                 }
                 if (j == production.size() - 1)
@@ -44,8 +44,13 @@ public class VN implements V {
         return false;
     }
 
-    public VN clone() {
-        return this.clone();
+    public VN getClone() {
+        try {
+            return (VN) this.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public ArrayList<V> getChildren() {

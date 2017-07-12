@@ -21,7 +21,8 @@ public class BooleanExpression extends VN {
         * <Boolean Expression> ::= <Identifier> <'And' or 'Or' Boolean Operator> <Expression>
         *                           | <Identifier>
         *                           | <'Not' Operator> <Identifier>
-        *                           | <'Not' Operator> ( <Boolean Expression> )
+        *                           | <'Not' Operator> ( <Boolean Expression> )\
+        *                           | <Constant>
         * */
         ArrayList<V> identifierWithDoubleOperatorProduction = new ArrayList<V>();
         ArrayList<V> singleIdentifierProduction = new ArrayList<V>();

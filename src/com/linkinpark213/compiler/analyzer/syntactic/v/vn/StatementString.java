@@ -21,12 +21,14 @@ public class StatementString extends VN {
         * */
         Statement statement = new Statement();
         if (statement.analyze(this, symbolQueue)) {
-            this.addChild(statement.clone());
+            this.addChild(statement.getClone());
             CommaSeparator commaSeparator = new CommaSeparator();
-            if (commaSeparator.checkSymbol(symbolQueue.get(0))) {
-                StatementString statementString = new StatementString();
-                if (!statementString.analyze(this, symbolQueue))
-                    return false;
+            if (symbolQueue.size() > 0) {
+                if (commaSeparator.checkSymbol(symbolQueue.get(0))) {
+                    StatementString statementString = new StatementString();
+                    if (!statementString.analyze(this, symbolQueue))
+                        return false;
+                } else return false;
             }
             return true;
         }

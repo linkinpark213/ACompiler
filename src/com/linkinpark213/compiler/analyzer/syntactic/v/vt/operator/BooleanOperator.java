@@ -5,7 +5,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 /**
  * Created by ooo on 2017/7/4 0004.
  */
-public class BooleanOperator extends VT {
+public class BooleanOperator extends Operator {
     public BooleanOperator() {
         acceptableSymbols.add("&");
         acceptableSymbols.add("|");

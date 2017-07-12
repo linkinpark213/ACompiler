@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by ooo on 2017/7/3 0003.
  */
-public class VT implements V {
+public abstract class VT implements V, Cloneable {
     public static final int CONSTANT_INT = 100;
     public static final int CONSTANT_FLOAT = 101;
     public static final int CONSTANT_CHAR = 102;
@@ -26,15 +26,14 @@ public class VT implements V {
         acceptableSymbols = new ArrayList<String>();
     }
 
-    public boolean checkSymbol(Symbol symbol) {
-        for (int i = 0; i < acceptableSymbols.size(); i++) {
-            if (acceptableSymbols.get(i).equals(symbol.toString()))
-                return true;
-        }
-        return false;
-    }
+    public abstract boolean checkSymbol(Symbol symbol);
 
-    public VT clone() {
-        return this.clone();
+    public VT getClone() {
+        try {
+            return (VT) this.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
