@@ -13,4 +13,11 @@ public class ArithmeticOperator extends Operator {
         acceptableSymbols.add("--");
         acceptableSymbols.add("*");
     }
+
+    public ArithmeticOperator(String... symbols) {
+        for (String symbol : symbols
+                ) {
+            acceptableSymbols.add(symbol);
+        }
+    }
 }

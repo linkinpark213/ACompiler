@@ -3,6 +3,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement.*;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.separator.CommaSeparator;
 
@@ -16,22 +17,16 @@ public class StatementString extends VN {
     @Override
     public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         /*
-        * <Statement String>  ::=  <Statement> ; <Statement String>
+        * <Statement String>  ::=  <Statement> <Statement String Alter>
         *                        | <Statement>
         * */
-        Statement statement = new Statement();
-        if (statement.analyze(this, symbolQueue)) {
-            this.addChild(statement.getClone());
-            CommaSeparator commaSeparator = new CommaSeparator();
-            if (symbolQueue.size() > 0) {
-                if (commaSeparator.checkSymbol(symbolQueue.get(0))) {
-                    StatementString statementString = new StatementString();
-                    if (!statementString.analyze(this, symbolQueue))
-                        return false;
-                } else return false;
-            }
-            return true;
-        }
-        return false;
+        ArrayList<V> statementWithStringProduction = new ArrayList<V>();
+        ArrayList<V> singleStatementProduction = new ArrayList<V>();
+        statementWithStringProduction.add(new Statement());
+        statementWithStringProduction.add(new StatementStringAlter());
+        singleStatementProduction.add(new Statement());
+        productions.add(statementWithStringProduction);
+        productions.add(singleStatementProduction);
+        return super.analyze(parent, symbolQueue);
     }
 }

@@ -13,6 +13,6 @@ public class CommaSeparator extends VT {
 
     @Override
     public boolean checkSymbol(Symbol symbol) {
-        return false;
+        return symbol.toString().equals(",");
     }
 }

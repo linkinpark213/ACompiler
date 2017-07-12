@@ -7,6 +7,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 
 import java.util.ArrayList;
 
@@ -18,21 +19,26 @@ public class ArithmeticExpression extends VN {
     public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         /*
         * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
+        *                           | <Identifier> <Increment/Decrement Operator>
         *                           | <Identifier> <Alter>
         *                           | <Constant> <Alter>
         * */
         ArrayList<V> expressionWithBracketsProduction = new ArrayList<V>();
         ArrayList<V> singleIdentifierProduction = new ArrayList<V>();
         ArrayList<V> constantProduction = new ArrayList<V>();
+        ArrayList<V> crementProduction = new ArrayList<V>();
         expressionWithBracketsProduction.add(new Separator("("));
         expressionWithBracketsProduction.add(new ArithmeticExpression());
         expressionWithBracketsProduction.add(new Separator(")"));
         expressionWithBracketsProduction.add(new ArithmeticExpressionAlter());
+        crementProduction.add(new Identifier());
+        crementProduction.add(new ArithmeticOperator("++", "--"));
         singleIdentifierProduction.add(new Identifier());
         singleIdentifierProduction.add(new ArithmeticExpressionAlter());
         constantProduction.add(new Constant());
         constantProduction.add(new ArithmeticExpressionAlter());
         productions.add(expressionWithBracketsProduction);
+        productions.add(crementProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
         return super.analyze(parent, symbolQueue);
