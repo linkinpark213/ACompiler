@@ -69,13 +69,13 @@ public class LexicalAnalyzer {
                         tempCode = tempCode.substring(2);
                     }
                     symbolQueue.add(nextSymbol);
-                } else if (Separator.isSeparator(firstChar)) {
-                    //  Separator
-                    nextSymbol = new Separator(firstChar);
-                    symbolQueue.add(nextSymbol);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
                     //  ArithmeticOperator
                     nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
+                    symbolQueue.add(nextSymbol);
+                } else if (Separator.isSeparator(firstChar)) {
+                    //  Separator
+                    nextSymbol = new Separator(firstChar);
                     symbolQueue.add(nextSymbol);
                 } else {
                     //  Identifier or keyword
