@@ -13,29 +13,19 @@ import java.util.ArrayList;
  */
 public class StatementString extends VN {
 
-    private ArrayList<V> multipleStatementProduction = new ArrayList<V>();
-    private ArrayList<V> singleStatementProduction = new ArrayList<V>();
-
-    public StatementString() {
-        super();
-
+    @Override
+    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         /*
         * <Statement String>  ::=  <Statement> ; <Statement String>
         *                        | <Statement>
         * */
-        multipleStatementProduction = new ArrayList<V>();
-        singleStatementProduction = new ArrayList<V>();
-    }
-
-    @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
         Statement statement = new Statement();
-        if(statement.analyze(this, symbolQueue)) {
+        if (statement.analyze(this, symbolQueue)) {
             this.addChild(statement.clone());
             CommaSeparator commaSeparator = new CommaSeparator();
-            if(commaSeparator.checkSymbol(symbolQueue.get(0))) {
+            if (commaSeparator.checkSymbol(symbolQueue.get(0))) {
                 StatementString statementString = new StatementString();
-                if(!statementString.analyze(this, symbolQueue))
+                if (!statementString.analyze(this, symbolQueue))
                     return false;
             }
             return true;
