@@ -27,7 +27,7 @@ public class BooleanExpressionAlter extends VN {
         ArrayList<V> production = new ArrayList<V>();
         ArrayList<V> nullProduction = new ArrayList<V>();
         production.add(new BooleanOperator("&", "|"));
-        production.add(new Expression());
+        production.add(new BooleanExpression());
         productions.add(production);
         productions.add(nullProduction);
         return super.analyze(parent, tokenQueue, quadQueue);

@@ -19,19 +19,24 @@ public class BooleanExpression extends VN {
     @Override
     public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
         /*
-        * <Boolean Expression> ::= <'Not' Operator> <Identifier> <Alter>
+        * <Boolean Expression> ::= <Relation Expression> <Alter>
+        *                           | <'Not' Operator> <Identifier> <Alter>
         *                           | <'Not' Operator> ( <Boolean Expression> ) <Alter>
         *                           | <Boolean Constant> <Alter>
-        *                           | <Identifier> <Alter>
+        *                           | <Identifier> <Alter> (Not now)
         * */
-        ArrayList<V> identifierWithSingleOperatorProduction = new ArrayList<V>();
+        ArrayList<V> relationExpressionProduction = new ArrayList<V>();
+        ArrayList<V> identifierWithNotOperatorProduction = new ArrayList<V>();
         ArrayList<V> expressionWithNotOperatorProduction = new ArrayList<V>();
         ArrayList<V> constantProduction = new ArrayList<V>();
         ArrayList<V> identifierWithDoubleOperatorProduction = new ArrayList<V>();
 
-        identifierWithSingleOperatorProduction.add(new BooleanOperator("!"));
-        identifierWithSingleOperatorProduction.add(new Identifier());
-        identifierWithSingleOperatorProduction.add(new BooleanExpressionAlter());
+        relationExpressionProduction.add(new RelationExpression());
+        relationExpressionProduction.add(new BooleanExpressionAlter());
+
+        identifierWithNotOperatorProduction.add(new BooleanOperator("!"));
+        identifierWithNotOperatorProduction.add(new Identifier());
+        identifierWithNotOperatorProduction.add(new BooleanExpressionAlter());
 
         expressionWithNotOperatorProduction.add(new BooleanOperator("!"));
         expressionWithNotOperatorProduction.add(new Separator("("));
@@ -45,10 +50,11 @@ public class BooleanExpression extends VN {
         identifierWithDoubleOperatorProduction.add(new Identifier());
         identifierWithDoubleOperatorProduction.add(new BooleanExpressionAlter());
 
-        productions.add(identifierWithSingleOperatorProduction);
+        productions.add(relationExpressionProduction);
+        productions.add(identifierWithNotOperatorProduction);
         productions.add(expressionWithNotOperatorProduction);
         productions.add(constantProduction);
-        productions.add(identifierWithDoubleOperatorProduction);
+//        productions.add(identifierWithDoubleOperatorProduction);
         return super.analyze(parent, tokenQueue, quadQueue);
     }
 }
