@@ -7,9 +7,13 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
  */
 public class BooleanOperator extends Operator {
     public BooleanOperator() {
-        acceptableSymbols.add("&");
-        acceptableSymbols.add("|");
-        acceptableSymbols.add("!");
+        this("&", "|", "!");
+    }
+
+    public BooleanOperator(String... symbols) {
+        for (String symbol : symbols) {
+            acceptableSymbols.add(symbol);
+        }
     }
 
     @Override

@@ -22,19 +22,19 @@ public class Expression extends VN {
 
     public Expression() {
         /*
-        * <Expression> ::= <Arithmetic Expression>
-        *                   | <Boolean Expression>
+        * <Expression> ::= <Boolean Expression>
         *                   | <Relation Expression>
+        *                   | <Arithmetic Expression>
         * */
         super();
-        ArrayList<V> arithmeticProduction = new ArrayList<V>();
         ArrayList<V> booleanProduction = new ArrayList<V>();
         ArrayList<V> relationProduction = new ArrayList<V>();
-        arithmeticProduction.add(new ArithmeticExpression());
+        ArrayList<V> arithmeticProduction = new ArrayList<V>();
         booleanProduction.add(new BooleanExpression());
         relationProduction.add(new RelationExpression());
-        productions.add(arithmeticProduction);
+        arithmeticProduction.add(new ArithmeticExpression());
         productions.add(booleanProduction);
         productions.add(relationProduction);
+        productions.add(arithmeticProduction);
     }
 }

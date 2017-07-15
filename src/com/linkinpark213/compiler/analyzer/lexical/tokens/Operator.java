@@ -71,10 +71,10 @@ public class Operator implements Token {
                 typeString = "Relation";
                 break;
             case TYPE_ASSIGNMENT:
-                typeString = "AssignmentStatement";
+                typeString = "Assignment";
                 break;
         }
-        return "ArithmeticOperator (" + typeString + "): " + symbol;
+        return "Operator (" + typeString + "): " + symbol;
     }
 
     public Operator(String symbol) {

@@ -7,11 +7,7 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
  */
 public class ArithmeticOperator extends Operator {
     public ArithmeticOperator() {
-        acceptableSymbols.add("+");
-        acceptableSymbols.add("-");
-        acceptableSymbols.add("++");
-        acceptableSymbols.add("--");
-        acceptableSymbols.add("*");
+        this("+", "-", "++", "--", "*");
     }
 
     public ArithmeticOperator(String... symbols) {

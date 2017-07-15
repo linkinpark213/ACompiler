@@ -1,3 +1,5 @@
 a := a + 213;
 b := b --;
-int asd
+if ( true &false) then {
+b := 4
+};

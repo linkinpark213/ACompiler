@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.syntactic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
@@ -13,25 +14,34 @@ public class VN implements V, Cloneable {
     protected ArrayList<V> children;
     protected ArrayList<ArrayList<V>> productions;
     protected boolean nullable;
+    protected ArrayList<Quad> quads;
 
     public VN() {
         children = new ArrayList<V>();
         productions = new ArrayList<ArrayList<V>>();
         nullable = false;
+        quads = new ArrayList<Quad>();
     }
 
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
+    protected void semanticAction(int productionNum) {
+        //  Do nothing?
+    }
+
+    protected void semanticRollback() {
+        //  Will be implemented in the children classes
+    }
+
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;
-            ArrayList<Token> removedTokens = new ArrayList<Token>();
             for (int j = 0; j < production.size(); j++) {
                 V v = production.get(j);
                 if (v instanceof VN) {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
                     if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
-                    if (vn.analyze(this, tokenQueue)) {
+                    if (vn.analyze(this, tokenQueue, quadQueue)) {
                         this.addChild(vn.getClone());
                     } else break;
                 } else {
@@ -39,21 +49,33 @@ public class VN implements V, Cloneable {
                     VT vt = (VT) v;
                     if (tokenQueue.size() == 0) break;
                     if (vt.checkSymbol(tokenQueue.get(0))) {
-                        removedTokens.add(0, tokenQueue.remove(0));
-                        this.addChild(vt.getClone());
+                        VT temp = vt.getClone();
+                        temp.setToken(tokenQueue.remove(0));
+                        this.addChild(temp);
                     } else break;
                 }
                 if (j == production.size() - 1) {
                     //  If production-check is finished
+                    //  Perform semantic actions here
+                    semanticAction(i);
                     return true;
                 }
             }
-            for (Token removedToken : removedTokens
-                    ) {
-                tokenQueue.add(0, removedToken);
-            }
+            returnTokens(tokenQueue);
+            children.clear();
         }
         return false;
+    }
+
+    public void returnTokens(ArrayList<Token> tokenQueue) {
+        for (int i = children.size() - 1; i >= 0; i--) {
+            V v = children.get(i);
+            if (v instanceof VN)
+                ((VN) v).returnTokens(tokenQueue);
+            else {
+                tokenQueue.add(0, ((VT) v).getToken());
+            }
+        }
     }
 
     public VN getClone() {

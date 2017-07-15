@@ -2,6 +2,7 @@ package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.syntactic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 
 import java.io.File;
@@ -40,14 +41,14 @@ public class CompilerTest {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
         ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
+        ArrayList<Quad> quadQueue = new ArrayList<Quad>();
         compilerTest.printAnalyzeResult(tokenQueue);
         StatementString root = new StatementString();
-        System.out.println(root.analyze(root, tokenQueue));
+        System.out.println(root.analyze(root, tokenQueue, quadQueue));
         if (tokenQueue.size() > 0) {
             Token token = tokenQueue.get(1);
             System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());
         }
         root.printTree(0);
-        root.getChildren();
     }
 }

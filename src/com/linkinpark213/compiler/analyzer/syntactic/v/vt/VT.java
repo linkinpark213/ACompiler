@@ -21,12 +21,21 @@ public abstract class VT implements V, Cloneable {
     public static final int OPERATOR_ASSIGNMENT = 109;
     public static final int TYPE_SEPARATOR = 110;
     protected ArrayList<String> acceptableSymbols;
+    private Token token;
 
     public VT() {
         acceptableSymbols = new ArrayList<String>();
     }
 
     public abstract boolean checkSymbol(Token token);
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
+    }
 
     public VT getClone() {
         try {

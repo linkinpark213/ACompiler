@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.syntactic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.IdentifierString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class DefinitionStatement extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
         /*
          * <Definition Statement> ::= <Typedef Keyword> <Identifier String>
          */
@@ -21,6 +22,6 @@ public class DefinitionStatement extends VN {
         production.add(new Keyword("int", "bool", "float", "char"));
         production.add(new IdentifierString());
         productions.add(production);
-        return super.analyze(parent, tokenQueue);
+        return super.analyze(parent, tokenQueue, quadQueue);
     }
 }
