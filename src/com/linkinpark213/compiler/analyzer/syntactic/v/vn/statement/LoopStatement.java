@@ -7,7 +7,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword.Keyword;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
 
 import java.util.ArrayList;
 

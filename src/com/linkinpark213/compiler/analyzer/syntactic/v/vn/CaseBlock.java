@@ -5,7 +5,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword.Keyword;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
 
 import java.util.ArrayList;
 

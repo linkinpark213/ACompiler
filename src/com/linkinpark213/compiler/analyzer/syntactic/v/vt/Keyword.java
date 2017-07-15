@@ -1,4 +1,4 @@
-package com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword;
+package com.linkinpark213.compiler.analyzer.syntactic.v.vt;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
@@ -18,6 +18,7 @@ public class Keyword extends VT {
 
     @Override
     public boolean checkSymbol(Token token) {
+        this.setValue(token.toString());
         for (int i = 0; i < acceptableSymbols.size(); i++) {
             if (acceptableSymbols.get(i).equals(token.toString()))
                 return true;
