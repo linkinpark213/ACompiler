@@ -2,8 +2,8 @@ package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Operator;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 import java.util.ArrayList;
 
@@ -155,7 +155,7 @@ public class OperatorDFA implements DFA {
     }
 
     @Override
-    public Symbol nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidOperatorException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidOperatorException {
         State statePointer = initialState;
         State nextStatePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();

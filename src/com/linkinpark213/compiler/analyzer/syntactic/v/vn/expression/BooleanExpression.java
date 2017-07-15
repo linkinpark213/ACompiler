@@ -1,7 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class BooleanExpression extends VN {
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         /*
         * <Boolean Expression> ::= <Identifier> <'And' or 'Or' Boolean Operator> <Expression>
         *                           | <Identifier>
@@ -42,6 +41,6 @@ public class BooleanExpression extends VN {
         productions.add(identifierWithDoubleOperatorProduction);
         productions.add(identifierWithSingleOperatorProduction);
         productions.add(expressionWithNotOperatorProduction);
-        return super.analyze(parent, symbolQueue);
+        return super.analyze(parent, tokenQueue);
     }
 }

@@ -1,11 +1,11 @@
-package com.linkinpark213.compiler.analyzer.lexical.symbols;
+package com.linkinpark213.compiler.analyzer.lexical.tokens;
 
 import java.util.ArrayList;
 
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class Operator implements Symbol {
+public class Operator implements Token {
     private String symbol;
     private int type;
     private int row;

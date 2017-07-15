@@ -6,10 +6,10 @@ import com.linkinpark213.compiler.analyzer.lexical.dfd.OperatorDFA;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidConstantException;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Operator;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Separator;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Separator;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 import java.util.ArrayList;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by ooo on 2017/6/2 0002.
  */
 public class LexicalAnalyzer {
-    private ArrayList<Symbol> symbolQueue;
+    private ArrayList<Token> tokenQueue;
     private int row;
     private int col;
 
@@ -28,7 +28,7 @@ public class LexicalAnalyzer {
     private void clear() {
         row = 1;
         col = 1;
-        symbolQueue = new ArrayList<Symbol>();
+        tokenQueue = new ArrayList<Token>();
     }
 
     public void reportError(String message) {
@@ -36,7 +36,7 @@ public class LexicalAnalyzer {
         System.exit(0);
     }
 
-    public ArrayList<Symbol> analyze(String code) {
+    public ArrayList<Token> analyze(String code) {
         System.out.println("Analyzing: \n" + code + "\n");
         String tempCode = code;
         this.clear();
@@ -55,48 +55,48 @@ public class LexicalAnalyzer {
                         col = 1;
                     }
                     if (tempCode.length() == 0)
-                        return symbolQueue;
+                        return tokenQueue;
                     firstChar = tempCode.charAt(0);
                     if (tempCode.length() > 1)
                         secondChar = tempCode.charAt(1);
                 }
-                Symbol nextSymbol = null;
+                Token nextToken = null;
                 if (firstChar == '-' && Constant.isDigit(secondChar)
                         || Constant.isDigit(firstChar) || firstChar == '\'') {
                     //  Constant Value
-                    nextSymbol = ConstantDFA.getInstance().nextSymbol(tempCode, this);
-                    if (nextSymbol.getType() == Constant.TYPE_CHAR) {
+                    nextToken = ConstantDFA.getInstance().nextSymbol(tempCode, this);
+                    if (nextToken.getType() == Constant.TYPE_CHAR) {
                         tempCode = tempCode.substring(2);
                     }
-                    symbolQueue.add(nextSymbol);
+                    tokenQueue.add(nextToken);
                 } else if (Operator.isOperatorBeginning(firstChar)) {
                     //  ArithmeticOperator
-                    nextSymbol = OperatorDFA.getInstance().nextSymbol(tempCode, this);
-                    symbolQueue.add(nextSymbol);
+                    nextToken = OperatorDFA.getInstance().nextSymbol(tempCode, this);
+                    tokenQueue.add(nextToken);
                 } else if (Separator.isSeparator(firstChar)) {
                     //  Separator
-                    nextSymbol = new Separator(firstChar);
-                    symbolQueue.add(nextSymbol);
+                    nextToken = new Separator(firstChar);
+                    tokenQueue.add(nextToken);
                 } else {
                     //  Identifier or keyword
-                    nextSymbol = IdentifierDFA.getInstance().nextSymbol(tempCode, this);
-                    symbolQueue.add(nextSymbol);
+                    nextToken = IdentifierDFA.getInstance().nextSymbol(tempCode, this);
+                    tokenQueue.add(nextToken);
                 }
-                nextSymbol.setRow(row);
-                nextSymbol.setColumn(col);
-                if (tempCode.length() > nextSymbol.toString().length())
-                    tempCode = tempCode.substring(nextSymbol.toString().length());
+                nextToken.setRow(row);
+                nextToken.setColumn(col);
+                if (tempCode.length() > nextToken.toString().length())
+                    tempCode = tempCode.substring(nextToken.toString().length());
                 else tempCode = "";
-                if (nextSymbol.getType() == Constant.TYPE_CHAR) {
+                if (nextToken.getType() == Constant.TYPE_CHAR) {
                     tempCode = tempCode.substring(2);
                     col += 2;
                 }
-                col += nextSymbol.toString().length();
+                col += nextToken.toString().length();
             } while (tempCode.length() > 0);
         } catch (InvalidConstantException | InvalidIdentifierException | InvalidOperatorException e) {
             System.out.println("Compile Error: (" + row + ", " + col + "): " + e.getMessage());
-            return symbolQueue;
+            return tokenQueue;
         }
-        return symbolQueue;
+        return tokenQueue;
     }
 }

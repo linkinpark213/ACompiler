@@ -1,10 +1,8 @@
 package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.keyword.IfKeyword;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,11 +13,11 @@ import java.util.Scanner;
  * Created by ooo on 2017/6/2 0002.
  */
 public class CompilerTest {
-    public void printAnalyzeResult(ArrayList<Symbol> symbols) {
+    public void printAnalyzeResult(ArrayList<Token> tokens) {
         System.out.println("==================================");
-        System.out.println(symbols);
-        for (int i = 0; i < symbols.size(); i++) {
-            System.out.println(symbols.get(i).fullString());
+        System.out.println(tokens);
+        for (int i = 0; i < tokens.size(); i++) {
+            System.out.println(tokens.get(i).fullString());
         }
         System.out.println("==================================");
     }
@@ -41,13 +39,13 @@ public class CompilerTest {
     public static void main(String[] args) {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        ArrayList<Symbol> symbolQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
-        compilerTest.printAnalyzeResult(symbolQueue);
+        ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
+        compilerTest.printAnalyzeResult(tokenQueue);
         StatementString root = new StatementString();
-        System.out.println(root.analyze(root, symbolQueue));
-        if (symbolQueue.size() > 0) {
-            Symbol symbol = symbolQueue.get(1);
-            System.out.println("Syntax Error at Row " + symbol.getRow() + ", Column " + symbol.getColumn());
+        System.out.println(root.analyze(root, tokenQueue));
+        if (tokenQueue.size() > 0) {
+            Token token = tokenQueue.get(1);
+            System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());
         }
         root.printTree(0);
         root.getChildren();

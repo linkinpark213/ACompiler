@@ -1,9 +1,9 @@
-package com.linkinpark213.compiler.analyzer.lexical.symbols;
+package com.linkinpark213.compiler.analyzer.lexical.tokens;
 
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class Separator implements Symbol {
+public class Separator implements Token {
     private char symbol;
     private int row;
     private int column;

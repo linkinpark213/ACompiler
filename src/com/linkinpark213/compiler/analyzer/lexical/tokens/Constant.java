@@ -1,11 +1,11 @@
-package com.linkinpark213.compiler.analyzer.lexical.symbols;
+package com.linkinpark213.compiler.analyzer.lexical.tokens;
 
 import java.util.ArrayList;
 
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class Constant implements Symbol {
+public class Constant implements Token {
     private String symbol;
     private int type;
     private float value;

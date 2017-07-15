@@ -2,8 +2,8 @@ package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidConstantException;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 import java.util.ArrayList;
 
@@ -100,7 +100,7 @@ public class ConstantDFA implements DFA {
     }
 
     @Override
-    public Symbol nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidConstantException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidConstantException {
         State statePointer = initialState;
         State nextStatePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();

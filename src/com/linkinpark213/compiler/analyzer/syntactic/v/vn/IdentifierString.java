@@ -1,6 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class IdentifierString extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         /*
         * <Identifier String> ::= <Identifier> <Identifier String Alter>
         *                       | <Identifier>
@@ -20,6 +20,6 @@ public class IdentifierString extends VN {
         production.add(new Identifier());
         production.add(new IdentifierStringAlter());
         productions.add(production);
-        return super.analyze(parent, symbolQueue);
+        return super.analyze(parent, tokenQueue);
     }
 }

@@ -1,7 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.RelationOperator;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
  */
 public class RelationExpression extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         /*
         * <Relation Expression> ::= <Arithmetic Expression> <Relation Operator> <Arithmetic Expression>
         * */
@@ -22,6 +21,6 @@ public class RelationExpression extends VN {
         production.add(new RelationOperator());
         production.add(new ArithmeticExpression());
         productions.add(production);
-        return super.analyze(parent, symbolQueue);
+        return super.analyze(parent, tokenQueue);
     }
 }

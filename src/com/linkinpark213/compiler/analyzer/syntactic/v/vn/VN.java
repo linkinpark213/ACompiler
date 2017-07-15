@@ -1,6 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
@@ -20,26 +20,26 @@ public class VN implements V, Cloneable {
         nullable = false;
     }
 
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;
-            ArrayList<Symbol> removedSymbols = new ArrayList<Symbol>();
+            ArrayList<Token> removedTokens = new ArrayList<Token>();
             for (int j = 0; j < production.size(); j++) {
                 V v = production.get(j);
                 if (v instanceof VN) {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
-                    if (symbolQueue.size() == 0 && !((VN) v).isNullable()) break;
-                    if (vn.analyze(this, symbolQueue)) {
+                    if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
+                    if (vn.analyze(this, tokenQueue)) {
                         this.addChild(vn.getClone());
                     } else break;
                 } else {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
-                    if (symbolQueue.size() == 0) break;
-                    if (vt.checkSymbol(symbolQueue.get(0))) {
-                        removedSymbols.add(0, symbolQueue.remove(0));
+                    if (tokenQueue.size() == 0) break;
+                    if (vt.checkSymbol(tokenQueue.get(0))) {
+                        removedTokens.add(0, tokenQueue.remove(0));
                         this.addChild(vt.getClone());
                     } else break;
                 }
@@ -48,9 +48,9 @@ public class VN implements V, Cloneable {
                     return true;
                 }
             }
-            for (Symbol removedSymbol : removedSymbols
+            for (Token removedToken : removedTokens
                     ) {
-                symbolQueue.add(0, removedSymbol);
+                tokenQueue.add(0, removedToken);
             }
         }
         return false;

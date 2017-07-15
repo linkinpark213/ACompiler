@@ -1,13 +1,12 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 
 import java.util.ArrayList;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
  */
 public class ArithmeticExpression extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         /*
         * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
         *                           | <Identifier> <Increment/Decrement Operator>
@@ -41,6 +40,6 @@ public class ArithmeticExpression extends VN {
         productions.add(crementProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
-        return super.analyze(parent, symbolQueue);
+        return super.analyze(parent, tokenQueue);
     }
 }

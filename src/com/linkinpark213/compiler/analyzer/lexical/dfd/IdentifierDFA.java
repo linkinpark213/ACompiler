@@ -2,10 +2,10 @@ package com.linkinpark213.compiler.analyzer.lexical.dfd;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Identifier;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Keyword;
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Identifier;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Keyword;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class IdentifierDFA implements DFA {
     }
 
     @Override
-    public Symbol nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidIdentifierException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidIdentifierException {
         State statePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
 

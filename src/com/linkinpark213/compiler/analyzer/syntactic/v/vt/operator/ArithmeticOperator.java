@@ -1,7 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 /**
  * Created by ooo on 2017/7/4 0004.
@@ -23,8 +22,8 @@ public class ArithmeticOperator extends Operator {
     }
 
     @Override
-    public boolean checkSymbol(Symbol symbol) {
-        this.setSymbol(symbol.toString());
-        return super.checkSymbol(symbol);
+    public boolean checkSymbol(Token token) {
+        this.setSymbol(token.toString());
+        return super.checkSymbol(token);
     }
 }

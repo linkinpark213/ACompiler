@@ -1,9 +1,9 @@
-package com.linkinpark213.compiler.analyzer.lexical.symbols;
+package com.linkinpark213.compiler.analyzer.lexical.tokens;
 
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public interface Symbol {
+public interface Token {
     public String fullString();
     public int getType();
     public int getRow();

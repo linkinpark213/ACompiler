@@ -1,11 +1,8 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement.*;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.separator.CommaSeparator;
 
 import java.util.ArrayList;
 
@@ -15,7 +12,7 @@ import java.util.ArrayList;
 public class StatementString extends VN {
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Symbol> symbolQueue) {
+    public boolean analyze(VN parent, ArrayList<Token> tokenQueue) {
         /*
         * <Statement String>  ::=  <Statement> <Statement String Alter>
         *                        | <Statement>
@@ -27,6 +24,6 @@ public class StatementString extends VN {
         singleStatementProduction.add(new Statement());
         productions.add(statementWithStringProduction);
         productions.add(singleStatementProduction);
-        return super.analyze(parent, symbolQueue);
+        return super.analyze(parent, tokenQueue);
     }
 }

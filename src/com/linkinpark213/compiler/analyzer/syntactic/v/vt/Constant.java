@@ -1,6 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt;
 
-import com.linkinpark213.compiler.analyzer.lexical.symbols.Symbol;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 /**
  * Created by ooo on 2017/7/4 0004.
@@ -10,8 +10,8 @@ public class Constant extends VT {
     private String type;
 
     @Override
-    public boolean checkSymbol(Symbol symbol) {
-        return symbol instanceof com.linkinpark213.compiler.analyzer.lexical.symbols.Constant;
+    public boolean checkSymbol(Token token) {
+        return token instanceof com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
     }
 
     @Override
