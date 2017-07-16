@@ -1,13 +1,11 @@
 package com.linkinpark213.compiler.analyzer.semantic;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-
 /**
  * Created by ooo on 2017/7/15 0015.
  */
 public class Quad {
     private int address;
-    private Token[] operand;
+    private String operator;
     private String variableA;
     private String variableB;
     private String result;
@@ -15,6 +13,10 @@ public class Quad {
     public Quad() {
         this.setAddress(0);
         this.setResult("0");
+    }
+
+    public String toString() {
+        return address + "\t\t(\t" + operator + ",\t\t" + variableA + ",\t\t" + variableB + ",\t\t" + result + "\t)";
     }
 
     public int getAddress() {
@@ -25,12 +27,12 @@ public class Quad {
         this.address = address;
     }
 
-    public Token[] getOperand() {
-        return operand;
+    public String getOperator() {
+        return operator;
     }
 
-    public void setOperand(Token[] operand) {
-        this.operand = operand;
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
     public String getVariableA() {

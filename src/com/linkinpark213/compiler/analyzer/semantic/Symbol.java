@@ -6,10 +6,10 @@ package com.linkinpark213.compiler.analyzer.semantic;
 public class Symbol {
     private String name;
     private int type;
-    public static final int TYPE_INT = 100;
-    public static final int TYPE_FLOAT = 101;
-    public static final int TYPE_CHAR = 102;
-    public static final int TYPE_BOOL = 103;
+    public static final int TYPE_INT = 102;
+    public static final int TYPE_FLOAT = 103;
+    public static final int TYPE_CHAR = 101;
+    public static final int TYPE_BOOL = 100;
 
     public Symbol(String name, int type) {
         this.name = name;

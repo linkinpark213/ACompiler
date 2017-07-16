@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
@@ -24,5 +25,25 @@ public class RelationExpression extends VN {
         production.add(new ArithmeticExpression());
         productions.add(production);
         return super.analyze(tokenQueue, symbolList);
+    }
+
+    @Override
+    public void semanticAction(QuadQueue quadQueue) {
+        super.semanticAction(quadQueue);
+        Quad jumpQuad = new Quad();
+        Quad falseQuad = new Quad();
+        Quad trueQuad = new Quad();
+        jumpQuad.setOperator("j");
+        jumpQuad.setVariableA("");
+        jumpQuad.setVariableB("");
+        jumpQuad.setResult("T");
+        falseQuad.setOperator(":=");
+        falseQuad.setVariableA("");
+        falseQuad.setVariableB("");
+        falseQuad.setResult("T");
+        trueQuad.setOperator(":=");
+        trueQuad.setVariableA("");
+        trueQuad.setVariableB("");
+        trueQuad.setResult("T");
     }
 }

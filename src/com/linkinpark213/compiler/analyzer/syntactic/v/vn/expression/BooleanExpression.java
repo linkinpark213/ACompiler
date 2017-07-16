@@ -45,7 +45,7 @@ public class BooleanExpression extends VN {
         expressionWithNotOperatorProduction.add(new Separator(")"));
         expressionWithNotOperatorProduction.add(new BooleanExpressionAlter());
 
-        constantProduction.add(new Constant());
+        constantProduction.add(new Constant(Constant.TYPE_BOOL));
         constantProduction.add(new BooleanExpressionAlter());
 
         identifierWithDoubleOperatorProduction.add(new Identifier(Identifier.TYPE_BOOL));

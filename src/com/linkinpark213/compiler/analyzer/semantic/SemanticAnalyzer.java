@@ -16,8 +16,8 @@ public class SemanticAnalyzer {
         quadQueue = new ArrayList<Quad>();
     }
 
-    public void analyze(Program program) {
-
+    public void analyze(Program program, QuadQueue quadQueue) {
+        program.semanticAction(quadQueue);
     }
 
     public SymbolList getSymbolList() {

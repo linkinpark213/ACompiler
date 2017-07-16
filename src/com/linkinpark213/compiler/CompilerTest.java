@@ -3,6 +3,8 @@ package com.linkinpark213.compiler;
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.SemanticAnalyzer;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.SyntacticalAnalyzer;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
@@ -31,8 +33,17 @@ public class CompilerTest {
         System.out.println("=============================");
         System.out.println("=       Syntax Tree         =");
         System.out.println("=============================");
-        System.out.println();
         program.printSyntacticalAnalysisTree(0);
+        System.out.println("=============================");
+    }
+
+    public void printSemanticAnalysisResult(ArrayList<Quad> quadQueue) {
+        System.out.println("=============================");
+        System.out.println("=        Quad List          =");
+        System.out.println("=============================");
+        for (Quad quad : quadQueue) {
+            System.out.println(quad.toString());
+        }
         System.out.println("=============================");
     }
 
@@ -56,7 +67,7 @@ public class CompilerTest {
         //  Lexical Analysis
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
         ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
-        ArrayList<Quad> quadQueue = new ArrayList<Quad>();
+        QuadQueue quadQueue = new QuadQueue();
 
         compilerTest.printLexicalAnalysisResult(tokenQueue);
 
@@ -67,7 +78,11 @@ public class CompilerTest {
         compilerTest.printSyntacticalAnalysisResult(program);
 
         symbolList.printList();
-        //  Semantic Analysis
 
+        //  Semantic Analysis
+        SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
+        semanticAnalyzer.analyze(program, quadQueue);
+
+        compilerTest.printSemanticAnalysisResult(quadQueue.getQuadList());
     }
 }

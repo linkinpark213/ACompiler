@@ -11,10 +11,10 @@ public class Constant implements Token {
     private float value;
     private int row;
     private int col;
-    public static final int TYPE_INT = 100;
-    public static final int TYPE_FLOAT = 101;
-    public static final int TYPE_CHAR = 102;
-    public static final int TYPE_BOOL = 103;
+    public static final int TYPE_INT = 102;
+    public static final int TYPE_FLOAT = 103;
+    public static final int TYPE_CHAR = 101;
+    public static final int TYPE_BOOL = 100;
     public static final ArrayList<String> boolConstants;
 
     static {

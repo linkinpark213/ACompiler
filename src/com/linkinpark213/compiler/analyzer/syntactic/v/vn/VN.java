@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
@@ -17,6 +18,7 @@ public class VN implements V, Cloneable {
     protected int productionNum;
     protected boolean nullable;
     protected ArrayList<Quad> quads;
+    protected int tempID;
 
     public VN() {
         children = new ArrayList<V>();
@@ -24,19 +26,16 @@ public class VN implements V, Cloneable {
         nullable = false;
         quads = new ArrayList<Quad>();
         productionNum = -1;
+        tempID = 0;
     }
 
-    public void semanticAction() {
-        //  Do nothing?
+    public void semanticAction(QuadQueue quadQueue) {
+//        DFS
         for (V child : children) {
             if (child instanceof VN) {
-                ((VN) child).semanticAction();
+                ((VN) child).semanticAction(quadQueue);
             }
         }
-    }
-
-    protected void semanticRollback() {
-        //  Will be implemented in the children classes
     }
 
     public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
@@ -64,8 +63,6 @@ public class VN implements V, Cloneable {
                 }
                 if (j == production.size() - 1) {
 //                      If production-check is finished
-//                      Perform semantic actions here
-//                    semanticAction();
                     productionNum = i;
                     return true;
                 }
@@ -107,6 +104,18 @@ public class VN implements V, Cloneable {
 
     public boolean isNullable() {
         return nullable;
+    }
+
+    public int getTempID() {
+        return tempID;
+    }
+
+    public void setTempID(int tempID) {
+        this.tempID = tempID;
+    }
+
+    public String getVariableName() {
+        return "T" + tempID;
     }
 
     @Override

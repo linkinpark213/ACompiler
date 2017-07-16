@@ -1,5 +1,9 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
@@ -12,9 +16,9 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/3 0003.
  */
 public class AssignmentStatement extends VN {
-    public AssignmentStatement() {
-        super();
 
+    @Override
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
         * <Assignment Statement> ::= <Identifier> := <Any Expression>
         * */
@@ -27,5 +31,19 @@ public class AssignmentStatement extends VN {
         production.add(expression);
 
         productions.add(production);
+
+        return super.analyze(tokenQueue, symbolList);
+    }
+
+    @Override
+    public void semanticAction(QuadQueue quadQueue) {
+        super.semanticAction(quadQueue);
+        Identifier identifier = (Identifier) productions.get(0).get(0);
+        Quad quad = new Quad();
+        quad.setOperator(":=");
+        quad.setVariableA("T" + quadQueue.newTemp());
+        quad.setVariableB("_");
+        quad.setResult(identifier.getName());
+        quadQueue.add(quad);
     }
 }

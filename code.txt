@@ -2,6 +2,8 @@ int a,b,c;
 bool d;
 a:=2.5;
 d := true;
-if(d) then {
-a:=2
+if(a) then {
+switch(a) {
+case 1: b :=3 + c
+}
 };
