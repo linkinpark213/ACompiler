@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 
@@ -36,5 +37,22 @@ public class Expression extends VN {
         productions.add(booleanProduction);
         productions.add(relationProduction);
         productions.add(arithmeticProduction);
+    }
+
+    @Override
+    public void semanticAction(QuadQueue quadQueue) {
+        super.semanticAction(quadQueue);
+        V expression = children.get(0);
+        switch (productionNum) {
+            case 0:
+                this.variableName = ((BooleanExpression) expression).getVariableName();
+                break;
+            case 1:
+                this.variableName = ((RelationExpression) expression).getVariableName();
+                break;
+            case 2:
+                this.variableName = ((ArithmeticExpression) expression).getVariableName();
+                break;
+        }
     }
 }

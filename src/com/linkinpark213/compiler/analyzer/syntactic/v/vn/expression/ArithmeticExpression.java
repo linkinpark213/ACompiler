@@ -83,8 +83,11 @@ public class ArithmeticExpression extends VN {
                     quad.setVariableA("T" + arithmeticExpression.getTempID());
                     quad.setVariableB("T" + arithmeticExpressionAlter.getTempID());
                     this.setTempID(quadQueue.newTemp());
-                    quad.setResult("T" + this.getTempID());
+                    this.variableName = "T" + this.getTempID();
+                    quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
+                } else {
+                    this.variableName = arithmeticExpression.getVariableName();
                 }
                 break;
             case 1:
@@ -96,6 +99,7 @@ public class ArithmeticExpression extends VN {
                 quad.setVariableB(identifier.toString());
                 quad.setResult(identifier.toString());
                 quadQueue.add(quad);
+                this.variableName = identifier.getName();
                 break;
             case 2:
                 identifier = (Identifier) children.get(0);
@@ -107,8 +111,11 @@ public class ArithmeticExpression extends VN {
                     quad.setVariableA(identifier.toString());
                     quad.setVariableB("T" + arithmeticExpressionAlter.getTempID());
                     this.setTempID(quadQueue.newTemp());
-                    quad.setResult("T" + this.getTempID());
+                    this.variableName = "T" + this.getTempID();
+                    quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
+                } else {
+                    this.variableName = identifier.getName();
                 }
                 break;
             case 3:
@@ -135,10 +142,13 @@ public class ArithmeticExpression extends VN {
                             break;
                     }
                     quad.setVariableA(valueString);
-                    quad.setVariableB("T" + arithmeticExpressionAlter.getTempID());
+                    quad.setVariableB(arithmeticExpressionAlter.getVariableName());
                     this.setTempID(quadQueue.newTemp());
-                    quad.setResult("T" + this.getTempID());
+                    this.variableName = "T" + this.getTempID();
+                    quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
+                } else {
+                    this.variableName = "" + constant.getValue();
                 }
                 break;
         }

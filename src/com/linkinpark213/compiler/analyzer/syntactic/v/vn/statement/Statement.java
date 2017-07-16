@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 
@@ -36,5 +37,20 @@ public class Statement extends VN {
         productions.add(assignmentProduction);
         productions.add(branchProduction);
         productions.add(loopProduction);
+    }
+
+    @Override
+    public void semanticAction(QuadQueue quadQueue) {
+        super.semanticAction(quadQueue);
+        switch (productionNum) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
     }
 }

@@ -19,6 +19,7 @@ public class VN implements V, Cloneable {
     protected boolean nullable;
     protected ArrayList<Quad> quads;
     protected int tempID;
+    protected String variableName;
 
     public VN() {
         children = new ArrayList<V>();
@@ -27,6 +28,7 @@ public class VN implements V, Cloneable {
         quads = new ArrayList<Quad>();
         productionNum = -1;
         tempID = 0;
+        variableName = "";
     }
 
     public void semanticAction(QuadQueue quadQueue) {
@@ -115,7 +117,7 @@ public class VN implements V, Cloneable {
     }
 
     public String getVariableName() {
-        return "T" + tempID;
+        return variableName;
     }
 
     @Override

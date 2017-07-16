@@ -2,7 +2,7 @@ int a,b,c;
 bool d;
 a:=2.5;
 d := true;
-if(a) then {
+if(a>1) then {
 switch(a) {
 case 1: b :=3 + c
 }

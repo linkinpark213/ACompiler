@@ -40,6 +40,11 @@ public class QuadQueue {
     }
 
     public void merge(int chainA, int chainB) {
-
+        int quadID = Math.max(chainA, chainB);
+        while (Integer.parseInt(quadList.get(quadID).getResult()) != 0) {
+            Quad quad = quadList.get(quadID);
+            quadID = Integer.parseInt(quad.getResult());
+        }
+        quadList.get(quadID).setResult("" + Math.min(chainA, chainB));
     }
 }

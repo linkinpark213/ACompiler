@@ -6,6 +6,7 @@ import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.RelationOperator;
 
 import java.util.ArrayList;
@@ -30,20 +31,40 @@ public class RelationExpression extends VN {
     @Override
     public void semanticAction(QuadQueue quadQueue) {
         super.semanticAction(quadQueue);
+        ArithmeticExpression arithmeticExpression1 = (ArithmeticExpression) children.get(0);
+        Operator operator = (Operator) children.get(1);
+        ArithmeticExpression arithmeticExpression2 = (ArithmeticExpression) children.get(2);
+
         Quad jumpQuad = new Quad();
         Quad falseQuad = new Quad();
+        Quad finishQuad = new Quad();
         Quad trueQuad = new Quad();
-        jumpQuad.setOperator("j");
-        jumpQuad.setVariableA("");
-        jumpQuad.setVariableB("");
-        jumpQuad.setResult("T");
+
+        this.variableName = "T" + quadQueue.newTemp();
+
+        jumpQuad.setOperator("j" + operator.getSymbol());
+        jumpQuad.setVariableA(arithmeticExpression1.getVariableName());
+        jumpQuad.setVariableB(arithmeticExpression2.getVariableName());
+        jumpQuad.setResult("" + (quadQueue.getQuadList().size() + 3));
+
         falseQuad.setOperator(":=");
-        falseQuad.setVariableA("");
-        falseQuad.setVariableB("");
-        falseQuad.setResult("T");
+        falseQuad.setVariableA("FALSE");
+        falseQuad.setVariableB("_");
+        falseQuad.setResult(this.getVariableName());
+
+        finishQuad.setOperator("j");
+        finishQuad.setVariableA("_");
+        finishQuad.setVariableB("_");
+        finishQuad.setResult("" + (quadQueue.getQuadList().size() + 4));
+
         trueQuad.setOperator(":=");
-        trueQuad.setVariableA("");
-        trueQuad.setVariableB("");
-        trueQuad.setResult("T");
+        trueQuad.setVariableA("TRUE");
+        trueQuad.setVariableB("_");
+        trueQuad.setResult(this.getVariableName());
+
+        quadQueue.add(jumpQuad);
+        quadQueue.add(falseQuad);
+        quadQueue.add(finishQuad);
+        quadQueue.add(trueQuad);
     }
 }
