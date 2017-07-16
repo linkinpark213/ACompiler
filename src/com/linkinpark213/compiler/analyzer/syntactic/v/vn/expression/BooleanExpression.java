@@ -24,7 +24,7 @@ public class BooleanExpression extends VN {
         *                           | <'Not' Operator> <Identifier> <Alter>
         *                           | <'Not' Operator> ( <Boolean Expression> ) <Alter>
         *                           | <Boolean Constant> <Alter>
-        *                           | <Identifier> <Alter> (Not now)
+        *                           | <Identifier> <Alter>
         * */
         ArrayList<V> relationExpressionProduction = new ArrayList<V>();
         ArrayList<V> identifierWithNotOperatorProduction = new ArrayList<V>();
@@ -36,7 +36,7 @@ public class BooleanExpression extends VN {
         relationExpressionProduction.add(new BooleanExpressionAlter());
 
         identifierWithNotOperatorProduction.add(new BooleanOperator("!"));
-        identifierWithNotOperatorProduction.add(new Identifier());
+        identifierWithNotOperatorProduction.add(new Identifier(Identifier.TYPE_BOOL));
         identifierWithNotOperatorProduction.add(new BooleanExpressionAlter());
 
         expressionWithNotOperatorProduction.add(new BooleanOperator("!"));
@@ -48,14 +48,14 @@ public class BooleanExpression extends VN {
         constantProduction.add(new Constant());
         constantProduction.add(new BooleanExpressionAlter());
 
-        identifierWithDoubleOperatorProduction.add(new Identifier());
+        identifierWithDoubleOperatorProduction.add(new Identifier(Identifier.TYPE_BOOL));
         identifierWithDoubleOperatorProduction.add(new BooleanExpressionAlter());
 
         productions.add(relationExpressionProduction);
         productions.add(identifierWithNotOperatorProduction);
         productions.add(expressionWithNotOperatorProduction);
         productions.add(constantProduction);
-//        productions.add(identifierWithDoubleOperatorProduction);
+        productions.add(identifierWithDoubleOperatorProduction);
         return super.analyze(tokenQueue, symbolList);
     }
 }

@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public abstract class VT implements V, Cloneable {
         acceptableSymbols = new ArrayList<String>();
     }
 
-    public abstract boolean checkSymbol(Token token);
+    public abstract boolean checkSymbol(Token token, SymbolList symbolList);
 
     public Token getToken() {
         return token;

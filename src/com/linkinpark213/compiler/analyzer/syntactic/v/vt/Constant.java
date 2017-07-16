@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 
 /**
  * Created by ooo on 2017/7/4 0004.
@@ -13,7 +14,7 @@ public class Constant extends VT {
     public static final int TYPE_BOOL = 103;
 
     @Override
-    public boolean checkSymbol(Token token) {
+    public boolean checkSymbol(Token token, SymbolList symbolList) {
         if (token instanceof com.linkinpark213.compiler.analyzer.lexical.tokens.Constant) {
             constant = (com.linkinpark213.compiler.analyzer.lexical.tokens.Constant) token;
             return true;

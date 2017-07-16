@@ -56,7 +56,7 @@ public class VN implements V, Cloneable {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
                     if (tokenQueue.size() == 0) break;
-                    if (vt.checkSymbol(tokenQueue.get(0))) {
+                    if (vt.checkSymbol(tokenQueue.get(0), symbolList)) {
                         VT temp = vt.getClone();
                         temp.setToken(tokenQueue.remove(0));
                         this.addChild(temp);

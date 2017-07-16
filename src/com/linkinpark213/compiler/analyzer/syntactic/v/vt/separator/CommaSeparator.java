@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt.separator;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
 /**
@@ -12,7 +13,7 @@ public class CommaSeparator extends VT {
     }
 
     @Override
-    public boolean checkSymbol(Token token) {
+    public boolean checkSymbol(Token token, SymbolList symbolList) {
         return token.toString().equals(",");
     }
 

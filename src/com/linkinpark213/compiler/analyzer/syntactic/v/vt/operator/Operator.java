@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
 /**
@@ -10,7 +11,7 @@ public class Operator extends VT {
     private String symbol;
 
     @Override
-    public boolean checkSymbol(Token token) {
+    public boolean checkSymbol(Token token, SymbolList symbolList) {
         for (int i = 0; i < acceptableSymbols.size(); i++) {
             if (acceptableSymbols.get(i).equals(token.toString()))
                 return true;
