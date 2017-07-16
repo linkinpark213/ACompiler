@@ -17,7 +17,7 @@ public class StatementStringAlter extends VN {
     }
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Statement String Alter> ::= <Semi-colon Separator> <Statement String>
         * */
@@ -27,6 +27,6 @@ public class StatementStringAlter extends VN {
         production.add(new StatementString());
         productions.add(production);
         productions.add(nullProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

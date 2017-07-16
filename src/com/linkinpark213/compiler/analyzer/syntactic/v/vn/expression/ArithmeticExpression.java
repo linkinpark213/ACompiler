@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ArithmeticExpression extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
         *                           | <Identifier> <Increment/Decrement Operator>
@@ -41,6 +41,6 @@ public class ArithmeticExpression extends VN {
         productions.add(crementProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class RelationExpression extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Relation Expression> ::= <Arithmetic Expression> <Relation Operator> <Arithmetic Expression>
         * */
@@ -22,6 +22,6 @@ public class RelationExpression extends VN {
         production.add(new RelationOperator());
         production.add(new ArithmeticExpression());
         productions.add(production);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

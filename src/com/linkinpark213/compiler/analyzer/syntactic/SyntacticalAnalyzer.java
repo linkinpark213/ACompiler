@@ -15,8 +15,8 @@ public class SyntacticalAnalyzer {
     Stack<V> vStack = new Stack<V>();
     public void analyze(ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
         Program root = new Program();
-        System.out.println(root.analyze(root, tokenQueue, quadQueue));
-        if (!root.analyze(root, tokenQueue, quadQueue) || tokenQueue.size() != 0) {
+        System.out.println(root.analyze(tokenQueue));
+        if (!root.analyze(tokenQueue) || tokenQueue.size() != 0) {
             Token token = tokenQueue.get(1);
             System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());
         }

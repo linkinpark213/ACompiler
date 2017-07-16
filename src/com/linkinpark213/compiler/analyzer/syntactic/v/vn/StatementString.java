@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class StatementString extends VN {
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Statement String>  ::=  <Statement> <Statement String Alter>
         *                        | <Statement>
@@ -25,6 +25,6 @@ public class StatementString extends VN {
         singleStatementProduction.add(new Statement());
         productions.add(statementWithStringProduction);
         productions.add(singleStatementProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

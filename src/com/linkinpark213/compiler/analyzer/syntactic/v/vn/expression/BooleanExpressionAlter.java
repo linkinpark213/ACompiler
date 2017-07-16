@@ -18,7 +18,7 @@ public class BooleanExpressionAlter extends VN {
     }
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Boolean Expression Alter> ::= <'And' or 'Or' Boolean Operator> <Expression>
         *                               | Nothing
@@ -29,6 +29,6 @@ public class BooleanExpressionAlter extends VN {
         production.add(new BooleanExpression());
         productions.add(production);
         productions.add(nullProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

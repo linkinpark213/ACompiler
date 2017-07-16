@@ -17,7 +17,7 @@ public class IdentifierStringAlter extends VN {
     }
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Identifier String Alter> ::= <Comma Separator> <Identifier String>
         * */
@@ -27,6 +27,6 @@ public class IdentifierStringAlter extends VN {
         production.add(new IdentifierString());
         productions.add(production);
         productions.add(nullProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

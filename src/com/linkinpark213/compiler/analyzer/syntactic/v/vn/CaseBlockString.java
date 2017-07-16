@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class CaseBlockString extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Case Block String> ::= <Case Block> ; <Case Block String>
         *                       | <Case Block>
@@ -25,6 +25,6 @@ public class CaseBlockString extends VN {
         noMoreCaseProduction.add(new CaseBlock());
         productions.add(moreCaseProduction);
         productions.add(noMoreCaseProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

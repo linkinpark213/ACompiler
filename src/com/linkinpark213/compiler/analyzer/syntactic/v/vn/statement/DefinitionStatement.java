@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class DefinitionStatement extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
          * <Definition Statement> ::= <Typedef Keyword> <Identifier String>
          */
@@ -22,6 +22,6 @@ public class DefinitionStatement extends VN {
         production.add(new Keyword("int", "bool", "float", "char"));
         production.add(new IdentifierString());
         productions.add(production);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

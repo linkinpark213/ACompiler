@@ -12,11 +12,11 @@ import java.util.ArrayList;
  */
 public class Program extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         ArrayList<V> production = new ArrayList<V>();
         production.add(new StatementString());
         production.add(new Separator(";"));
         productions.add(production);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

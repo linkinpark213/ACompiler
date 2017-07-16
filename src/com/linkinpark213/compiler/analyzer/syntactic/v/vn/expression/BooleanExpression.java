@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class BooleanExpression extends VN {
 
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Boolean Expression> ::= <Relation Expression> <Alter>
         *                           | <'Not' Operator> <Identifier> <Alter>
@@ -55,6 +55,6 @@ public class BooleanExpression extends VN {
         productions.add(expressionWithNotOperatorProduction);
         productions.add(constantProduction);
 //        productions.add(identifierWithDoubleOperatorProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

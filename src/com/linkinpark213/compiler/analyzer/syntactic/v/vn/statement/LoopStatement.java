@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class LoopStatement extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Loop Statement> ::= while ( <Expression> ) do { <Statement String> } ;
         *                   |   do { <Statement String> } while ( <Expression> ) ;
@@ -44,7 +44,7 @@ public class LoopStatement extends VN {
 //        doWhileProduction.add(new Separator(";"));
         productions.add(whileDoProduction);
         productions.add(doWhileProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }
 

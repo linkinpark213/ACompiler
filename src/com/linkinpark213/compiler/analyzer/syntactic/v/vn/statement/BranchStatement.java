@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class BranchStatement extends VN {
     @Override
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         /*
         * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> };
         *                      | if ( <Expression> ) then { <Statement String> } else { <Statement String };
@@ -59,6 +59,6 @@ public class BranchStatement extends VN {
         productions.add(noElseProduction);
         productions.add(withElseProduction);
         productions.add(switchCaseProduction);
-        return super.analyze(parent, tokenQueue, quadQueue);
+        return super.analyze(tokenQueue);
     }
 }

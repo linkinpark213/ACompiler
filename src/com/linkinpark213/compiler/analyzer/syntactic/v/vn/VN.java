@@ -31,7 +31,7 @@ public class VN implements V, Cloneable {
         //  Will be implemented in the children classes
     }
 
-    public boolean analyze(VN parent, ArrayList<Token> tokenQueue, ArrayList<Quad> quadQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;
@@ -41,7 +41,7 @@ public class VN implements V, Cloneable {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
                     if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
-                    if (vn.analyze(this, tokenQueue, quadQueue)) {
+                    if (vn.analyze(tokenQueue)) {
                         this.addChild(vn.getClone());
                     } else break;
                 } else {
