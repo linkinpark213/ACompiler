@@ -50,11 +50,11 @@ public class CaseBlock extends VN {
         falseQuad.setResult("0");
         quadQueue.add(falseQuad);
 
-        trueQuad.setResult("" + quadQueue.getQuadList().size());
+        trueQuad.setResult("" + quadQueue.nxq());
 
         statementString.semanticAction(quadQueue);
 
-        falseQuad.setResult("" + (quadQueue.getQuadList().size() + 1));
+        falseQuad.setResult("" + (quadQueue.nxq() + 1));
 
         jumpQuad.setOperator("j");
         jumpQuad.setVariableA("_");

@@ -37,10 +37,10 @@ public class CaseBlockString extends VN {
         if (productionNum == 0) {
 //            Merge the chains
             CaseBlockString caseBlockString = (CaseBlockString) children.get(2);
-            caseBlockString.semanticAction(quadQueue, identifier, quadQueue.getQuadList().size() - 1);
+            caseBlockString.semanticAction(quadQueue, identifier, quadQueue.nxq() - 1);
         } else {
 //            Time to back patch
-            quadQueue.backPatch(quadQueue.getQuadList().size() - 1, quadQueue.getQuadList().size());
+            quadQueue.backPatch(quadQueue.nxq() - 1, quadQueue.nxq());
         }
     }
 }

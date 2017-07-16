@@ -92,7 +92,7 @@ public class BranchStatement extends VN {
                 trueQuad.setOperator("jnz");
                 trueQuad.setVariableA(expression.getVariableName());
                 trueQuad.setVariableB("_");
-                trueQuad.setResult("" + (quadQueue.getQuadList().size() + 2));
+                trueQuad.setResult("" + (quadQueue.nxq() + 2));
                 quadQueue.add(trueQuad);
 
                 falseQuad.setOperator("j");
@@ -108,10 +108,10 @@ public class BranchStatement extends VN {
                 jumpQuad.setVariableB("_");
                 jumpQuad.setResult("0");
                 quadQueue.add(jumpQuad);
-                falseQuad.setResult("" + quadQueue.getQuadList().size());
+                falseQuad.setResult("" + quadQueue.nxq());
 
                 statementString2.semanticAction(quadQueue);
-                jumpQuad.setResult("" + quadQueue.getQuadList().size());
+                jumpQuad.setResult("" + quadQueue.nxq());
                 break;
             case 1:
                 trueQuad = new Quad();
@@ -123,7 +123,7 @@ public class BranchStatement extends VN {
                 trueQuad.setOperator("jnz");
                 trueQuad.setVariableA(expression.getVariableName());
                 trueQuad.setVariableB("_");
-                trueQuad.setResult("" + (quadQueue.getQuadList().size() + 2));
+                trueQuad.setResult("" + (quadQueue.nxq() + 2));
                 quadQueue.add(trueQuad);
 
                 falseQuad.setOperator("j");
@@ -134,7 +134,7 @@ public class BranchStatement extends VN {
 
                 statementString1.semanticAction(quadQueue);
 
-                falseQuad.setResult("" + quadQueue.getQuadList().size());
+                falseQuad.setResult("" + quadQueue.nxq());
                 break;
             case 2:
                 identifier = (Identifier) children.get(2);

@@ -45,7 +45,7 @@ public class RelationExpression extends VN {
         jumpQuad.setOperator("j" + operator.getSymbol());
         jumpQuad.setVariableA(arithmeticExpression1.getVariableName());
         jumpQuad.setVariableB(arithmeticExpression2.getVariableName());
-        jumpQuad.setResult("" + (quadQueue.getQuadList().size() + 3));
+        jumpQuad.setResult("" + (quadQueue.nxq() + 3));
 
         falseQuad.setOperator(":=");
         falseQuad.setVariableA("FALSE");
@@ -55,7 +55,7 @@ public class RelationExpression extends VN {
         finishQuad.setOperator("j");
         finishQuad.setVariableA("_");
         finishQuad.setVariableB("_");
-        finishQuad.setResult("" + (quadQueue.getQuadList().size() + 4));
+        finishQuad.setResult("" + (quadQueue.nxq() + 4));
 
         trueQuad.setOperator(":=");
         trueQuad.setVariableA("TRUE");

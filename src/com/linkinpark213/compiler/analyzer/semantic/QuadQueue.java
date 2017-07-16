@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class QuadQueue {
     private ArrayList<Quad> quadList;
     private int tempID;
+    private static final int BASE_ADDRESS = 100;
 
     public QuadQueue() {
         tempID = 0;
@@ -15,8 +16,16 @@ public class QuadQueue {
     }
 
     public void add(Quad quad) {
-        quad.setAddress(quadList.size());
+        quad.setAddress(quadList.size() + BASE_ADDRESS);
         quadList.add(quad);
+    }
+
+    public int getAddress(int quadID) {
+        return quadID + BASE_ADDRESS;
+    }
+
+    public int nxq() {
+        return 100 + this.getQuadList().size();
     }
 
     public void remove(int index) {
@@ -33,9 +42,9 @@ public class QuadQueue {
 
     public void backPatch(int quadID, int targetQuadID) {
         while (quadID != 0) {
-            Quad quad = quadList.get(quadID);
+            Quad quad = quadList.get(quadID - BASE_ADDRESS);
             quadID = Integer.parseInt(quad.getResult());
-            quad.setResult("" + targetQuadID);
+            quad.setResult("" + (targetQuadID - BASE_ADDRESS));
         }
     }
 
