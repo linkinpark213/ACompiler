@@ -1,4 +1,4 @@
-package com.linkinpark213.compiler.analyzer.syntactic;
+package com.linkinpark213.compiler.analyzer.semantic;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 

@@ -2,9 +2,8 @@ package com.linkinpark213.compiler;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-import com.linkinpark213.compiler.analyzer.syntactic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,15 +40,24 @@ public class CompilerTest {
     public static void main(String[] args) {
         CompilerTest compilerTest = new CompilerTest();
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
+
+        //  Lexical Analysis
         ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
         ArrayList<Quad> quadQueue = new ArrayList<Quad>();
+
         compilerTest.printLexicalAnalysisResult(tokenQueue);
+
+        //  Syntactic Analysis
         Program root = new Program();
         System.out.println(root.analyze(root, tokenQueue, quadQueue));
-        if (tokenQueue.size() > 0) {
+        if (!root.analyze(root, tokenQueue, quadQueue) || tokenQueue.size() != 0) {
             Token token = tokenQueue.get(1);
             System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());
         }
         root.printTree(0);
+
+        //  Semantic Analysis
+
+
     }
 }

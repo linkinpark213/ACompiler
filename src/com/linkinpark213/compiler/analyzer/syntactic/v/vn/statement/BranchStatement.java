@@ -1,7 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-import com.linkinpark213.compiler.analyzer.syntactic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.CaseBlockString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;

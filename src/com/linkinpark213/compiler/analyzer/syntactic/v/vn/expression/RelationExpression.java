@@ -1,7 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-import com.linkinpark213.compiler.analyzer.syntactic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.RelationOperator;
