@@ -108,8 +108,8 @@ public class ArithmeticExpression extends VN {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
                     quad = new Quad();
                     quad.setOperator(operator.toString());
-                    quad.setVariableA(identifier.toString());
-                    quad.setVariableB("T" + arithmeticExpressionAlter.getTempID());
+                    quad.setVariableA(identifier.getName());
+                    quad.setVariableB(arithmeticExpressionAlter.getVariableName());
                     this.setTempID(quadQueue.newTemp());
                     this.variableName = "T" + this.getTempID();
                     quad.setResult(this.getVariableName());

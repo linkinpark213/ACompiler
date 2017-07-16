@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
@@ -19,8 +20,8 @@ public class LoopStatement extends VN {
     @Override
     public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
-        * <Loop Statement> ::= while ( <Expression> ) do { <Statement String> } ;
-        *                   |   do { <Statement String> } while ( <Expression> ) ;
+        * <Loop Statement> ::= while ( <Expression> ) do { <Statement String> }
+        *                   |   do { <Statement String> } while ( <Expression> )
         * */
         ArrayList<V> whileDoProduction = new ArrayList<V>();
         ArrayList<V> doWhileProduction = new ArrayList<V>();
@@ -32,7 +33,6 @@ public class LoopStatement extends VN {
         whileDoProduction.add(new Separator("{"));
         whileDoProduction.add(new StatementString());
         whileDoProduction.add(new Separator("}"));
-//        whileDoProduction.add(new Separator(";"));
 
         doWhileProduction.add(new Keyword("do"));
         doWhileProduction.add(new Separator("{"));
@@ -42,10 +42,57 @@ public class LoopStatement extends VN {
         doWhileProduction.add(new Separator("("));
         doWhileProduction.add(new Expression());
         doWhileProduction.add(new Separator(")"));
-//        doWhileProduction.add(new Separator(";"));
         productions.add(whileDoProduction);
         productions.add(doWhileProduction);
         return super.analyze(tokenQueue, symbolList);
+    }
+
+    @Override
+    public void semanticAction(QuadQueue quadQueue) {
+        Expression expression;
+        StatementString statementString;
+        Quad checkQuad = new Quad();
+        Quad falseQuad = new Quad();
+        Quad returnQuad = new Quad();
+        switch (productionNum) {
+            case 0:
+                expression = (Expression) children.get(2);
+                statementString = (StatementString) children.get(6);
+                expression.semanticAction(quadQueue);
+                checkQuad.setOperator("jnz");
+                checkQuad.setVariableA(expression.getVariableName());
+                checkQuad.setVariableB("_");
+                checkQuad.setResult("0");
+                quadQueue.add(checkQuad);
+
+                falseQuad.setOperator("j");
+                falseQuad.setVariableA("_");
+                falseQuad.setVariableB("_");
+                falseQuad.setResult("0");
+                quadQueue.add(falseQuad);
+
+                checkQuad.setResult("" + quadQueue.nxq());
+
+                statementString.semanticAction(quadQueue);
+
+                returnQuad.setOperator("j");
+                returnQuad.setVariableA("_");
+                returnQuad.setVariableB("_");
+                returnQuad.setResult("" + checkQuad.getAddress());
+                falseQuad.setResult("" + quadQueue.nxq());
+                break;
+            case 1:
+                statementString = (StatementString) children.get(2);
+                expression = (Expression) children.get(6);
+                int backAddress = quadQueue.nxq();
+                statementString.semanticAction(quadQueue);
+                checkQuad.setOperator("jnz");
+                checkQuad.setVariableA(expression.getVariableName());
+                checkQuad.setVariableB("_");
+                checkQuad.setResult("" + backAddress);
+                quadQueue.add(checkQuad);
+                break;
+        }
     }
 }
 
