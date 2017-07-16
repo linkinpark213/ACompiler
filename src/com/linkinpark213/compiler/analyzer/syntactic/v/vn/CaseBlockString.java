@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public class CaseBlockString extends VN {
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
         * <Case Block String> ::= <Case Block> ; <Case Block String>
         *                       | <Case Block>
@@ -25,6 +26,6 @@ public class CaseBlockString extends VN {
         noMoreCaseProduction.add(new CaseBlock());
         productions.add(moreCaseProduction);
         productions.add(noMoreCaseProduction);
-        return super.analyze(tokenQueue);
+        return super.analyze(tokenQueue, symbolList);
     }
 }

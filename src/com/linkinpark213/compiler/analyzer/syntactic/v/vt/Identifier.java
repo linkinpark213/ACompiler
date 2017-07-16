@@ -7,8 +7,6 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
  */
 public class Identifier extends VT {
     private String name;
-    private String value;
-    private String type;
 
     @Override
     public boolean checkSymbol(Token token) {
@@ -24,24 +22,8 @@ public class Identifier extends VT {
         this.name = name;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     @Override
     public String toString() {
-        return name + " (" + type + ") : " + value;
+        return "Identifier: " + name;
     }
 }

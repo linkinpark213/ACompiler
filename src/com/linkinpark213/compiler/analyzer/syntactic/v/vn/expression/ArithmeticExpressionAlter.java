@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
@@ -18,7 +19,7 @@ public class ArithmeticExpressionAlter extends VN {
     }
 
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
         * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Expression> | 3
         * */
@@ -28,6 +29,6 @@ public class ArithmeticExpressionAlter extends VN {
         production.add(new Expression());
         productions.add(production);
         productions.add(nullProduction);
-        return super.analyze(tokenQueue);
+        return super.analyze(tokenQueue, symbolList);
     }
 }

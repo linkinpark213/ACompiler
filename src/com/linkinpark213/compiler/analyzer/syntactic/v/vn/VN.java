@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class VN implements V, Cloneable {
     protected ArrayList<V> children;
     protected ArrayList<ArrayList<V>> productions;
+    protected int productionNum;
     protected boolean nullable;
     protected ArrayList<Quad> quads;
 
@@ -21,17 +23,23 @@ public class VN implements V, Cloneable {
         productions = new ArrayList<ArrayList<V>>();
         nullable = false;
         quads = new ArrayList<Quad>();
+        productionNum = -1;
     }
 
-    protected void semanticAction(int productionNum) {
+    public void semanticAction() {
         //  Do nothing?
+        for (V child : children) {
+            if (child instanceof VN) {
+                ((VN) child).semanticAction();
+            }
+        }
     }
 
     protected void semanticRollback() {
         //  Will be implemented in the children classes
     }
 
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;
@@ -41,7 +49,7 @@ public class VN implements V, Cloneable {
                     //  Descend if it's a Vn
                     VN vn = (VN) v;
                     if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
-                    if (vn.analyze(tokenQueue)) {
+                    if (vn.analyze(tokenQueue, symbolList)) {
                         this.addChild(vn.getClone());
                     } else break;
                 } else {
@@ -55,23 +63,25 @@ public class VN implements V, Cloneable {
                     } else break;
                 }
                 if (j == production.size() - 1) {
-                    //  If production-check is finished
-                    //  Perform semantic actions here
-                    semanticAction(i);
+//                      If production-check is finished
+//                      Perform semantic actions here
+//                    semanticAction();
+                    productionNum = i;
                     return true;
                 }
             }
-            returnTokens(tokenQueue);
+//            This is when a production check fails
+            rollBack(tokenQueue, symbolList);
             children.clear();
         }
         return false;
     }
 
-    public void returnTokens(ArrayList<Token> tokenQueue) {
+    public void rollBack(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         for (int i = children.size() - 1; i >= 0; i--) {
             V v = children.get(i);
             if (v instanceof VN)
-                ((VN) v).returnTokens(tokenQueue);
+                ((VN) v).rollBack(tokenQueue, symbolList);
             else {
                 tokenQueue.add(0, ((VT) v).getToken());
             }
@@ -105,13 +115,13 @@ public class VN implements V, Cloneable {
     }
 
     @Override
-    public void printTree(int depth) {
+    public void printSyntacticalAnalysisTree(int depth) {
         for (int i = 0; i < depth; i++) {
             System.out.print("\t\t");
         }
         System.out.println(this.getClass().getSimpleName());
         for (int i = 0; i < children.size(); i++) {
-            children.get(i).printTree(depth + 1);
+            children.get(i).printSyntacticalAnalysisTree(depth + 1);
         }
     }
 }

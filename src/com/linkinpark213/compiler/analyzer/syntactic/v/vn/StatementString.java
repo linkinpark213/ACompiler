@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement.*;
 
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class StatementString extends VN {
 
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
         * <Statement String>  ::=  <Statement> <Statement String Alter>
         *                        | <Statement>
@@ -25,6 +26,6 @@ public class StatementString extends VN {
         singleStatementProduction.add(new Statement());
         productions.add(statementWithStringProduction);
         productions.add(singleStatementProduction);
-        return super.analyze(tokenQueue);
+        return super.analyze(tokenQueue, symbolList);
     }
 }

@@ -8,5 +8,5 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/3 0003.
  */
 public interface V {
-    public void printTree(int depth);
+    public void printSyntacticalAnalysisTree(int depth);
 }

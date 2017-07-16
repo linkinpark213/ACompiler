@@ -49,6 +49,20 @@ public class Constant implements Token {
 
     @Override
     public String fullString() {
+        return "Constant value (" + getTypeString() + "): " + symbol;
+    }
+
+    @Override
+    public String toString() {
+        return symbol;
+    }
+
+    @Override
+    public int getType() {
+        return type;
+    }
+
+    public String getTypeString() {
         String typeString = "";
         switch (type) {
             case TYPE_INT:
@@ -63,17 +77,11 @@ public class Constant implements Token {
             case TYPE_BOOL:
                 typeString = "Boolean";
         }
-        return "Constant value (" + typeString + "): " + symbol;
+        return typeString;
     }
 
-    @Override
-    public String toString() {
-        return symbol;
-    }
-
-    @Override
-    public int getType() {
-        return type;
+    public float getValue() {
+        return value;
     }
 
     @Override

@@ -1,5 +1,5 @@
-int a;
-a:=2;
+int a,b,c;
+a:=2.5;
 switch(a) {
 case 1: b := 1;
 case 2: c := 1

@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.CaseBlockString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
@@ -18,11 +19,11 @@ import java.util.ArrayList;
  */
 public class BranchStatement extends VN {
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
-        * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> };
-        *                      | if ( <Expression> ) then { <Statement String> } else { <Statement String };
-        *                      | switch ( <Identifier> ) { <Case Block String> };
+        * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> }
+        *                      | if ( <Expression> ) then { <Statement String> } else { <Statement String }
+        *                      | switch ( <Identifier> ) { <Case Block String> }
         * */
         ArrayList<V> noElseProduction = new ArrayList<V>();
         ArrayList<V> withElseProduction = new ArrayList<V>();
@@ -59,6 +60,6 @@ public class BranchStatement extends VN {
         productions.add(noElseProduction);
         productions.add(withElseProduction);
         productions.add(switchCaseProduction);
-        return super.analyze(tokenQueue);
+        return super.analyze(tokenQueue, symbolList);
     }
 }

@@ -32,7 +32,7 @@ public class SymbolList {
     public boolean enterSymbol(Symbol symbol) {
         if (this.retrieveSymbol("") != null)
             return false;
-        symbolHashMap.put("", symbol);
+        symbolHashMap.put(symbol.getName(), symbol);
         return true;
     }
 
@@ -40,4 +40,22 @@ public class SymbolList {
         return symbolHashMap.get(name);
     }
 
+    public void deleteSymbol(String name) {
+        symbolHashMap.remove(name);
+    }
+
+    public void printList() {
+        System.out.println("============================");
+        System.out.println("=       Symbol List        =");
+        System.out.println("============================");
+        symbolHashMap.forEach(new BiConsumer<String, Symbol>() {
+            @Override
+            public void accept(String s, Symbol symbol) {
+                System.out.print(s);
+                System.out.print(" : ");
+                System.out.println(symbol.getTypeString());
+            }
+        });
+        System.out.println("============================");
+    }
 }

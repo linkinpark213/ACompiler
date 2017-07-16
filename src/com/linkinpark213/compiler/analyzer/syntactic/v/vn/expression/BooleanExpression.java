@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class BooleanExpression extends VN {
 
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue) {
+    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
         * <Boolean Expression> ::= <Relation Expression> <Alter>
         *                           | <'Not' Operator> <Identifier> <Alter>
@@ -55,6 +56,6 @@ public class BooleanExpression extends VN {
         productions.add(expressionWithNotOperatorProduction);
         productions.add(constantProduction);
 //        productions.add(identifierWithDoubleOperatorProduction);
-        return super.analyze(tokenQueue);
+        return super.analyze(tokenQueue, symbolList);
     }
 }

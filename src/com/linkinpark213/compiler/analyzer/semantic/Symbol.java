@@ -6,11 +6,30 @@ package com.linkinpark213.compiler.analyzer.semantic;
 public class Symbol {
     private String name;
     private int type;
-    private int scope;
     public static final int TYPE_INT = 100;
     public static final int TYPE_FLOAT = 101;
     public static final int TYPE_CHAR = 102;
     public static final int TYPE_BOOL = 103;
+
+    public Symbol(String name, int type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public Symbol(String name, String type) {
+        int typeInt = 0;
+        if (type.equals("int")) {
+            typeInt = TYPE_INT;
+        } else if (type.equals("bool")) {
+            typeInt = TYPE_BOOL;
+        } else if (type.equals("float")) {
+            typeInt = TYPE_FLOAT;
+        } else if (type.equals("char")) {
+            typeInt = TYPE_CHAR;
+        }
+        this.name = name;
+        this.type = typeInt;
+    }
 
     public String getName() {
         return name;
@@ -28,11 +47,22 @@ public class Symbol {
         this.type = type;
     }
 
-    public int getScope() {
-        return scope;
+    public String getTypeString() {
+        String typeString = "";
+        switch (type) {
+            case TYPE_INT:
+                typeString = "Integer";
+                break;
+            case TYPE_FLOAT:
+                typeString = "Real";
+                break;
+            case TYPE_CHAR:
+                typeString = "Character";
+                break;
+            case TYPE_BOOL:
+                typeString = "Boolean";
+        }
+        return typeString;
     }
 
-    public void setScope(int scope) {
-        this.scope = scope;
-    }
 }
