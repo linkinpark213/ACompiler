@@ -31,7 +31,7 @@ public class LoopStatement extends VN {
         whileDoProduction.add(new Separator("{"));
         whileDoProduction.add(new StatementString());
         whileDoProduction.add(new Separator("}"));
-        whileDoProduction.add(new Separator(";"));
+//        whileDoProduction.add(new Separator(";"));
 
         doWhileProduction.add(new Keyword("do"));
         doWhileProduction.add(new Separator("{"));
@@ -41,7 +41,7 @@ public class LoopStatement extends VN {
         doWhileProduction.add(new Separator("("));
         doWhileProduction.add(new Expression());
         doWhileProduction.add(new Separator(")"));
-        doWhileProduction.add(new Separator(";"));
+//        doWhileProduction.add(new Separator(";"));
         productions.add(whileDoProduction);
         productions.add(doWhileProduction);
         return super.analyze(parent, tokenQueue, quadQueue);

@@ -35,7 +35,6 @@ public class BranchStatement extends VN {
         noElseProduction.add(new Separator("{"));
         noElseProduction.add(new StatementString());
         noElseProduction.add(new Separator("}"));
-        noElseProduction.add(new Separator(";"));
 
         withElseProduction.add(new Keyword("if"));
         withElseProduction.add(new Separator("("));
@@ -49,7 +48,6 @@ public class BranchStatement extends VN {
         withElseProduction.add(new Separator("{"));
         withElseProduction.add(new StatementString());
         withElseProduction.add(new Separator("}"));
-        withElseProduction.add(new Separator(";"));
 
         switchCaseProduction.add(new Keyword("switch"));
         switchCaseProduction.add(new Separator("("));
@@ -58,7 +56,6 @@ public class BranchStatement extends VN {
         switchCaseProduction.add(new Separator("{"));
         switchCaseProduction.add(new CaseBlockString());
         switchCaseProduction.add(new Separator("}"));
-        switchCaseProduction.add(new Separator(";"));
         productions.add(noElseProduction);
         productions.add(withElseProduction);
         productions.add(switchCaseProduction);
