@@ -1,6 +1,7 @@
 int a,b,c;
+bool d;
 a:=2.5;
-switch(a) {
-case 1: b := 1;
-case 2: c := 1
+d := true;
+if(d) then {
+a:=2
 };

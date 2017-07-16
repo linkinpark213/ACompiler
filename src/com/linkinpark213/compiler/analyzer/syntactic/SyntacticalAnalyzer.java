@@ -15,7 +15,6 @@ import java.util.Stack;
 public class SyntacticalAnalyzer {
     public Program analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         Program root = new Program();
-        System.out.println(root.analyze(tokenQueue, symbolList));
         if (!root.analyze(tokenQueue, symbolList) || tokenQueue.size() != 0) {
             Token token = tokenQueue.get(1);
             System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());

@@ -50,8 +50,26 @@ public class Identifier extends VT {
         this.name = name;
     }
 
+    public String getTypeString() {
+        String typeString = "";
+        switch (type) {
+            case TYPE_INT:
+                typeString = "Integer";
+                break;
+            case TYPE_FLOAT:
+                typeString = "Real";
+                break;
+            case TYPE_CHAR:
+                typeString = "Character";
+                break;
+            case TYPE_BOOL:
+                typeString = "Boolean";
+        }
+        return typeString;
+    }
+
     @Override
     public String toString() {
-        return "Identifier: " + name + " (" + type + ")";
+        return "Identifier: " + name + " (" + getTypeString() + ")";
     }
 }
