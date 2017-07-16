@@ -147,13 +147,13 @@ public class BooleanExpression extends VN {
                 booleanExpressionAlter = (BooleanExpressionAlter) children.get(1);
                 if (booleanExpressionAlter.getChildren().size() > 0) {
                     quad.setOperator(booleanExpressionAlter.getChildren().get(0).toString());
-                    quad.setVariableA(constant.getValue() == 0 ? "TRUE" : "FALSE");
+                    quad.setVariableA(constant.getValue() == 0 ? "FALSE" : "TRUE");
                     quad.setVariableB(booleanExpressionAlter.getVariableName());
                     this.variableName = "T" + quadQueue.newTemp();
                     quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
                 } else {
-                    this.variableName = constant.getValue() == 0 ? "TRUE" : "FALSE";
+                    this.variableName = constant.getValue() == 0 ? "FALSE" : "TRUE";
                 }
                 break;
             case 4:

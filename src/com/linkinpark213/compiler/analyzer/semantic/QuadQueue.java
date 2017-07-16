@@ -34,8 +34,8 @@ public class QuadQueue {
     public void backPatch(int quadID, int targetQuadID) {
         while (quadID != 0) {
             Quad quad = quadList.get(quadID);
-            quad.setResult("" + targetQuadID);
             quadID = Integer.parseInt(quad.getResult());
+            quad.setResult("" + targetQuadID);
         }
     }
 
