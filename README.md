@@ -30,7 +30,8 @@ With a text file as the input, a sequence of quadruples (which can be easily tra
 
 ## Language Example
     int a, b;
-    while a<20 && b>8 do {
+    a := 2;
+    while (a<20 & b>8) do {
         if a>10 || b<16 then {
             if a<15 then {
                 a := 19;
@@ -43,4 +44,4 @@ With a text file as the input, a sequence of quadruples (which can be easily tra
             a := 1;
             b := 17
         };
-    }
+    };
