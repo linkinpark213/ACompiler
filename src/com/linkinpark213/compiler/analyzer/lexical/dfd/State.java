@@ -21,6 +21,14 @@ public class State {
         nextStateList.add(nextState);
     }
 
+    public int getStateNum() {
+        return stateNum;
+    }
+
+    public void setStateNum(int stateNum) {
+        this.stateNum = stateNum;
+    }
+
     public State nextState(char c) {
         for (int i = 0; i < inputHandlers.size(); i++) {
             if(inputHandlers.get(i).handle(c)) {

@@ -3,6 +3,7 @@ package com.linkinpark213.compiler.analyzer.lexical.dfd;
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Separator;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
 import java.util.ArrayList;
@@ -172,6 +173,8 @@ public class OperatorDFA implements DFA {
             if (finalStates.contains(statePointer)) {
                 return new Operator(symbolBuilder.toString());
             } else {
+                if (statePointer.getStateNum() == 6)
+                    return new Separator(':');
                 throw new InvalidOperatorException("Invalid ArithmeticOperator \"" + symbolBuilder.toString() + "\"");
             }
         }
