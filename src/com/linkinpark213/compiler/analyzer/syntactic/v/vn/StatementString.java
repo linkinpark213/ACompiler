@@ -6,6 +6,7 @@ import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement.*;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class StatementString extends VN {
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Statement String>  ::=  <Statement> <Statement String Alter>
         *                        | <Statement>

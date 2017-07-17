@@ -9,6 +9,9 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.IdentifierString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
+import com.linkinpark213.compiler.error.semantic.IdentifierDuplicateDefinitionError;
+import com.linkinpark213.compiler.error.semantic.IdentifierNotDefinedError;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -23,7 +26,7 @@ public class DefinitionStatement extends VN {
     }
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
          * <Definition Statement> ::= <Typedef Keyword> <Identifier String>
          */
@@ -36,7 +39,9 @@ public class DefinitionStatement extends VN {
             IdentifierString identifierString = (IdentifierString) production.get(1);
             identifierString.getNames(namesList);
             for (String name : namesList) {
-                symbolList.enterSymbol(new Symbol(name, typeString));
+                if (!symbolList.enterSymbol(new Symbol(name, typeString)))
+                    throw new IdentifierDuplicateDefinitionError(tokenQueue.get(0).getRow(),
+                            tokenQueue.get(0).getColumn(), name);
             }
             return true;
         } else return false;

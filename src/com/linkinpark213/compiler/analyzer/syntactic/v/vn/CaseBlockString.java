@@ -8,6 +8,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class CaseBlockString extends VN {
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Case Block String> ::= <Case Block> ; <Case Block String>
         *                       | <Case Block>

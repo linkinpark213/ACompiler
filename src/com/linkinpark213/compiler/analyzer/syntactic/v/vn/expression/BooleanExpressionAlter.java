@@ -8,6 +8,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.BooleanOperator;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class BooleanExpressionAlter extends VN {
     }
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Boolean Expression Alter> ::= <'And' or 'Or' Boolean Operator> <Expression>
         *                               | Nothing

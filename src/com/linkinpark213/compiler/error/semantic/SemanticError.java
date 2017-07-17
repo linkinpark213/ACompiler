@@ -16,6 +16,6 @@ public class SemanticError extends AnalysisError {
 
     @Override
     public String getMessage() {
-        return "Semantic Error: " + getLine() + ", " + getColumn() + ") " + message;
+        return "Semantic Error: (" + getLine() + ", " + getColumn() + ") ";
     }
 }

@@ -10,6 +10,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  */
 public class CaseBlock extends VN {
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         *  <Case Block> ::= case <Constant> : <Statement String>
         * */

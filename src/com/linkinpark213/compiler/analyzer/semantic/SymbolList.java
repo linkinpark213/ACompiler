@@ -30,7 +30,7 @@ public class SymbolList {
     }
 
     public boolean enterSymbol(Symbol symbol) {
-        if (this.retrieveSymbol("") != null)
+        if (this.retrieveSymbol(symbol.getName()) != null)
             return false;
         symbolHashMap.put(symbol.getName(), symbol);
         return true;

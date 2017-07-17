@@ -11,6 +11,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  */
 public class LoopStatement extends VN {
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Loop Statement> ::= while ( <Expression> ) do { <Statement String> }
         *                   |   do { <Statement String> } while ( <Expression> )

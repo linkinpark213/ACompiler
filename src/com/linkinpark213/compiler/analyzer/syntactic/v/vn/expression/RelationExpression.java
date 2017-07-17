@@ -9,6 +9,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.RelationOperator;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  */
 public class RelationExpression extends VN {
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Relation Expression> ::= <Arithmetic Expression> <Relation Operator> <Arithmetic Expression>
         * */

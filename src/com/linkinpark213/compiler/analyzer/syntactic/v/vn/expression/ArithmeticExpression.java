@@ -12,6 +12,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class ArithmeticExpression extends VN {
     public static final int TYPE_BOOL = 100;
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
         *                           | <Identifier> <Increment/Decrement Operator>

@@ -13,6 +13,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  */
 public class BranchStatement extends VN {
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> } else { <Statement String }
         *                      | if ( <Expression> ) then { <Statement String> }

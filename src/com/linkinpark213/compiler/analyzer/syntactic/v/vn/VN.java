@@ -7,6 +7,7 @@ import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class VN implements V, Cloneable {
         }
     }
 
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;

@@ -11,6 +11,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.BooleanOperator;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class BooleanExpression extends VN {
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Boolean Expression> ::= <Relation Expression> <Alter>
         *                           | <'Not' Operator> <Identifier> <Alter>

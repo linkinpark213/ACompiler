@@ -10,6 +10,8 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.AssignmentOperator;
+import com.linkinpark213.compiler.error.semantic.IdentifierNotDefinedError;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 public class AssignmentStatement extends VN {
 
     @Override
-    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Assignment Statement> ::= <Identifier> := <Any Expression>
         * */
@@ -33,7 +35,16 @@ public class AssignmentStatement extends VN {
 
         productions.add(production);
 
-        return super.analyze(tokenQueue, symbolList);
+        if (super.analyze(tokenQueue, symbolList)) {
+            Identifier targetIdentifier = (Identifier) children.get(0);
+            if (symbolList.retrieveSymbol(targetIdentifier.getName()) == null) {
+                throw new IdentifierNotDefinedError(targetIdentifier.getToken().getRow(),
+                        targetIdentifier.getToken().getColumn(),
+                        targetIdentifier.getName());
+            }
+            return true;
+        }
+        return false;
     }
 
     @Override
