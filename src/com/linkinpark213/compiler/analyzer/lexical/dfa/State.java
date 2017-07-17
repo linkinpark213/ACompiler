@@ -1,4 +1,4 @@
-package com.linkinpark213.compiler.analyzer.lexical.dfd;
+package com.linkinpark213.compiler.analyzer.lexical.dfa;
 
 import java.util.ArrayList;
 

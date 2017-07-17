@@ -1,14 +1,16 @@
 package com.linkinpark213.gui;
 
-import com.linkinpark213.compiler.CompilerTest;
+import com.linkinpark213.compiler.CompilerCore;
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.*;
 import com.linkinpark213.compiler.analyzer.syntactic.SyntacticalAnalyzer;
+import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
+import com.linkinpark213.compiler.error.AnalysisError;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,10 +20,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import sun.reflect.generics.tree.Tree;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -60,6 +60,8 @@ public class Controller {
     private TableColumn nameColumn;
     @FXML
     private TableColumn typeColumn;
+    @FXML
+    private TextArea statusText;
 
     @FXML
     public void handleFileChooserButtonClicked(ActionEvent actionEvent) {
@@ -83,33 +85,45 @@ public class Controller {
     @FXML
     public void handleCompileButtonClicked(ActionEvent actionEvent) {
         String code = codeTextArea.getText();
-        CompilerTest compilerTest = new CompilerTest();
+        CompilerCore compilerCore = new CompilerCore();
+        try {
+            clearLog();
+            log("Starting compilation.");
 
-        //  Lexical Analysis
-        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(code);
-        QuadQueue quadQueue = new QuadQueue();
-        compilerTest.printLexicalAnalysisResult(tokenQueue);
+            //  Lexical Analysis
+            log("Lexicon analyzing...");
+            LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
+            TokenQueue tokenQueue = new TokenQueue(lexicalAnalyzer.analyze(code));
+            QuadQueue quadQueue = new QuadQueue();
+            compilerCore.printLexicalAnalysisResult(tokenQueue.getTokens());
 
-        //  Syntactic Analysis
-        SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
-        SymbolList symbolList = new SymbolList();
-        Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
-        compilerTest.printSyntacticalAnalysisResult(program);
 
-        TreeItem<String> treeRoot = new TreeItem<String>("Program");
-        syntaxTree.setRoot(treeRoot);
-        generateSyntaxTree(treeRoot, program);
+            //  Syntactic Analysis
+            log("Syntax analyzing...");
+            SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
+            SymbolList symbolList = new SymbolList();
+            Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
+            compilerCore.printSyntacticalAnalysisResult(program);
 
-        symbolList.printList();
-        printSymbolList(symbolList.getSymbolHashMap());
+            TreeItem<String> treeRoot = new TreeItem<String>("Program");
+            syntaxTree.setRoot(treeRoot);
+            generateSyntaxTree(treeRoot, program);
 
-        //  Semantic Analysis
-        SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
-        semanticAnalyzer.analyze(program, quadQueue);
+            symbolList.printList();
+            printSymbolList(symbolList.getSymbolHashMap());
 
-        compilerTest.printSemanticAnalysisResult(quadQueue.getQuadList());
-        printQuadList(quadQueue);
+            //  Semantic Analysis
+            log("Semantics analyzing...");
+            SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
+            semanticAnalyzer.analyze(program, quadQueue);
+
+            compilerCore.printSemanticAnalysisResult(quadQueue.getQuadList());
+            printQuadList(quadQueue);
+
+            log("Compilation finished. View the syntax tree and quad list in other tabs.");
+        } catch (AnalysisError e) {
+            log(e.getMessage());
+        }
     }
 
     public void generateSyntaxTree(TreeItem<String> item, V v) {
@@ -147,5 +161,14 @@ public class Controller {
                 symbols.add(symbol);
             }
         });
+    }
+
+    public void log(String string) {
+        statusText.appendText(string);
+        statusText.appendText("\n");
+    }
+
+    public void clearLog() {
+        statusText.setText("");
     }
 }

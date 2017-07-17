@@ -4,6 +4,7 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 
@@ -40,7 +41,7 @@ public class VN implements V, Cloneable {
         }
     }
 
-    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
             if (production.size() == 0) return true;
@@ -56,6 +57,10 @@ public class VN implements V, Cloneable {
                 } else {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
+                    if (tokenQueue.size() < tokenQueue.getTotalTokenCount() - tokenQueue.getFarthestTokenNum()) {
+                        tokenQueue.setFarthestTokenNum(tokenQueue.getTotalTokenCount() - tokenQueue.size());
+                        tokenQueue.setFarthestExpectation(vt.getClass().getSimpleName());
+                    }
                     if (tokenQueue.size() == 0) break;
                     if (vt.checkSymbol(tokenQueue.get(0), symbolList)) {
                         VT temp = vt.getClone();
@@ -76,7 +81,7 @@ public class VN implements V, Cloneable {
         return false;
     }
 
-    public void rollBack(ArrayList<Token> tokenQueue, SymbolList symbolList) {
+    public void rollBack(TokenQueue tokenQueue, SymbolList symbolList) {
         for (int i = children.size() - 1; i >= 0; i--) {
             V v = children.get(i);
             if (v instanceof VN)

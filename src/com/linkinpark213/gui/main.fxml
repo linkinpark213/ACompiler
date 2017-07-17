@@ -17,7 +17,7 @@
 
 <AnchorPane fx:id="mainPane" prefHeight="576.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkinpark213.gui.Controller">
     <children>
-        <VBox alignment="CENTER" layoutX="38.0" layoutY="28.0" prefHeight="534.0" prefWidth="667.0">
+        <VBox alignment="CENTER" layoutX="38.0" layoutY="28.0" prefHeight="602.0" prefWidth="667.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="583.0">
                     <children>
@@ -42,7 +42,7 @@
                                         <Tab text="Code">
                                             <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                <TextArea fx:id="codeTextArea" maxHeight="350" maxWidth="465">
+                                                <TextArea fx:id="codeTextArea" maxHeight="350" maxWidth="465" prefHeight="308.0" prefWidth="465.0">
                                                     <font>
                                                         <Font name="Consolas" size="16.0" />
                                                     </font>
@@ -96,6 +96,7 @@
                       <Font size="20" />
                   </font>
               </Button>
+            <TextArea fx:id="statusText" editable="false" prefHeight="100.0" prefWidth="667.0" text="Awaiting Compilation" />
             </children>
         </VBox>
     </children>

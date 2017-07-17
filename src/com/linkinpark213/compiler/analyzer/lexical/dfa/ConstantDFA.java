@@ -1,7 +1,7 @@
-package com.linkinpark213.compiler.analyzer.lexical.dfd;
+package com.linkinpark213.compiler.analyzer.lexical.dfa;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidConstantException;
+import com.linkinpark213.compiler.error.lexical.InvalidConstantError;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 
@@ -100,7 +100,7 @@ public class ConstantDFA implements DFA {
     }
 
     @Override
-    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidConstantException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidConstantError {
         State statePointer = initialState;
         State nextStatePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
@@ -121,7 +121,7 @@ public class ConstantDFA implements DFA {
             } else return new Constant(constant, Constant.TYPE_INT);
         } else {
             symbolBuilder.append(string.charAt(symbolBuilder.length()));
-            throw new InvalidConstantException("Invalid Constant: " + symbolBuilder.toString());
+            throw new InvalidConstantError(symbolBuilder.toString());
         }
     }
 }

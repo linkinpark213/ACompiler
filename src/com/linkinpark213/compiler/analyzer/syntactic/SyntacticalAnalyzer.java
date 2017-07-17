@@ -5,6 +5,8 @@ import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
+import com.linkinpark213.compiler.error.AnalysisError;
+import com.linkinpark213.compiler.error.syntactical.SyntaxError;
 
 import java.util.ArrayList;
 import java.util.Stack;
@@ -13,11 +15,12 @@ import java.util.Stack;
  * Created by ooo on 2017/7/3 0003.
  */
 public class SyntacticalAnalyzer {
-    public Program analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
+    public Program analyze(TokenQueue tokenQueue, SymbolList symbolList) throws AnalysisError {
         Program root = new Program();
         if (!root.analyze(tokenQueue, symbolList) || tokenQueue.size() != 0) {
-            Token token = tokenQueue.get(1);
-            System.out.println("Syntax Error at Row " + token.getRow() + ", Column " + token.getColumn());
+            Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum());
+            throw new SyntaxError(token.getRow(), token.getColumn(), "Expected " + tokenQueue.getFarthestExpectation() +
+                    ", but found " + token.toString());
         }
         return root;
     }

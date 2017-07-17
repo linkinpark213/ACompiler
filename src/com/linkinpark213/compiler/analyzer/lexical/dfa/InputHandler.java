@@ -1,4 +1,4 @@
-package com.linkinpark213.compiler.analyzer.lexical.dfd;
+package com.linkinpark213.compiler.analyzer.lexical.dfa;
 
 /**
  * Created by ooo on 2017/6/2 0002.

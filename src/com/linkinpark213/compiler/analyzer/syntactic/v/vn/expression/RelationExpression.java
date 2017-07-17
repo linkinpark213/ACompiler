@@ -4,6 +4,7 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  */
 public class RelationExpression extends VN {
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
         /*
         * <Relation Expression> ::= <Arithmetic Expression> <Relation Operator> <Arithmetic Expression>
         * */

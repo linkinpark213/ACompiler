@@ -1,15 +1,15 @@
 package com.linkinpark213.compiler.analyzer.lexical;
 
-import com.linkinpark213.compiler.analyzer.lexical.dfd.ConstantDFA;
-import com.linkinpark213.compiler.analyzer.lexical.dfd.IdentifierDFA;
-import com.linkinpark213.compiler.analyzer.lexical.dfd.OperatorDFA;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidConstantException;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
+import com.linkinpark213.compiler.analyzer.lexical.dfa.ConstantDFA;
+import com.linkinpark213.compiler.analyzer.lexical.dfa.IdentifierDFA;
+import com.linkinpark213.compiler.analyzer.lexical.dfa.OperatorDFA;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Separator;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.error.AnalysisError;
+import com.linkinpark213.compiler.error.lexical.InvalidSymbolError;
+import com.linkinpark213.compiler.error.lexical.LexicalError;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class LexicalAnalyzer {
         System.exit(0);
     }
 
-    public ArrayList<Token> analyze(String code) {
+    public ArrayList<Token> analyze(String code) throws AnalysisError {
         System.out.println("Analyzing: \n" + code + "\n");
         String tempCode = code;
         this.clear();
@@ -93,9 +93,11 @@ public class LexicalAnalyzer {
                 }
                 col += nextToken.toString().length();
             } while (tempCode.length() > 0);
+        } catch (InvalidSymbolError e) {
+            throw new LexicalError(row, col, e.getMessage());
         } catch (Exception e) {
-            System.out.println("Compile Error: (" + row + ", " + col + "): " + e.getMessage());
-            return tokenQueue;
+            e.printStackTrace();
+//            throw new LexicalError(row, col, e.getMessage());
         }
         return tokenQueue;
     }

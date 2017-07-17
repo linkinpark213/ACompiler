@@ -1,7 +1,7 @@
-package com.linkinpark213.compiler.analyzer.lexical.dfd;
+package com.linkinpark213.compiler.analyzer.lexical.dfa;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidIdentifierException;
+import com.linkinpark213.compiler.error.lexical.InvalidIdentifierError;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Identifier;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Keyword;
@@ -52,7 +52,7 @@ public class IdentifierDFA implements DFA {
     }
 
     @Override
-    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidIdentifierException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidIdentifierError {
         State statePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
 
@@ -74,7 +74,7 @@ public class IdentifierDFA implements DFA {
             }
         } else {
             symbolBuilder.append(string.charAt(symbolBuilder.length()));
-            throw new InvalidIdentifierException("Invalid identifier \"" + symbolBuilder.toString() + "\"");
+            throw new InvalidIdentifierError("Invalid identifier \"" + symbolBuilder.toString() + "\"");
         }
     }
 }

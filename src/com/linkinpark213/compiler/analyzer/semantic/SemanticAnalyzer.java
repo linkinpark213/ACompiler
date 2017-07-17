@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.semantic;
 
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
+import com.linkinpark213.compiler.error.AnalysisError;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class SemanticAnalyzer {
         quadQueue = new ArrayList<Quad>();
     }
 
-    public void analyze(Program program, QuadQueue quadQueue) {
+    public void analyze(Program program, QuadQueue quadQueue) throws AnalysisError {
         program.semanticAction(quadQueue);
     }
 

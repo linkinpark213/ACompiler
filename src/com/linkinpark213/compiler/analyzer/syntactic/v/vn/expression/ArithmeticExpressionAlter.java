@@ -4,6 +4,7 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
@@ -20,7 +21,7 @@ public class ArithmeticExpressionAlter extends VN {
     }
 
     @Override
-    public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) {
         /*
         * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Expression> | Null
         * */

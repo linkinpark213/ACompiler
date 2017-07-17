@@ -17,7 +17,7 @@ import java.util.Scanner;
 /**
  * Created by ooo on 2017/6/2 0002.
  */
-public class CompilerTest {
+public class CompilerCore {
     public void printLexicalAnalysisResult(ArrayList<Token> tokens) {
         System.out.println("=============================");
         System.out.println("=        Token List         =");
@@ -61,28 +61,4 @@ public class CompilerTest {
         return stringBuilder.toString();
     }
 
-    public static void main(String[] args) {
-        CompilerTest compilerTest = new CompilerTest();
-
-        //  Lexical Analysis
-        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("whiledo.txt")));
-        QuadQueue quadQueue = new QuadQueue();
-
-        compilerTest.printLexicalAnalysisResult(tokenQueue);
-
-        //  Syntactic Analysis
-        SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
-        SymbolList symbolList = new SymbolList();
-        Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
-        compilerTest.printSyntacticalAnalysisResult(program);
-
-        symbolList.printList();
-
-        //  Semantic Analysis
-        SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
-        semanticAnalyzer.analyze(program, quadQueue);
-
-        compilerTest.printSemanticAnalysisResult(quadQueue.getQuadList());
-    }
 }

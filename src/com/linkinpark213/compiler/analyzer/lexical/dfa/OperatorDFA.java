@@ -1,7 +1,7 @@
-package com.linkinpark213.compiler.analyzer.lexical.dfd;
+package com.linkinpark213.compiler.analyzer.lexical.dfa;
 
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.exception.InvalidOperatorException;
+import com.linkinpark213.compiler.error.lexical.InvalidOperatorError;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Separator;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
@@ -156,7 +156,7 @@ public class OperatorDFA implements DFA {
     }
 
     @Override
-    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidOperatorException {
+    public Token nextSymbol(String string, LexicalAnalyzer analyzer) throws InvalidOperatorError {
         State statePointer = initialState;
         State nextStatePointer = initialState;
         StringBuilder symbolBuilder = new StringBuilder();
@@ -164,10 +164,12 @@ public class OperatorDFA implements DFA {
         nextStatePointer = statePointer.nextState(string.charAt(0));
         symbolBuilder.append(string.charAt(0));
         statePointer = nextStatePointer;
-        nextStatePointer = statePointer.nextState(string.charAt(1));
-        if (finalStates.contains(nextStatePointer)) {
-            statePointer = nextStatePointer;
-            symbolBuilder.append(string.charAt(1));
+        if (string.length() > 1) {
+            nextStatePointer = statePointer.nextState(string.charAt(1));
+            if (finalStates.contains(nextStatePointer)) {
+                statePointer = nextStatePointer;
+                symbolBuilder.append(string.charAt(1));
+            }
             return new Operator(symbolBuilder.toString());
         } else {
             if (finalStates.contains(statePointer)) {
@@ -175,7 +177,7 @@ public class OperatorDFA implements DFA {
             } else {
                 if (statePointer.getStateNum() == 6)
                     return new Separator(':');
-                throw new InvalidOperatorException("Invalid ArithmeticOperator \"" + symbolBuilder.toString() + "\"");
+                throw new InvalidOperatorError("Invalid Operator \"" + symbolBuilder.toString() + "\"");
             }
         }
     }
