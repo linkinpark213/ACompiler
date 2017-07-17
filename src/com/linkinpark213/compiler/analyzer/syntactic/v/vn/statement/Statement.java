@@ -15,17 +15,21 @@ public class Statement extends VN {
 
         /*
         * <Statement>  ::=  <Definition Statement>
+        *                   | <Procedure Definition Statement>
         *                   | <Assignment Statement>
         *                   | <Branch Statement>
         *                   | <Loop Statement>
         * */
         ArrayList<V> definitionProduction = new ArrayList<V>();
+        ArrayList<V> procedureDefinitionProduction = new ArrayList<V>();
         ArrayList<V> assignmentProduction = new ArrayList<V>();
         ArrayList<V> branchProduction = new ArrayList<V>();
         ArrayList<V> loopProduction = new ArrayList<V>();
 
         DefinitionStatement definitionStatement = new DefinitionStatement();
         definitionProduction.add(definitionStatement);
+        ProcedureDefinitionStatement procedureDefinitionStatement = new ProcedureDefinitionStatement();
+        procedureDefinitionProduction.add(procedureDefinitionStatement);
         AssignmentStatement assignmentStatement = new AssignmentStatement();
         assignmentProduction.add(assignmentStatement);
         BranchStatement branchStatement = new BranchStatement();
@@ -34,6 +38,7 @@ public class Statement extends VN {
         loopProduction.add(loopStatement);
 
         productions.add(definitionProduction);
+        productions.add(procedureDefinitionProduction);
         productions.add(assignmentProduction);
         productions.add(branchProduction);
         productions.add(loopProduction);

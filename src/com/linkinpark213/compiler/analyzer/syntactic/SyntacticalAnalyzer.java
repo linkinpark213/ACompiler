@@ -19,7 +19,7 @@ public class SyntacticalAnalyzer {
         Program root = new Program();
         if (!root.analyze(tokenQueue, symbolList) || tokenQueue.size() != 0) {
             try {
-                Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum());
+                Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum() + tokenQueue.size() - tokenQueue.getTotalTokenCount());
                 throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
                         + tokenQueue.getFarthestExpectation() +
                         ", but found " + token.toString());

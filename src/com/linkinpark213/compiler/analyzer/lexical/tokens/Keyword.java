@@ -27,6 +27,7 @@ public class Keyword implements Token {
         keyWords.add("case");
         keyWords.add("while");
         keyWords.add("do");
+        keyWords.add("function");
     }
 
     public Keyword(String symbol) {

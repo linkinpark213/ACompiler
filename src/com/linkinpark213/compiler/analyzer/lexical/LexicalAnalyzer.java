@@ -46,7 +46,7 @@ public class LexicalAnalyzer {
                 char secondChar = 0;
                 if (tempCode.length() > 1)
                     secondChar = tempCode.charAt(1);
-                while (firstChar == ' ' || firstChar == '\n') {
+                while (firstChar == ' ' || firstChar == '\n' || firstChar == '\t') {
                     tempCode = tempCode.substring(1);
                     if (firstChar == ' ')
                         col++;
