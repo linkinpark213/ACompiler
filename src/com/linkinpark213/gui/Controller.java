@@ -123,6 +123,9 @@ public class Controller {
             log("Compilation finished. View the syntax tree and quad list in other tabs.");
         } catch (AnalysisError e) {
             log(e.getMessage());
+        } catch (Exception e) {
+            clearLog();
+            log("Invalid code.");
         }
     }
 

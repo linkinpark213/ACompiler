@@ -10,8 +10,12 @@ public class SemanticError extends AnalysisError {
         super(line, column);
     }
 
+    public SemanticError(int line, int column, String message) {
+        super(line, column, message);
+    }
+
     @Override
     public String getMessage() {
-        return "Semantic Error: " + getLine() + ", " + getColumn() + ") ";
+        return "Semantic Error: " + getLine() + ", " + getColumn() + ") " + message;
     }
 }

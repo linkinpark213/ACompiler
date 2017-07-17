@@ -57,4 +57,9 @@ public class Constant extends VT {
     public String toString() {
         return "Constant (" + constant.getTypeString() + ") : " + constant.getValue();
     }
+
+    @Override
+    public String toExactString() {
+        return "constant value";
+    }
 }

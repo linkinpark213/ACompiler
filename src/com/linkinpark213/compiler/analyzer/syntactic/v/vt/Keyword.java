@@ -38,4 +38,21 @@ public class Keyword extends VT {
     public String toString() {
         return value;
     }
+
+    @Override
+    public String toExactString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < acceptableSymbols.size(); i++) {
+            if (i != 0)
+                if (i == acceptableSymbols.size() - 1) {
+                    stringBuilder.append(" or ");
+                } else {
+                    stringBuilder.append(", ");
+                }
+            stringBuilder.append("'");
+            stringBuilder.append(acceptableSymbols.get(i));
+            stringBuilder.append("'");
+        }
+        return "keyword " + stringBuilder.toString();
+    }
 }

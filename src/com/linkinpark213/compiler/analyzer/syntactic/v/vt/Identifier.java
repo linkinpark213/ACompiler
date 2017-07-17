@@ -31,6 +31,7 @@ public class Identifier extends VT {
             if (type != 0) {
                 Symbol symbol = symbolList.retrieveSymbol(token.toString());
                 if (symbol == null) {
+
                     return false;
                 } else if (symbol.getType() != type) {
                     return false;
@@ -73,5 +74,10 @@ public class Identifier extends VT {
     @Override
     public String toString() {
         return "Identifier: " + name;
+    }
+
+    @Override
+    public String toExactString() {
+        return "identifier";
     }
 }

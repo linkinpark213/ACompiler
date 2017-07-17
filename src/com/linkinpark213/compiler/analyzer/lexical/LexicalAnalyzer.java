@@ -95,9 +95,6 @@ public class LexicalAnalyzer {
             } while (tempCode.length() > 0);
         } catch (InvalidSymbolError e) {
             throw new LexicalError(row, col, e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-//            throw new LexicalError(row, col, e.getMessage());
         }
         return tokenQueue;
     }

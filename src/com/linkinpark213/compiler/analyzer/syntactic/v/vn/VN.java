@@ -59,7 +59,7 @@ public class VN implements V, Cloneable {
                     VT vt = (VT) v;
                     if (tokenQueue.size() < tokenQueue.getTotalTokenCount() - tokenQueue.getFarthestTokenNum()) {
                         tokenQueue.setFarthestTokenNum(tokenQueue.getTotalTokenCount() - tokenQueue.size());
-                        tokenQueue.setFarthestExpectation(vt.getClass().getSimpleName());
+                        tokenQueue.setFarthestExpectation(vt.toExactString());
                     }
                     if (tokenQueue.size() == 0) break;
                     if (vt.checkSymbol(tokenQueue.get(0), symbolList)) {

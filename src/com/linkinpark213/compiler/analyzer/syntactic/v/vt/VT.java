@@ -54,4 +54,8 @@ public abstract class VT implements V, Cloneable {
         }
         System.out.println(this.toString());
     }
+
+    public String toExactString() {
+        return toString();
+    }
 }
