@@ -66,7 +66,7 @@ public class CompilerTest {
 
         //  Lexical Analysis
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-        ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("code.txt")));
+        ArrayList<Token> tokenQueue = lexicalAnalyzer.analyze(compilerTest.readCode(new File("whiledo.txt")));
         QuadQueue quadQueue = new QuadQueue();
 
         compilerTest.printLexicalAnalysisResult(tokenQueue);
