@@ -18,10 +18,16 @@ public class SyntacticalAnalyzer {
     public Program analyze(TokenQueue tokenQueue, SymbolList symbolList) throws AnalysisError {
         Program root = new Program();
         if (!root.analyze(tokenQueue, symbolList) || tokenQueue.size() != 0) {
-            Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum());
-            throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
-                    + tokenQueue.getFarthestExpectation() +
-                    ", but found " + token.toString());
+            try {
+                Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum());
+                throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
+                        + tokenQueue.getFarthestExpectation() +
+                        ", but found " + token.toString());
+            } catch (IndexOutOfBoundsException e) {
+                Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum() - 1);
+                throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
+                        + tokenQueue.getFarthestExpectation() + ", but code ended");
+            }
         }
         return root;
     }

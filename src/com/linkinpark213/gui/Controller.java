@@ -124,6 +124,7 @@ public class Controller {
         } catch (AnalysisError e) {
             log(e.getMessage());
         } catch (Exception e) {
+            e.printStackTrace();
             clearLog();
             log("Invalid code.");
         }
