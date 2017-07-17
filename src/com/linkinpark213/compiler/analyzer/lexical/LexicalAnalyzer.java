@@ -93,7 +93,7 @@ public class LexicalAnalyzer {
                 }
                 col += nextToken.toString().length();
             } while (tempCode.length() > 0);
-        } catch (InvalidConstantException | InvalidIdentifierException | InvalidOperatorException e) {
+        } catch (Exception e) {
             System.out.println("Compile Error: (" + row + ", " + col + "): " + e.getMessage());
             return tokenQueue;
         }

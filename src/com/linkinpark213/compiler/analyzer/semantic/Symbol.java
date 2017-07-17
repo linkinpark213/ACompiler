@@ -6,6 +6,7 @@ package com.linkinpark213.compiler.analyzer.semantic;
 public class Symbol {
     private String name;
     private int type;
+    private String typeString;
     public static final int TYPE_INT = 102;
     public static final int TYPE_FLOAT = 103;
     public static final int TYPE_CHAR = 101;
@@ -47,8 +48,12 @@ public class Symbol {
         this.type = type;
     }
 
+    public void setTypeString(String typeString) {
+        this.typeString = typeString;
+    }
+
     public String getTypeString() {
-        String typeString = "";
+        typeString = "";
         switch (type) {
             case TYPE_INT:
                 typeString = "Integer";

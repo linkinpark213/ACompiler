@@ -15,6 +15,18 @@ public class Quad {
         this.setResult("0");
     }
 
+    public Quad(int address, String operator, String variableA, String variableB, String result) {
+        this.address = address;
+        this.operator = operator;
+        this.variableA = variableA;
+        this.variableB = variableB;
+        this.result = result;
+    }
+
+    public Quad(String operator, String variableA, String variableB, String result) {
+        this(0, operator, variableA, variableB, result);
+    }
+
     public String toString() {
         return address + "\t\t(\t" + operator + ",\t\t" + variableA + ",\t\t" + variableB + ",\t\t" + result + "\t)";
     }

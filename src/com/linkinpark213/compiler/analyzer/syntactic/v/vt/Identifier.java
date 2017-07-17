@@ -72,6 +72,6 @@ public class Identifier extends VT {
 
     @Override
     public String toString() {
-        return "Identifier: " + name + " (" + getTypeString() + ")";
+        return "Identifier: " + name;
     }
 }

@@ -36,6 +36,10 @@ public class SymbolList {
         return true;
     }
 
+    public HashMap<String, Symbol> getSymbolHashMap() {
+        return symbolHashMap;
+    }
+
     public Symbol retrieveSymbol(String name) {
         return symbolHashMap.get(name);
     }

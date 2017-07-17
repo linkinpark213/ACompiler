@@ -22,7 +22,7 @@ public class ArithmeticExpressionAlter extends VN {
     @Override
     public boolean analyze(ArrayList<Token> tokenQueue, SymbolList symbolList) {
         /*
-        * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Expression> | 3
+        * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Expression> | Null
         * */
         ArrayList<V> production = new ArrayList<V>();
         ArrayList<V> nullProduction = new ArrayList<V>();
