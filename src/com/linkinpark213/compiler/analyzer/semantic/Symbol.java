@@ -7,6 +7,7 @@ public class Symbol {
     private String name;
     private int type;
     private String typeString;
+    private int scope;
     public static final int TYPE_INT = 102;
     public static final int TYPE_FLOAT = 103;
     public static final int TYPE_CHAR = 101;
@@ -46,6 +47,14 @@ public class Symbol {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getScope() {
+        return scope;
+    }
+
+    public void setScope(int scope) {
+        this.scope = scope;
     }
 
     public void setTypeString(String typeString) {

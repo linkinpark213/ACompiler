@@ -151,6 +151,7 @@ public class ArithmeticExpression extends VN {
                     quadQueue.add(quad);
                 } else {
                     this.variableName = "" + constant.getValue();
+                    System.out.println(this.variableName);
                 }
                 break;
         }

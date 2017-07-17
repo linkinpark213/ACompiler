@@ -8,10 +8,12 @@ import java.util.function.BiConsumer;
  */
 public class SymbolList {
     private HashMap<String, Symbol> symbolHashMap;
+    private HashMap<String, Symbol> functionHashMap;
     private int currentScope;
 
     public SymbolList() {
         symbolHashMap = new HashMap<String, Symbol>();
+        functionHashMap = new HashMap<String, Symbol>();
         currentScope = 0;
     }
 
@@ -24,7 +26,8 @@ public class SymbolList {
         symbolHashMap.forEach(new BiConsumer<String, Symbol>() {
             @Override
             public void accept(String s, Symbol symbol) {
-                symbolHashMap.remove(s);
+                if (symbol.getScope() > currentScope)
+                    symbolHashMap.remove(s);
             }
         });
     }
@@ -32,12 +35,17 @@ public class SymbolList {
     public boolean enterSymbol(Symbol symbol) {
         if (this.retrieveSymbol(symbol.getName()) != null)
             return false;
+        symbol.setScope(currentScope);
         symbolHashMap.put(symbol.getName(), symbol);
         return true;
     }
 
     public HashMap<String, Symbol> getSymbolHashMap() {
         return symbolHashMap;
+    }
+
+    public HashMap<String, Symbol> getFunctionHashMap() {
+        return functionHashMap;
     }
 
     public Symbol retrieveSymbol(String name) {
