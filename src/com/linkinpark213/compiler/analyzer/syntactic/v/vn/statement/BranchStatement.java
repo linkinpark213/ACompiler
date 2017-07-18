@@ -63,7 +63,10 @@ public class BranchStatement extends VN {
         productions.add(withElseProduction);
         productions.add(noElseProduction);
         productions.add(switchCaseProduction);
-        return super.analyze(tokenQueue, symbolList);
+        symbolList.openScope();
+        boolean finished = super.analyze(tokenQueue, symbolList);
+        symbolList.closeScope();
+        return finished;
     }
 
     @Override

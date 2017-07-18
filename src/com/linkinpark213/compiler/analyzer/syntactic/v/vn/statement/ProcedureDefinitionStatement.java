@@ -35,7 +35,10 @@ public class ProcedureDefinitionStatement extends VN {
         production.add(new StatementString());
         production.add(new Separator("}"));
         productions.add(production);
-        return super.analyze(tokenQueue, symbolList);
+        symbolList.openScope();
+        boolean finished = super.analyze(tokenQueue, symbolList);
+        symbolList.closeScope();
+        return finished;
     }
 
     public int getAddress() {

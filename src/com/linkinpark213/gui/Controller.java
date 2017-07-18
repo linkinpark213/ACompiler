@@ -74,6 +74,7 @@ public class Controller {
         try {
             fileDirectoryTextField.setText(codeFile.getAbsolutePath());
             Scanner fileScanner = new Scanner(codeFile);
+            codeTextArea.clear();
             while (fileScanner.hasNextLine()) {
                 codeTextArea.appendText(fileScanner.nextLine() + "\n");
             }

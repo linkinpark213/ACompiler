@@ -1,5 +1,6 @@
 package com.linkinpark213.compiler.analyzer.semantic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 
@@ -23,20 +24,31 @@ public class SymbolList {
 
     public void closeScope() {
         currentScope--;
+        ArrayList<String> symbolsToBeDeleted = new ArrayList<String>();
         symbolHashMap.forEach(new BiConsumer<String, Symbol>() {
             @Override
             public void accept(String s, Symbol symbol) {
                 if (symbol.getScope() > currentScope)
-                    symbolHashMap.remove(s);
+                    symbolsToBeDeleted.add(s);
             }
         });
+        for (String name : symbolsToBeDeleted) {
+            symbolHashMap.remove(name);
+        }
     }
 
     public boolean enterSymbol(Symbol symbol) {
+        symbol.setScope(currentScope);
         if (this.retrieveSymbol(symbol.getName()) != null)
             return false;
-        symbol.setScope(currentScope);
         symbolHashMap.put(symbol.getName(), symbol);
+        return true;
+    }
+
+    public boolean enterFunction(Symbol symbol) {
+        if (this.retrieveFunction(symbol.getName()) != null) {
+            return false;
+        }
         return true;
     }
 
@@ -50,6 +62,10 @@ public class SymbolList {
 
     public Symbol retrieveSymbol(String name) {
         return symbolHashMap.get(name);
+    }
+
+    public Symbol retrieveFunction(String name) {
+        return functionHashMap.get(name);
     }
 
     public void deleteSymbol(String name) {

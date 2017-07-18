@@ -37,6 +37,7 @@ public class ProcedureCallStatement extends VN {
     public void semanticAction(QuadQueue quadQueue) {
         Identifier identifier = (Identifier) productions.get(0).get(1);
         ArgumentList argumentList = (ArgumentList) productions.get(0).get(3);
+        argumentList.semanticAction(quadQueue);
         ArrayList<String> argumentNameList = new ArrayList<String>();
         argumentList.getArgumentNameList(argumentNameList);
         for (String argumentName : argumentNameList) {

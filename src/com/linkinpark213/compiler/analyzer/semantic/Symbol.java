@@ -12,6 +12,7 @@ public class Symbol {
     public static final int TYPE_FLOAT = 103;
     public static final int TYPE_CHAR = 101;
     public static final int TYPE_BOOL = 100;
+    public static final int TYPE_FUNCTION = 105;
 
     public Symbol(String name, int type) {
         this.name = name;
@@ -28,6 +29,8 @@ public class Symbol {
             typeInt = TYPE_FLOAT;
         } else if (type.equals("char")) {
             typeInt = TYPE_CHAR;
+        } else if(type.equals("function")) {
+            typeInt = TYPE_FUNCTION;
         }
         this.name = name;
         this.type = typeInt;
@@ -75,6 +78,10 @@ public class Symbol {
                 break;
             case TYPE_BOOL:
                 typeString = "Boolean";
+                break;
+            case TYPE_FUNCTION:
+                typeString = "Function";
+                break;
         }
         return typeString;
     }

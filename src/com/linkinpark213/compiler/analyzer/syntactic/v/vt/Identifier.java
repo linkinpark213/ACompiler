@@ -28,19 +28,6 @@ public class Identifier extends VT {
 
     @Override
     public boolean checkSymbol(Token token, SymbolList symbolList) throws SemanticError {
-//        boolean isIdentifier = token instanceof com.linkinpark213.compiler.analyzer.lexical.tokens.Identifier;
-//        if (isIdentifier) {
-//            this.setName(token.toString());
-//            if (type != 0) {
-//                Symbol symbol = symbolList.retrieveSymbol(token.toString());
-//                if (symbol == null) {
-//                    throw new IdentifierNotDefinedError(token.getRow(), token.getColumn(), token.toString());
-//                } else if (symbol.getType() != type) {
-//                    throw new TypeDoesNotMatchError(token.getRow(), token.getColumn(), getTypeString(), symbol.getTypeString());
-//                }
-//                return true;
-//            }
-//        }
         this.setName(token.toString());
         return token instanceof com.linkinpark213.compiler.analyzer.lexical.tokens.Identifier;
     }
