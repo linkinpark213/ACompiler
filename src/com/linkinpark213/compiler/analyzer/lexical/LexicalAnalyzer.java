@@ -10,6 +10,7 @@ import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.error.AnalysisError;
 import com.linkinpark213.compiler.error.lexical.InvalidSymbolError;
 import com.linkinpark213.compiler.error.lexical.LexicalError;
+import com.linkinpark213.compiler.error.lexical.NoCodeError;
 
 import java.util.ArrayList;
 
@@ -36,10 +37,13 @@ public class LexicalAnalyzer {
         System.exit(0);
     }
 
-    public ArrayList<Token> analyze(String code) throws AnalysisError {
+    public ArrayList<Token> analyze(String code) throws Exception {
         System.out.println("Analyzing: \n" + code + "\n");
         String tempCode = code;
         this.clear();
+        if (code.length() == 0) {
+            throw new NoCodeError(1, 1);
+        }
         try {
             do {
                 char firstChar = tempCode.charAt(0);

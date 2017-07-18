@@ -6,6 +6,7 @@ import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vn.ArrayVariable;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
@@ -32,11 +33,13 @@ public class ArithmeticExpression extends VN {
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Arithmetic Expression> ::= ( <Arithmetic Expression> ) <Alter>
+        *                           | <Array Variable> <Alter>
         *                           | <Identifier> <Increment/Decrement Operator>
         *                           | <Identifier> <Alter>
         *                           | <Constant> <Alter>
         * */
         ArrayList<V> expressionWithBracketsProduction = new ArrayList<V>();
+        ArrayList<V> arrayProduction = new ArrayList<V>();
         ArrayList<V> crementProduction = new ArrayList<V>();
         ArrayList<V> singleIdentifierProduction = new ArrayList<V>();
         ArrayList<V> constantProduction = new ArrayList<V>();
@@ -45,6 +48,9 @@ public class ArithmeticExpression extends VN {
         expressionWithBracketsProduction.add(new ArithmeticExpression());
         expressionWithBracketsProduction.add(new Separator(")"));
         expressionWithBracketsProduction.add(new ArithmeticExpressionAlter());
+
+        arrayProduction.add(new ArrayVariable());
+        arrayProduction.add(new ArithmeticExpressionAlter());
 
         crementProduction.add(new Identifier());
         crementProduction.add(new ArithmeticOperator("++", "--"));
@@ -56,6 +62,7 @@ public class ArithmeticExpression extends VN {
         constantProduction.add(new ArithmeticExpressionAlter());
 
         productions.add(expressionWithBracketsProduction);
+        productions.add(arrayProduction);
         productions.add(crementProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
@@ -90,6 +97,7 @@ public class ArithmeticExpression extends VN {
         Quad quad;
         Operator operator;
         Constant constant;
+        ArrayVariable arrayVariable;
         switch (productionNum) {
             case 0:
                 arithmeticExpression = (ArithmeticExpression) children.get(1);
@@ -109,6 +117,26 @@ public class ArithmeticExpression extends VN {
                 }
                 break;
             case 1:
+                arrayVariable = (ArrayVariable) children.get(0);
+                arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
+                Quad fetchValueQuad = new Quad("=[]", arrayVariable.getPlace() + "[" + arrayVariable.getOffset() + "]",
+                        "_", "T" + quadQueue.newTemp());
+                quadQueue.add(fetchValueQuad);
+                if (arithmeticExpressionAlter.getChildren().size() > 0) {
+                    operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
+                    quad = new Quad();
+                    quad.setOperator(operator.toString());
+                    quad.setVariableA(fetchValueQuad.getResult());
+                    quad.setVariableB(arithmeticExpressionAlter.getVariableName());
+                    this.setTempID(quadQueue.newTemp());
+                    this.variableName = "T" + this.getTempID();
+                    quad.setResult(this.getVariableName());
+                    quadQueue.add(quad);
+                } else {
+                    this.variableName = fetchValueQuad.getResult();
+                }
+                break;
+            case 2:
                 identifier = (Identifier) children.get(0);
                 operator = (Operator) children.get(1);
                 quad = new Quad();
@@ -119,7 +147,7 @@ public class ArithmeticExpression extends VN {
                 quadQueue.add(quad);
                 this.variableName = identifier.getName();
                 break;
-            case 2:
+            case 3:
                 identifier = (Identifier) children.get(0);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {
@@ -136,7 +164,7 @@ public class ArithmeticExpression extends VN {
                     this.variableName = identifier.getName();
                 }
                 break;
-            case 3:
+            case 4:
                 constant = (Constant) children.get(0);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {

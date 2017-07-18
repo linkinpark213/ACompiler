@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/array.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/ArrayDimensionError.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/IdentifierIsNotArrayError.java" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="array assignment">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/lexical/NoCodeError.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/array.txt" afterPath="$PROJECT_DIR$/sample/array.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/branch.txt" afterPath="$PROJECT_DIR$/sample/branch.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/code.txt" afterPath="$PROJECT_DIR$/sample/code.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/function.txt" afterPath="$PROJECT_DIR$/sample/function.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/whiledo.txt" afterPath="$PROJECT_DIR$/sample/whiledo.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/VN.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/VN.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/AssignmentStatement.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/AssignmentStatement.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml" afterPath="$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -69,33 +70,16 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7376382">
+    <splitter split-orientation="horizontal" split-proportion="0.5675057">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
           <file leaf-file-name="SymbolList.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/SymbolList.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="261">
-                  <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+                <state relative-caret-position="456">
+                  <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
                   <folding>
                     <element signature="e#701#709#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ArrayVariable.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="837">
-                  <caret line="90" column="31" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#2308#2316#0" expanded="true" />
-                    <element signature="e#3030#3038#0" expanded="true" />
-                    <element signature="e#4088#4089#0" expanded="true" />
-                    <element signature="e#4120#4121#0" expanded="true" />
-                    <element signature="e#4148#4149#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -104,34 +88,21 @@
           <file leaf-file-name="AssignmentStatement.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/AssignmentStatement.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="642">
-                  <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+                <state relative-caret-position="336">
+                  <caret line="34" column="55" lean-forward="true" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="IndexList.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IndexList.java">
+          <file leaf-file-name="Expression.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="656">
-                  <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+                <state relative-caret-position="120">
+                  <caret line="32" column="53" lean-forward="true" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
                   <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#1097#1098#0" expanded="true" />
-                    <element signature="e#1144#1145#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IndexListAlter.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IndexListAlter.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="624">
-                  <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="e#696#697#0" expanded="true" />
+                    <element signature="e#723#724#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -154,8 +125,8 @@
           <file leaf-file-name="Identifier.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/Identifier.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="524">
-                  <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+                <state relative-caret-position="212">
+                  <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
                   <folding />
                 </state>
               </provider>
@@ -261,7 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/Separator.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/VT.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IdentifierStringAlter.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/CaseBlockString.java" />
@@ -275,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/SemanticError.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/TypeDoesNotMatchError.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/IdentifierDuplicateDefinitionError.java" />
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/ArgumentList.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/tokens/Keyword.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentDefinitionList.java" />
@@ -302,15 +271,17 @@
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariableInitialization.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/DefinitionStatement.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/Symbol.java" />
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/ArrayDimensionError.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/semantic/IdentifierIsNotArrayError.java" />
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/VN.java" />
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java" />
         <option value="$PROJECT_DIR$/array.txt" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/error/lexical/NoCodeError.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/AssignmentStatement.java" />
       </list>
     </option>
@@ -480,66 +451,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="error" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ACompiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ACompiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="linkinpark213" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="error" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="syntactical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ACompiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ACompiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="linkinpark213" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="error" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="semantic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -852,10 +763,6 @@
               <option name="myItemId" value="analyzer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lexical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -867,27 +774,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="linkinpark213" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analyzer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lexical" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tokens" />
+              <option name="myItemId" value="sample" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -914,6 +801,9 @@
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ooo\Documents\Labs\Compilers\ACompiler\ACompiler\sample" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1401,14 +1291,7 @@
       <workItem from="1500297268255" duration="2016000" />
       <workItem from="1500299324903" duration="4094000" />
       <workItem from="1500341585005" duration="695000" />
-      <workItem from="1500345704654" duration="26521000" />
-    </task>
-    <task id="LOCAL-00008" summary="Lexical analysis finishing">
-      <created>1496494600734</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1496494600734</updated>
+      <workItem from="1500345704654" duration="32374000" />
     </task>
     <task id="LOCAL-00009" summary="deleted .idea directory">
       <created>1496495276309</created>
@@ -1746,11 +1629,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500369543976</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="array assignment">
+      <created>1500373665908</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1500373665908</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226318000" />
+    <option name="totallyTimeSpent" value="232171000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1780,7 +1670,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29295328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17829828" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2002868" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32858273" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24976122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1788,7 +1678,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32383215" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32145685" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1847,7 +1737,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="not a &quot;statement string&quot; anymore, but a &quot;program&quot;!" />
     <MESSAGE value="semantic analysis incoming!" />
     <MESSAGE value="useless parameters deleted in syntactical analysis" />
     <MESSAGE value="symbol list added" />
@@ -1872,7 +1761,8 @@
     <MESSAGE value="fatal bug fix, omg" />
     <MESSAGE value="while-do stupid bug" />
     <MESSAGE value="multi-dimension array definition. assignment unavailable yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="multi-dimension array definition. assignment unavailable yet." />
+    <MESSAGE value="array assignment" />
+    <option name="LAST_COMMIT_MESSAGE" value="array assignment" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1908,29 +1798,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="48" column="101" lean-forward="false" selection-start-line="48" selection-start-column="101" selection-end-line="48" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/error/AnalysisError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="9" lean-forward="false" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/TokenQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" column="48" lean-forward="false" selection-start-line="21" selection-start-column="48" selection-end-line="21" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/QuadQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-264">
@@ -1953,8 +1820,8 @@
           <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#649#650#0" expanded="false" />
+            <element signature="e#696#697#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2001,7 +1868,7 @@
         <state relative-caret-position="390">
           <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2119,14 +1986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpressionAlter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="669">
@@ -2141,14 +2000,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="72" column="21" lean-forward="true" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -2207,24 +2058,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="114" column="28" lean-forward="false" selection-start-line="114" selection-start-column="28" selection-end-line="114" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/SymbolList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <element signature="e#701#709#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariableInitialization.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
@@ -2248,22 +2081,10 @@
         <state relative-caret-position="384">
           <caret line="16" column="102" lean-forward="false" selection-start-line="16" selection-start-column="102" selection-end-line="16" selection-end-column="102" />
           <folding>
-            <element signature="e#207#208#0" expanded="true" />
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#358#359#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IndexList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-            <element signature="e#1144#1145#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="false" />
+            <element signature="e#242#243#0" expanded="false" />
+            <element signature="e#314#315#0" expanded="false" />
+            <element signature="e#358#359#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2299,25 +2120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="58" column="54" lean-forward="true" selection-start-line="58" selection-start-column="54" selection-end-line="58" selection-end-column="54" />
-          <folding>
-            <marker date="1500372334499" expanded="true" signature="5419:5999" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="5458:5961" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="5573:5921" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="5619:5876" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="6194:6310" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="6219:6286" ph="..." />
-            <marker date="1500372334499" expanded="true" signature="6505:6572" ph="..." />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/VN.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -2336,38 +2138,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="68" column="44" lean-forward="false" selection-start-line="68" selection-start-column="44" selection-end-line="68" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/Identifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="90" column="31" lean-forward="false" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2308#2316#0" expanded="true" />
-            <element signature="e#3030#3038#0" expanded="true" />
-            <element signature="e#4088#4089#0" expanded="true" />
-            <element signature="e#4120#4121#0" expanded="true" />
-            <element signature="e#4148#4149#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/array.txt">
+    <entry file="file://$PROJECT_DIR$/sample/array.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
@@ -2375,10 +2146,129 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IndexList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1097#1098#0" expanded="true" />
+            <element signature="e#1144#1145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpressionAlter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="32" column="53" lean-forward="true" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+          <folding>
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/main.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="67" column="101" lean-forward="false" selection-start-line="67" selection-start-column="101" selection-end-line="67" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/error/lexical/InvalidSymbolError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/Identifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="18" column="44" lean-forward="true" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/error/lexical/NoCodeError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+          <folding>
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="127" column="33" lean-forward="true" selection-start-line="127" selection-start-column="33" selection-end-line="127" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2832">
+          <caret line="136" column="17" lean-forward="true" selection-start-line="136" selection-start-column="17" selection-end-line="136" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="69" column="53" lean-forward="true" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2308#2316#0" expanded="true" />
+            <element signature="e#3030#3038#0" expanded="true" />
+            <element signature="e#4059#4060#0" expanded="true" />
+            <element signature="e#4088#4089#0" expanded="true" />
+            <element signature="e#4120#4121#0" expanded="true" />
+            <element signature="e#4148#4149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/SymbolList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#701#709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/AssignmentStatement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="71" column="16" lean-forward="true" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
+        <state relative-caret-position="336">
+          <caret line="34" column="55" lean-forward="true" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
           <folding />
         </state>
       </provider>

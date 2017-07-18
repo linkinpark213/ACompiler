@@ -15,92 +15,108 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" prefHeight="576.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkinpark213.gui.Controller">
+<AnchorPane fx:id="mainPane" prefHeight="576.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.linkinpark213.gui.Controller">
     <children>
-        <VBox alignment="CENTER" layoutX="38.0" layoutY="28.0" prefHeight="602.0" prefWidth="667.0">
+        <VBox alignment="CENTER" layoutX="38.0" layoutY="28.0" prefHeight="602.0" prefWidth="665.0">
             <children>
                 <HBox alignment="CENTER" prefHeight="60.0" prefWidth="583.0">
                     <children>
                         <TextField fx:id="fileDirectoryTextField" prefHeight="60.0" prefWidth="530.0">
                             <font>
-                                <Font size="20" />
+                                <Font size="20"/>
                             </font>
                         </TextField>
-                        <Button fx:id="fileChooserButton" mnemonicParsing="false" onAction="#handleFileChooserButtonClicked" prefHeight="60.0" prefWidth="138.0" text="Browse">
+                        <Button fx:id="fileChooserButton" mnemonicParsing="false"
+                                onAction="#handleFileChooserButtonClicked" prefHeight="60.0" prefWidth="138.0"
+                                text="Browse">
                             <font>
-                                <Font size="20" />
+                                <Font size="20"/>
                             </font>
                         </Button>
                     </children>
                 </HBox>
-                <SplitPane dividerPositions="0.704647676161919" prefHeight="384.0" prefWidth="669.0">
-                    <items>
-                        <AnchorPane>
-                            <children>
-                                <TabPane prefHeight="382.0" prefWidth="465.0" tabClosingPolicy="UNAVAILABLE">
-                                    <tabs>
-                                        <Tab text="Code">
-                                            <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                                <TextArea fx:id="codeTextArea" maxHeight="350" maxWidth="465" prefHeight="308.0" prefWidth="465.0">
-                                                    <font>
-                                                        <Font name="Consolas" size="16.0" />
-                                                    </font>
-                                                </TextArea>
-                                            </content>
-                                        </Tab>
-                                        <Tab text="Syntax Tree">
-                                            <content>
-                                                <AnchorPane>
-                                                    <children>
-                                                        <TreeView fx:id="syntaxTree" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="465.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                            </content>
-                                        </Tab>
-                                        <Tab text="Quad List">
-                                            <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                    <children>
-                                                        <TableView fx:id="quadList" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="470.0">
-                                                            <columns>
-                                                                <TableColumn fx:id="addressColumn" editable="false" prefWidth="100" sortable="false" text="Address" />
-                                                                <TableColumn fx:id="operatorColumn" editable="false" prefWidth="100" sortable="false" text="Operator" />
-                                                                <TableColumn fx:id="variableAColumn" editable="false" prefWidth="80" sortable="false" text="A" />
-                                                                <TableColumn fx:id="variableBColumn" editable="false" prefWidth="80" sortable="false" text="B" />
-                                                                <TableColumn fx:id="resultColumn" editable="false" prefWidth="100" sortable="false" text="Result" />
-                                                            </columns>
-                                                        </TableView>
-                                                    </children>
-                                                </AnchorPane>
-                                            </content>
-                                        </Tab>
-                                    </tabs>
-                                </TabPane>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="382.0" prefWidth="263.0">
-                            <children>
-                                <TableView fx:id="symbolList" layoutY="-1.0" prefHeight="384.0" prefWidth="194.0">
-                                    <columns>
-                                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
-                                        <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
-                                    </columns>
-                                </TableView>
-                            </children>
-                        </AnchorPane>
-                    </items>
-                </SplitPane>
-              <Button mnemonicParsing="false" onAction="#handleCompileButtonClicked" prefHeight="60.0" prefWidth="667.0" text="Compile">
-                  <font>
-                      <Font size="20" />
-                  </font>
-              </Button>
-            <TextArea fx:id="statusText" editable="false" prefHeight="100.0" prefWidth="667.0" text="Awaiting Compilation" />
+                <HBox prefHeight="384.0" prefWidth="665.0">
+                    <AnchorPane>
+                        <children>
+                            <TabPane prefHeight="385.0" prefWidth="465.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                    <Tab text="Code">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0"
+                                                        prefWidth="200.0"/>
+                                            <TextArea fx:id="codeTextArea"
+                                                      prefHeight="383.0" prefWidth="465.0">
+                                                <font>
+                                                    <Font name="Consolas" size="16.0"/>
+                                                </font>
+                                            </TextArea>
+                                        </content>
+                                    </Tab>
+                                    <Tab text="Syntax Tree">
+                                        <content>
+                                            <AnchorPane>
+                                                <children>
+                                                    <TreeView fx:id="syntaxTree" layoutX="0.0" layoutY="0.0"
+                                                              prefHeight="362.0" prefWidth="465.0"/>
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                    <Tab text="Quad List">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0"
+                                                        prefWidth="200.0">
+                                                <children>
+                                                    <TableView fx:id="quadList" layoutX="0.0" layoutY="0.0"
+                                                               prefHeight="384.0" prefWidth="465.0">
+                                                        <columns>
+                                                            <TableColumn fx:id="addressColumn" editable="false"
+                                                                         prefWidth="100" sortable="false"
+                                                                         text="Address"/>
+                                                            <TableColumn fx:id="operatorColumn" editable="false"
+                                                                         prefWidth="100" sortable="false"
+                                                                         text="Operator"/>
+                                                            <TableColumn fx:id="variableAColumn" editable="false"
+                                                                         prefWidth="82" sortable="false" text="A"/>
+                                                            <TableColumn fx:id="variableBColumn" editable="false"
+                                                                         prefWidth="82" sortable="false" text="B"/>
+                                                            <TableColumn fx:id="resultColumn" editable="false"
+                                                                         prefWidth="100" sortable="false"
+                                                                         text="Result"/>
+                                                        </columns>
+                                                    </TableView>
+                                                </children>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                </tabs>
+                            </TabPane>
+                        </children>
+                    </AnchorPane>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="268.0">
+                        <children>
+                            <TableView fx:id="symbolList" prefHeight="385.0" prefWidth="200.0">
+                                <columns>
+                                    <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name"/>
+                                    <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </AnchorPane>
+                </HBox>
+                <Button mnemonicParsing="false" onAction="#handleCompileButtonClicked" prefHeight="60.0"
+                        prefWidth="667.0" text="Compile">
+                    <font>
+                        <Font size="20"/>
+                    </font>
+                </Button>
+                <TextArea fx:id="statusText" editable="false" prefHeight="100.0" prefWidth="667.0"
+                          text="Awaiting Compilation"/>
             </children>
         </VBox>
     </children>
-   <padding>
-      <Insets left="25.0" right="25.0" top="25.0" />
-   </padding>
+    <padding>
+        <Insets left="25.0" right="25.0" top="25.0"/>
+    </padding>
 </AnchorPane>

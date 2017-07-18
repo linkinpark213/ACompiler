@@ -65,7 +65,7 @@ public class Controller {
     public void handleFileChooserButtonClicked(ActionEvent actionEvent) {
         Stage primaryStage = (Stage) mainPane.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("C:\\Users\\ooo\\Documents\\Labs\\Compilers\\ACompiler\\ACompiler"));
+        fileChooser.setInitialDirectory(new File("C:\\Users\\ooo\\Documents\\Labs\\Compilers\\ACompiler\\ACompiler\\sample"));
         fileChooser.setTitle("Choose the code file");
         fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Text File", "txt"));
         File codeFile = fileChooser.showOpenDialog(primaryStage);
@@ -124,7 +124,6 @@ public class Controller {
         } catch (AnalysisError e) {
             log(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             clearLog();
             log("Invalid code.");
         }
