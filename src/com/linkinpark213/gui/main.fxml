@@ -64,11 +64,11 @@
                                                     <children>
                                                         <TableView fx:id="quadList" layoutX="0.0" layoutY="0.0" prefHeight="350.0" prefWidth="470.0">
                                                             <columns>
-                                                                <TableColumn fx:id="addressColumn" prefWidth="100" text="Address" />
-                                                                <TableColumn fx:id="operatorColumn" prefWidth="100" text="Operator" />
-                                                                <TableColumn fx:id="variableAColumn" prefWidth="80" text="A" />
-                                                                <TableColumn fx:id="variableBColumn" prefWidth="80" text="B" />
-                                                                <TableColumn fx:id="resultColumn" prefWidth="100" text="Result" />
+                                                                <TableColumn fx:id="addressColumn" editable="false" prefWidth="100" sortable="false" text="Address" />
+                                                                <TableColumn fx:id="operatorColumn" editable="false" prefWidth="100" sortable="false" text="Operator" />
+                                                                <TableColumn fx:id="variableAColumn" editable="false" prefWidth="80" sortable="false" text="A" />
+                                                                <TableColumn fx:id="variableBColumn" editable="false" prefWidth="80" sortable="false" text="B" />
+                                                                <TableColumn fx:id="resultColumn" editable="false" prefWidth="100" sortable="false" text="Result" />
                                                             </columns>
                                                         </TableView>
                                                     </children>

@@ -59,15 +59,20 @@ public class AssignmentStatement extends VN {
     @Override
     public void semanticAction(QuadQueue quadQueue) {
         super.semanticAction(quadQueue);
-        if(children.get(0) instanceof Identifier) {
+        Expression expression = (Expression) children.get(2);
+        if (children.get(0) instanceof Identifier) {
             Identifier identifier = (Identifier) children.get(0);
-            Expression expression = (Expression) children.get(2);
             Quad quad = new Quad();
             quad.setOperator(":=");
             quad.setVariableA(expression.getVariableName());
             quad.setVariableB("_");
             quad.setResult(identifier.getName());
             this.variableName = identifier.getName();
+            quadQueue.add(quad);
+        } else {
+            ArrayVariable arrayVariable = (ArrayVariable) children.get(0);
+            Quad quad = new Quad("[]=", expression.getVariableName(), "_",
+                    arrayVariable.getPlace() + "[" + arrayVariable.getOffset() + "]");
             quadQueue.add(quad);
         }
     }

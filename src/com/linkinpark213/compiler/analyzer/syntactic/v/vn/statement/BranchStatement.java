@@ -66,6 +66,7 @@ public class BranchStatement extends VN {
         symbolList.openScope();
         boolean finished = super.analyze(tokenQueue, symbolList);
         symbolList.closeScope();
+        if (!finished) rollBack(tokenQueue, symbolList);
         return finished;
     }
 

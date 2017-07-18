@@ -60,7 +60,6 @@ public class ArithmeticExpression extends VN {
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
         if (super.analyze(tokenQueue, symbolList)) {
-            printExpression();
             return true;
         }
         return false;

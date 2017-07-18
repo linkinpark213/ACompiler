@@ -55,7 +55,6 @@ public class VN implements V, Cloneable {
                     if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
                     if (vn.analyze(tokenQueue, symbolList)) {
                         this.addChild(vn.getClone());
-                        System.out.println("Adding child " + vn.getVariableName());
                     } else break;
                 } else {
                     //  Move in if it's an expected Vt
