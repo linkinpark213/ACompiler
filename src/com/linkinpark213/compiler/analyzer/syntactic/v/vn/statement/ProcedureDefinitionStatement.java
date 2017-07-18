@@ -1,11 +1,9 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
-import com.linkinpark213.compiler.analyzer.semantic.Quad;
-import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
-import com.linkinpark213.compiler.analyzer.semantic.Symbol;
-import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.semantic.*;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vn.ParameterDefinitionString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
@@ -25,12 +23,13 @@ public class ProcedureDefinitionStatement extends VN {
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
-        * <Procedure Definition Statement> ::= <Typedef Keyword> <Identifier> () { <Statement String> }
+        * <Procedure Definition Statement> ::= <Typedef Keyword> <Identifier> ( <Parameter Definition String> ) { <Statement String> }
         * */
         ArrayList<V> production = new ArrayList<V>();
         production.add(new Keyword("function"));
         production.add(new Identifier());
         production.add(new Separator("("));
+        production.add(new ParameterDefinitionString());
         production.add(new Separator(")"));
         production.add(new Separator("{"));
         production.add(new StatementString());
@@ -41,7 +40,9 @@ public class ProcedureDefinitionStatement extends VN {
         symbolList.closeScope();
         if (finished) {
             Identifier identifier = (Identifier) children.get(1);
-            symbolList.enterFunction(new Symbol(identifier.getName(), "function"));
+            ParameterDefinitionString parameterDefinitionString = (ParameterDefinitionString) children.get(3);
+            symbolList.enterFunction(new Symbol(identifier.getName(), "function"),
+                    parameterDefinitionString.getParameterTypes());
         }
         return finished;
     }
@@ -56,13 +57,14 @@ public class ProcedureDefinitionStatement extends VN {
 
     @Override
     public void semanticAction(QuadQueue quadQueue) {
-//        super.semanticAction(quadQueue);
-        StatementString statementString = (StatementString) productions.get(0).get(5);
+        super.semanticAction(quadQueue);
+        StatementString statementString = (StatementString) productions.get(0).get(6);
         Quad jumpAcrossQuad = new Quad("j", "_", "_", "0");
         quadQueue.add(jumpAcrossQuad);
         address = jumpAcrossQuad.getAddress() + 1;
         statementString.semanticAction(quadQueue);
         jumpAcrossQuad.setResult("" + quadQueue.nxq());
-
+        Quad returnQuad = new Quad("ret", "_", "_", "_");
+        quadQueue.add(returnQuad);
     }
 }

@@ -1,4 +1,4 @@
-function a(){
+function a(int param1, float param2){
 int d;
 d := 9;
 if(d > 3) then {

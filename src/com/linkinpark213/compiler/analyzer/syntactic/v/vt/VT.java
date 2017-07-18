@@ -11,10 +11,10 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/3 0003.
  */
 public abstract class VT implements V, Cloneable {
-    public static final int CONSTANT_INT = 100;
-    public static final int CONSTANT_FLOAT = 101;
-    public static final int CONSTANT_CHAR = 102;
-    public static final int CONSTANT_BOOL = 103;
+    public static final int CONSTANT_INT = 102;
+    public static final int CONSTANT_FLOAT = 103;
+    public static final int CONSTANT_CHAR = 101;
+    public static final int CONSTANT_BOOL = 100;
     public static final int IDENTIFIER = 104;
     public static final int KEYWORD = 105;
     public static final int OPERATOR_ARITHMETIC = 106;

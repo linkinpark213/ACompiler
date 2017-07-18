@@ -9,12 +9,12 @@ import java.util.function.BiConsumer;
  */
 public class SymbolList {
     private HashMap<String, Symbol> symbolHashMap;
-    private HashMap<String, Symbol> functionHashMap;
+    private HashMap<String, Function> functionHashMap;
     private int currentScope;
 
     public SymbolList() {
         symbolHashMap = new HashMap<String, Symbol>();
-        functionHashMap = new HashMap<String, Symbol>();
+        functionHashMap = new HashMap<String, Function>();
         currentScope = 0;
     }
 
@@ -45,10 +45,10 @@ public class SymbolList {
         return true;
     }
 
-    public boolean enterFunction(Symbol symbol) {
+    public boolean enterFunction(Symbol symbol, int[] parameterTypes) {
         if (this.retrieveFunction(symbol.getName()) != null)
             return false;
-        functionHashMap.put(symbol.getName(), symbol);
+        functionHashMap.put(symbol.getName(), new Function(symbol, parameterTypes));
         return true;
     }
 
@@ -56,7 +56,7 @@ public class SymbolList {
         return symbolHashMap;
     }
 
-    public HashMap<String, Symbol> getFunctionHashMap() {
+    public HashMap<String, Function> getFunctionHashMap() {
         return functionHashMap;
     }
 
@@ -65,7 +65,11 @@ public class SymbolList {
     }
 
     public Symbol retrieveFunction(String name) {
-        return functionHashMap.get(name);
+        try {
+            return functionHashMap.get(name).getSymbol();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     public void deleteSymbol(String name) {

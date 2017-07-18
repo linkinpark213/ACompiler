@@ -124,6 +124,7 @@ public class Controller {
         } catch (AnalysisError e) {
             log(e.getMessage());
         } catch (Exception e) {
+            e.printStackTrace();
             clearLog();
             log("Invalid code.");
         }
@@ -168,10 +169,10 @@ public class Controller {
                 symbols.add(symbol);
             }
         });
-        symbolList.getFunctionHashMap().forEach(new BiConsumer<String, Symbol>() {
+        symbolList.getFunctionHashMap().forEach(new BiConsumer<String, Function>() {
             @Override
-            public void accept(String s, Symbol symbol) {
-                symbols.add(symbol);
+            public void accept(String s, Function function) {
+                symbols.add(function.getSymbol());
             }
         });
     }
