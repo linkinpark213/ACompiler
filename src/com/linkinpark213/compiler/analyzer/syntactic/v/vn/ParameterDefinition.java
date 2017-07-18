@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.Symbol;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
@@ -31,15 +32,6 @@ public class ParameterDefinition extends VN {
 
     public int getParameterType() {
         Keyword keyword = (Keyword) children.get(0);
-        if (keyword.equals("int")) {
-            return Constant.TYPE_INT;
-        } else if (keyword.equals("float")) {
-            return Constant.TYPE_FLOAT;
-        } else if (keyword.equals("bool")) {
-            return Constant.TYPE_BOOL;
-        } else if (keyword.equals("char")) {
-            return Constant.CONSTANT_CHAR;
-        }
-        return 0;
+        return Symbol.typeStringToCode(keyword.toString());
     }
 }

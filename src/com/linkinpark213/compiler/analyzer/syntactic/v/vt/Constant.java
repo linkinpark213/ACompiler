@@ -33,6 +33,7 @@ public class Constant extends VT {
                     return true;
                 } else return false;
             else {
+                this.type = token.getType();
                 this.constant = (com.linkinpark213.compiler.analyzer.lexical.tokens.Constant) token;
                 return true;
             }
@@ -43,6 +44,20 @@ public class Constant extends VT {
 
     public float getValue() {
         return constant.getValue();
+    }
+
+    public String getFormattedValue() {
+        switch (type) {
+            case TYPE_INT:
+                return "" + ((int) getValue());
+            case TYPE_BOOL:
+                return getValue() == 0 ? "FALSE" : "TRUE";
+            case TYPE_CHAR:
+                return "" + (char) ((int) getValue());
+            case TYPE_FLOAT:
+            default:
+                return "" + constant.getValue();
+        }
     }
 
     public int getType() {

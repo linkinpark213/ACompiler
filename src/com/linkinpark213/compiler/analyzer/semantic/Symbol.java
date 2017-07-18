@@ -24,18 +24,7 @@ public class Symbol {
     }
 
     public Symbol(String name, String type) {
-        int typeInt = 0;
-        if (type.equals("int")) {
-            typeInt = TYPE_INT;
-        } else if (type.equals("bool")) {
-            typeInt = TYPE_BOOL;
-        } else if (type.equals("float")) {
-            typeInt = TYPE_FLOAT;
-        } else if (type.equals("char")) {
-            typeInt = TYPE_CHAR;
-        } else if (type.equals("function")) {
-            typeInt = TYPE_FUNCTION;
-        }
+        int typeInt = typeStringToCode(type);
         this.name = name;
         this.type = typeInt;
     }
@@ -86,28 +75,42 @@ public class Symbol {
     }
 
     public String getTypeString() {
-        typeString = "";
-        switch (type) {
-            case TYPE_INT:
-                typeString = "Integer";
-                break;
-            case TYPE_FLOAT:
-                typeString = "Real";
-                break;
-            case TYPE_CHAR:
-                typeString = "Character";
-                break;
-            case TYPE_BOOL:
-                typeString = "Boolean";
-                break;
-            case TYPE_FUNCTION:
-                typeString = "Function";
-                break;
-        }
+        typeString = typeCodeToString(type);
         if (this.isArray()) {
             return "Array(" + typeString + ")";
         }
         return typeString;
     }
 
+    public static String typeCodeToString(int typeCode) {
+        switch (typeCode) {
+            case TYPE_INT:
+                return "Integer";
+            case TYPE_FLOAT:
+                return "Real";
+            case TYPE_CHAR:
+                return "Character";
+            case TYPE_BOOL:
+                return "Boolean";
+            case TYPE_FUNCTION:
+                return "Function";
+            default:
+                return "Undefined";
+        }
+    }
+
+    public static int typeStringToCode(String typeString) {
+        if (typeString.equals("int")) {
+            return TYPE_INT;
+        } else if (typeString.equals("bool")) {
+            return TYPE_BOOL;
+        } else if (typeString.equals("char")) {
+            return TYPE_CHAR;
+        } else if (typeString.equals("float")) {
+            return TYPE_FLOAT;
+        } else if (typeString.equals("function")) {
+            return TYPE_FUNCTION;
+        }
+        return 0;
+    }
 }

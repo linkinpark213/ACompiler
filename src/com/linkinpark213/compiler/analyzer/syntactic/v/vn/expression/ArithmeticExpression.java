@@ -171,22 +171,7 @@ public class ArithmeticExpression extends VN {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
                     quad = new Quad();
                     quad.setOperator(operator.toString());
-                    float value = constant.getValue();
-                    String valueString = "";
-                    switch (constant.getType()) {
-                        case TYPE_BOOL:
-                            valueString = constant.getValue() == 0 ? "false" : "true";
-                            break;
-                        case TYPE_CHAR:
-                            valueString = "" + (char) constant.getValue();
-                            break;
-                        case TYPE_INT:
-                            valueString = "" + (int) constant.getValue();
-                            break;
-                        case TYPE_FLOAT:
-                            valueString = "" + constant.getValue();
-                            break;
-                    }
+                    String valueString = constant.getFormattedValue();
                     quad.setVariableA(valueString);
                     quad.setVariableB(arithmeticExpressionAlter.getVariableName());
                     this.setTempID(quadQueue.newTemp());
@@ -194,7 +179,7 @@ public class ArithmeticExpression extends VN {
                     quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
                 } else {
-                    this.variableName = "" + constant.getValue();
+                    this.variableName = "" + constant.getFormattedValue();
                 }
                 break;
         }

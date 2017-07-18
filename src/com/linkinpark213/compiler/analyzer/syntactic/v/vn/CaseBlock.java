@@ -42,7 +42,7 @@ public class CaseBlock extends VN {
 
         trueQuad.setOperator("je");
         trueQuad.setVariableA(identifier.getName());
-        trueQuad.setVariableB("" + constant.getValue());
+        trueQuad.setVariableB("" + constant.getFormattedValue());
         trueQuad.setResult("0");
         quadQueue.add(trueQuad);
 
