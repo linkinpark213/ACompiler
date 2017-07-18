@@ -7,7 +7,7 @@ public class Separator implements Token {
     private char symbol;
     private int row;
     private int column;
-    private static final char[] separators = {'{', '}', '(', ')', ';', ':', ','};
+    private static final char[] separators = {'[', ']', '{', '}', '(', ')', ';', ':', ','};
     public static final int TYPE_SEPARATOR = 110;
 
     public Separator(char symbol) {

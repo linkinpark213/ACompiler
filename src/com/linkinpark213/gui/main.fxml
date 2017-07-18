@@ -83,8 +83,8 @@
                             <children>
                                 <TableView fx:id="symbolList" layoutY="-1.0" prefHeight="384.0" prefWidth="194.0">
                                     <columns>
-                                        <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
-                                        <TableColumn fx:id="typeColumn" prefWidth="75.0" text="Type" />
+                                        <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
+                                        <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
                                     </columns>
                                 </TableView>
                             </children>

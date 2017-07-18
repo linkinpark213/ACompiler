@@ -8,6 +8,8 @@ public class Symbol {
     private int type;
     private String typeString;
     private int scope;
+    private boolean isArray;
+    private int[] dimensions;
     public static final int TYPE_INT = 102;
     public static final int TYPE_FLOAT = 103;
     public static final int TYPE_CHAR = 101;
@@ -17,6 +19,8 @@ public class Symbol {
     public Symbol(String name, int type) {
         this.name = name;
         this.type = type;
+        this.isArray = false;
+        this.dimensions = null;
     }
 
     public Symbol(String name, String type) {
@@ -29,7 +33,7 @@ public class Symbol {
             typeInt = TYPE_FLOAT;
         } else if (type.equals("char")) {
             typeInt = TYPE_CHAR;
-        } else if(type.equals("function")) {
+        } else if (type.equals("function")) {
             typeInt = TYPE_FUNCTION;
         }
         this.name = name;
@@ -64,6 +68,23 @@ public class Symbol {
         this.typeString = typeString;
     }
 
+    public boolean isArray() {
+        return isArray;
+    }
+
+    public void setArray(boolean array) {
+        isArray = array;
+    }
+
+    public int[] getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(int[] dimensions) {
+        this.setArray(true);
+        this.dimensions = dimensions;
+    }
+
     public String getTypeString() {
         typeString = "";
         switch (type) {
@@ -82,6 +103,9 @@ public class Symbol {
             case TYPE_FUNCTION:
                 typeString = "Function";
                 break;
+        }
+        if (this.isArray()) {
+            return "Array(" + typeString + ")";
         }
         return typeString;
     }

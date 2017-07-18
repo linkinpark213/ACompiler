@@ -6,6 +6,7 @@ import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vn.ArrayVariable;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
@@ -24,19 +25,27 @@ public class AssignmentStatement extends VN {
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Assignment Statement> ::= <Identifier> := <Any Expression>
+        *                           | <Array Variable> := <Any Expression>
         * */
-        ArrayList<V> production = new ArrayList<V>();
-        Identifier identifier = new Identifier();
-        AssignmentOperator assignmentOperator = new AssignmentOperator();
-        Expression expression = new Expression();
-        production.add(identifier);
-        production.add(assignmentOperator);
-        production.add(expression);
+        ArrayList<V> simpleVariableProduction = new ArrayList<V>();
+        ArrayList<V> arrayVariableProduction = new ArrayList<V>();
 
-        productions.add(production);
+        simpleVariableProduction.add(new Identifier());
+        simpleVariableProduction.add(new AssignmentOperator());
+        simpleVariableProduction.add(new Expression());
+
+        arrayVariableProduction.add(new ArrayVariable());
+        arrayVariableProduction.add(new AssignmentOperator());
+        arrayVariableProduction.add(new Expression());
+
+        productions.add(simpleVariableProduction);
+        productions.add(arrayVariableProduction);
 
         if (super.analyze(tokenQueue, symbolList)) {
-            Identifier targetIdentifier = (Identifier) children.get(0);
+            Identifier targetIdentifier;
+            if (children.get(0) instanceof Identifier)
+                targetIdentifier = (Identifier) children.get(0);
+            else targetIdentifier = (Identifier) ((ArrayVariable) children.get(0)).getChildren().get(0);
             if (symbolList.retrieveSymbol(targetIdentifier.getName()) == null) {
                 throw new IdentifierNotDefinedError(targetIdentifier.getToken().getRow(),
                         targetIdentifier.getToken().getColumn(),
@@ -50,14 +59,16 @@ public class AssignmentStatement extends VN {
     @Override
     public void semanticAction(QuadQueue quadQueue) {
         super.semanticAction(quadQueue);
-        Identifier identifier = (Identifier) children.get(0);
-        Expression expression = (Expression) children.get(2);
-        Quad quad = new Quad();
-        quad.setOperator(":=");
-        quad.setVariableA(expression.getVariableName());
-        quad.setVariableB("_");
-        quad.setResult(identifier.getName());
-        this.variableName = identifier.getName();
-        quadQueue.add(quad);
+        if(children.get(0) instanceof Identifier) {
+            Identifier identifier = (Identifier) children.get(0);
+            Expression expression = (Expression) children.get(2);
+            Quad quad = new Quad();
+            quad.setOperator(":=");
+            quad.setVariableA(expression.getVariableName());
+            quad.setVariableB("_");
+            quad.setResult(identifier.getName());
+            this.variableName = identifier.getName();
+            quadQueue.add(quad);
+        }
     }
 }

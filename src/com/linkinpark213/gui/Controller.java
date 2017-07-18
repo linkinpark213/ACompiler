@@ -98,7 +98,7 @@ public class Controller {
 
 
             //  Syntactic Analysis
-            log("Syntax analyzing...");
+            log("Syntax Analyzing...");
             SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
             SymbolList symbolList = new SymbolList();
             Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
@@ -112,14 +112,15 @@ public class Controller {
             printSymbolList(symbolList);
 
             //  Semantic Analysis
-            log("Semantics analyzing...");
+            log("Semantics Analyzing...");
             SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
             semanticAnalyzer.analyze(program, quadQueue);
 
             compilerCore.printSemanticAnalysisResult(quadQueue.getQuadList());
             printQuadList(quadQueue);
 
-            log("Compilation finished. View the syntax tree and quad list in other tabs.");
+            log("Compilation Finished.");
+            log("Syntax Tree and Quad List Generated.");
         } catch (AnalysisError e) {
             log(e.getMessage());
         } catch (Exception e) {

@@ -1,0 +1,8 @@
+function a(){
+int d;
+d := 9;
+if(d > 3) then {
+d := 3
+}
+};
+call a(3, 5);
