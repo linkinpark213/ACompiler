@@ -61,6 +61,7 @@ public class LoopStatement extends VN {
         Quad returnQuad = new Quad();
         switch (productionNum) {
             case 0:
+//                while-do
                 expression = (Expression) children.get(2);
                 statementString = (StatementString) children.get(6);
                 expression.semanticAction(quadQueue);
@@ -84,6 +85,7 @@ public class LoopStatement extends VN {
                 returnQuad.setVariableA("_");
                 returnQuad.setVariableB("_");
                 returnQuad.setResult("" + checkQuad.getAddress());
+                quadQueue.add(returnQuad);
                 falseQuad.setResult("" + quadQueue.nxq());
                 break;
             case 1:
