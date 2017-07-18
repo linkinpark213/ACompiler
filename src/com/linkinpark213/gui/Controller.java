@@ -102,7 +102,6 @@ public class Controller {
             SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
             SymbolList symbolList = new SymbolList();
             Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
-            compilerCore.printSyntacticalAnalysisResult(program);
 
             TreeItem<String> treeRoot = new TreeItem<String>("Program");
             syntaxTree.setRoot(treeRoot);

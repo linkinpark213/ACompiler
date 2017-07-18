@@ -45,20 +45,22 @@ public class VN implements V, Cloneable {
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         for (int i = 0; i < productions.size(); i++) {
             ArrayList<V> production = productions.get(i);
-            if (production.size() == 0) return true;
+            if (production.size() == 0)
+                return true;
             for (int j = 0; j < production.size(); j++) {
                 V v = production.get(j);
                 if (v instanceof VN) {
-                    //  Descend if it's a Vn
+//                      Descend if it's a Vn
                     VN vn = (VN) v;
                     if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
                     if (vn.analyze(tokenQueue, symbolList)) {
                         this.addChild(vn.getClone());
+                        System.out.println("Adding child " + vn.getVariableName());
                     } else break;
                 } else {
                     //  Move in if it's an expected Vt
                     VT vt = (VT) v;
-                    if (tokenQueue.size() < tokenQueue.getTotalTokenCount() - tokenQueue.getFarthestTokenNum()) {
+                    if (tokenQueue.size() <= tokenQueue.getTotalTokenCount() - tokenQueue.getFarthestTokenNum()) {
                         tokenQueue.setFarthestTokenNum(tokenQueue.getTotalTokenCount() - tokenQueue.size());
                         tokenQueue.setFarthestExpectation(vt.toExactString());
                     }

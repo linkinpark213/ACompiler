@@ -10,6 +10,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.ArithmeticOperator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
@@ -58,7 +59,23 @@ public class ArithmeticExpression extends VN {
         productions.add(crementProduction);
         productions.add(singleIdentifierProduction);
         productions.add(constantProduction);
-        return super.analyze(tokenQueue, symbolList);
+        if (super.analyze(tokenQueue, symbolList)) {
+            printExpression();
+            return true;
+        }
+        return false;
+    }
+
+    public void printExpression() {
+        System.out.print("Arithmetic Expression ");
+        for (V v : children) {
+            if (v instanceof ArithmeticExpressionAlter) {
+                ((ArithmeticExpressionAlter) v).printExpression();
+            } else {
+                System.out.print(((VT) v).toString());
+            }
+        }
+        System.out.println(" get!");
     }
 
     public float getResult() {

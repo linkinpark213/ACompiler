@@ -14,13 +14,17 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/17 0017.
  */
 public class ArgumentListAlter extends VN {
+    public ArgumentListAlter() {
+        super();
+        this.nullable = true;
+    }
+
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Argument List Alter> ::= , <Expression>
         *                           | nothing
         * */
-        this.nullable = true;
         ArrayList<V> moreExpressionProduction = new ArrayList<V>();
         ArrayList<V> noMoreProduction = new ArrayList<V>();
         moreExpressionProduction.add(new Separator(","));

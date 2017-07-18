@@ -1,5 +1,8 @@
 package com.linkinpark213.compiler.analyzer.lexical.tokens;
 
+import com.linkinpark213.compiler.error.lexical.InvalidOperatorError;
+import com.linkinpark213.compiler.error.lexical.LexicalError;
+
 import java.util.ArrayList;
 
 /**
@@ -77,15 +80,14 @@ public class Operator implements Token {
         return "Operator (" + typeString + "): " + symbol;
     }
 
-    public Operator(String symbol) {
+    public Operator(String symbol) throws InvalidOperatorError {
         this.symbol = symbol;
         if (arithmeticOperators.contains(symbol)) type = TYPE_ARITHMETIC;
         else if (relationOperators.contains(symbol)) type = TYPE_RELATION;
         else if (boolOperators.contains(symbol)) type = TYPE_BOOL;
         else if (symbol.equals(":=")) type = TYPE_ASSIGNMENT;
         else {
-            System.out.println("Compiler Error: Invalid operator type.");
-            System.exit(0);
+            throw new InvalidOperatorError("Invalid Operator '" + symbol + "'");
         }
     }
 

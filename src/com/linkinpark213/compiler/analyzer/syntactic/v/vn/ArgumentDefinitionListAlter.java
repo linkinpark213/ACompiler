@@ -9,6 +9,11 @@ import com.linkinpark213.compiler.error.semantic.SemanticError;
  * Created by ooo on 2017/7/17 0017.
  */
 public class ArgumentDefinitionListAlter extends VN {
+    public ArgumentDefinitionListAlter() {
+        super();
+        this.nullable = true;
+    }
+
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         return super.analyze(tokenQueue, symbolList);

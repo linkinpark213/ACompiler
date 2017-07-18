@@ -11,6 +11,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.BooleanOperator;
+import com.linkinpark213.compiler.error.semantic.IdentifierNotDefinedError;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
@@ -60,7 +61,25 @@ public class BooleanExpression extends VN {
         productions.add(expressionWithNotOperatorProduction);
         productions.add(constantProduction);
         productions.add(identifierWithDoubleOperatorProduction);
-        return super.analyze(tokenQueue, symbolList);
+        if (super.analyze(tokenQueue, symbolList)) {
+            if (children.get(0) instanceof Identifier) {
+                Identifier identifier = (Identifier) children.get(0);
+                if (symbolList.retrieveSymbol(identifier.getName()) != null)
+                    if (identifier.checkType(symbolList)) {
+                        return true;
+                    } else {
+                        rollBack(tokenQueue, symbolList);
+                        return false;
+                    }
+                else {
+                    throw new IdentifierNotDefinedError(identifier.getToken().getRow(),
+                            identifier.getToken().getColumn(), identifier.getName());
+                }
+            }
+            return true;
+        }
+        rollBack(tokenQueue, symbolList);
+        return false;
     }
 
     @Override

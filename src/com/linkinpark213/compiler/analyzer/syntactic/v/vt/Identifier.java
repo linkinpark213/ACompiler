@@ -32,6 +32,11 @@ public class Identifier extends VT {
         return token instanceof com.linkinpark213.compiler.analyzer.lexical.tokens.Identifier;
     }
 
+    public boolean checkType(SymbolList symbolList) {
+        Symbol symbol = symbolList.retrieveSymbol(getToken().toString());
+        return symbol.getType() == type;
+    }
+
     public String getName() {
         return name;
     }

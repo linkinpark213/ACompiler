@@ -1,8 +1,12 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -21,13 +25,13 @@ public class Expression extends VN {
         return value;
     }
 
-    public Expression() {
+    @Override
+    public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
-        * <Expression> ::= <Boolean Expression>
+        * <Expression> ::=   <Boolean Expression>
         *                   | <Relation Expression>
         *                   | <Arithmetic Expression>
         * */
-        super();
         ArrayList<V> booleanProduction = new ArrayList<V>();
         ArrayList<V> relationProduction = new ArrayList<V>();
         ArrayList<V> arithmeticProduction = new ArrayList<V>();
@@ -37,6 +41,22 @@ public class Expression extends VN {
         productions.add(booleanProduction);
         productions.add(relationProduction);
         productions.add(arithmeticProduction);
+//        return super.analyze(tokenQueue, symbolList);
+        for (int i = 0; i < productions.size(); i++) {
+            V v = productions.get(i).get(0);
+            VN vn = (VN) v;
+            if (tokenQueue.size() == 0 && !((VN) v).isNullable()) break;
+            if (vn.analyze(tokenQueue, symbolList)) {
+                this.addChild(vn.getClone());
+                System.out.println("Adding child " + vn.getVariableName());
+                productionNum = i;
+                return true;
+            } else {
+                rollBack(tokenQueue, symbolList);
+                children.clear();
+            }
+        }
+        return false;
     }
 
     @Override

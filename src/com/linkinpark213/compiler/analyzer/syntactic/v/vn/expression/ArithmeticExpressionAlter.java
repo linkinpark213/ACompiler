@@ -21,15 +21,24 @@ public class ArithmeticExpressionAlter extends VN {
         this.nullable = true;
     }
 
+    public void printExpression() {
+        if (children.size() == 0) return;
+        ArithmeticOperator operator = (ArithmeticOperator) children.get(0);
+        ArithmeticExpression arithmeticExpression = (ArithmeticExpression) children.get(1);
+        System.out.print(operator.toString());
+        System.out.print(" ");
+        arithmeticExpression.printExpression();
+    }
+
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
-        * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Expression> | Null
+        * <Arithmetic Expression Alter> ::= <Arithmetic Operator> <Arithmetic Expression> | Null
         * */
         ArrayList<V> production = new ArrayList<V>();
         ArrayList<V> nullProduction = new ArrayList<V>();
         production.add(new ArithmeticOperator("+", "-", "*"));
-        production.add(new Expression());
+        production.add(new ArithmeticExpression());
         productions.add(production);
         productions.add(nullProduction);
         return super.analyze(tokenQueue, symbolList);
@@ -39,7 +48,7 @@ public class ArithmeticExpressionAlter extends VN {
     public void semanticAction(QuadQueue quadQueue) {
         super.semanticAction(quadQueue);
         if (children.size() > 0) {
-            this.variableName = ((Expression) children.get(1)).getVariableName();
+            this.variableName = ((ArithmeticExpression) children.get(1)).getVariableName();
         }
     }
 }

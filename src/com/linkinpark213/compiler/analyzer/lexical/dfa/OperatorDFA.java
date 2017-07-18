@@ -169,15 +169,22 @@ public class OperatorDFA implements DFA {
             if (finalStates.contains(nextStatePointer)) {
                 statePointer = nextStatePointer;
                 symbolBuilder.append(string.charAt(1));
+                return new Operator(symbolBuilder.toString());
+            } else {
+                if (statePointer.getStateNum() == 6)
+                    return new Separator(':');
+                if(finalStates.contains(statePointer)) {
+                    return new Operator(symbolBuilder.toString());
+                }
+                throw new InvalidOperatorError("Invalid Operator '" + symbolBuilder.toString() + "'");
             }
-            return new Operator(symbolBuilder.toString());
         } else {
             if (finalStates.contains(statePointer)) {
                 return new Operator(symbolBuilder.toString());
             } else {
                 if (statePointer.getStateNum() == 6)
                     return new Separator(':');
-                throw new InvalidOperatorError("Invalid Operator \"" + symbolBuilder.toString() + "\"");
+                throw new InvalidOperatorError("Invalid Operator '" + symbolBuilder.toString() + "'");
             }
         }
     }

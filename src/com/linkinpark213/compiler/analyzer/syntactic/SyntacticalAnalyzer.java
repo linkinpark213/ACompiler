@@ -22,7 +22,7 @@ public class SyntacticalAnalyzer {
                 Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum() + tokenQueue.size() - tokenQueue.getTotalTokenCount());
                 throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
                         + tokenQueue.getFarthestExpectation() +
-                        ", but found " + token.toString());
+                        ", but found '" + token.toString() + "'");
             } catch (IndexOutOfBoundsException e) {
                 Token token = tokenQueue.get(tokenQueue.getFarthestTokenNum() - 1);
                 throw new SyntaxError(token.getRow(), token.getColumn(), "Expected "
