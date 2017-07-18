@@ -46,9 +46,9 @@ public class SymbolList {
     }
 
     public boolean enterFunction(Symbol symbol) {
-        if (this.retrieveFunction(symbol.getName()) != null) {
+        if (this.retrieveFunction(symbol.getName()) != null)
             return false;
-        }
+        functionHashMap.put(symbol.getName(), symbol);
         return true;
     }
 

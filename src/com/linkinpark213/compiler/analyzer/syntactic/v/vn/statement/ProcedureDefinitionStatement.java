@@ -2,6 +2,7 @@ package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.Symbol;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
@@ -38,6 +39,10 @@ public class ProcedureDefinitionStatement extends VN {
         symbolList.openScope();
         boolean finished = super.analyze(tokenQueue, symbolList);
         symbolList.closeScope();
+        if (finished) {
+            Identifier identifier = (Identifier) children.get(1);
+            symbolList.enterFunction(new Symbol(identifier.getName(), "function"));
+        }
         return finished;
     }
 

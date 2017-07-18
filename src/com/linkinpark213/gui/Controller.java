@@ -2,7 +2,6 @@ package com.linkinpark213.gui;
 
 import com.linkinpark213.compiler.CompilerCore;
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.*;
 import com.linkinpark213.compiler.analyzer.syntactic.SyntacticalAnalyzer;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
@@ -22,7 +21,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.function.BiConsumer;
@@ -111,7 +109,8 @@ public class Controller {
             generateSyntaxTree(treeRoot, program);
 
             symbolList.printList();
-            printSymbolList(symbolList.getSymbolHashMap());
+            clearSymbolList();
+            printSymbolList(symbolList);
 
             //  Semantic Analysis
             log("Semantics analyzing...");
@@ -155,12 +154,22 @@ public class Controller {
         quads.addAll(quadQueue.getQuadList());
     }
 
-    public void printSymbolList(HashMap<String, Symbol> symbolHashMap) {
+    public void clearSymbolList() {
+        symbolList.setItems(FXCollections.observableArrayList());
+    }
+
+    public void printSymbolList(SymbolList symbolList) {
         ObservableList<Symbol> symbols = FXCollections.observableArrayList();
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("typeString"));
-        symbolList.setItems(symbols);
-        symbolHashMap.forEach(new BiConsumer<String, Symbol>() {
+        this.symbolList.setItems(symbols);
+        symbolList.getSymbolHashMap().forEach(new BiConsumer<String, Symbol>() {
+            @Override
+            public void accept(String s, Symbol symbol) {
+                symbols.add(symbol);
+            }
+        });
+        symbolList.getFunctionHashMap().forEach(new BiConsumer<String, Symbol>() {
             @Override
             public void accept(String s, Symbol symbol) {
                 symbols.add(symbol);
