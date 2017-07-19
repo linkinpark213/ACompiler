@@ -93,6 +93,7 @@ public class LoopStatement extends VN {
                 expression = (BooleanExpression) children.get(6);
                 int backAddress = quadQueue.nxq();
                 statementString.semanticAction(quadQueue, symbolList);
+                expression.semanticAction(quadQueue, symbolList);
                 checkQuad.setOperator("jnz");
                 checkQuad.setVariableA(expression.getVariableName());
                 checkQuad.setVariableB("_");
