@@ -2,7 +2,11 @@
 ![CoQ](icon/CoQ_small.png)
 
 XJTU-SE Grade 3 Compiler Practice.
+
 -- A fake compiler, implementing a simple language.
+
+'Code to Quads' transformation. No assembly code generation. However, it won't be too much work to transfer the quads to assembly code. 
+
 Language features are as follows:
 
 ## Data types
@@ -16,7 +20,7 @@ Supports basic types including integers(int), real numbers(float), characters(ch
 ### Relation
 <, <=, =, !=, >, >=
 ### Boolean
-&&, ||, ! (Nobody is willing to type ∨, ∧, and ⌐, Okay?)
+&, |, ! (Nobody is willing to type ∨, ∧, and ⌐, Okay?)
 
 ## Statements
 ### Assignment
@@ -26,7 +30,7 @@ Provides support for "if-then", "it-then-else" structure and "switch-case" struc
 ### Loop
 "while-do" and "do-while" structures will be implemented.
 ### Call
-It's not an OOP language, but the basic procedure-calling mechanism is necesary.
+It's not an OOP language, but the basic procedure-calling mechanism is necessary.
 ### Definition
 As long as some procedures are called, they are defined.
 Certainly, variables should also be defined.

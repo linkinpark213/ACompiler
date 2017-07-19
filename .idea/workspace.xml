@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="updated icon and README.md">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/icon/CoQ_small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/icon/CoQ.png" afterPath="$PROJECT_DIR$/icon/CoQ.png" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -66,11 +64,12 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="227" column="40" lean-forward="true" selection-start-line="227" selection-start-column="40" selection-end-line="227" selection-end-column="40" />
+            <state relative-caret-position="2179">
+              <caret line="209" column="64" lean-forward="false" selection-start-line="209" selection-start-column="64" selection-end-line="209" selection-end-column="64" />
               <folding>
                 <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
                 <element signature="method#handleOutputTokenButton#0;class#Controller#0" expanded="false" />
+                <element signature="method#handleOutputSyntaxTreeButton#0;class#Controller#0" expanded="false" />
                 <element signature="method#handleOutputQuadButton#0;class#Controller#0" expanded="false" />
                 <element signature="method#printTokenList#0;class#Controller#0" expanded="false" />
                 <element signature="method#generateSyntaxTree#0;class#Controller#0" expanded="false" />
@@ -86,8 +85,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="288">
-                <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+              <first_editor relative-caret-position="168">
+                <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -875,14 +874,7 @@
       <workItem from="1500345704654" duration="32688000" />
       <workItem from="1500382436127" duration="85000" />
       <workItem from="1500382753633" duration="7578000" />
-      <workItem from="1500429584704" duration="14939000" />
-    </task>
-    <task id="LOCAL-00016" summary="Vt definitions">
-      <created>1499176794598</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1499176794598</updated>
+      <workItem from="1500429584704" duration="15184000" />
     </task>
     <task id="LOCAL-00017" summary="finished Vt definitions">
       <created>1499177898470</created>
@@ -1220,11 +1212,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500444806154</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="updated icon and README.md">
+      <created>1500445647045</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1500445647045</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255087000" />
+    <option name="totallyTimeSpent" value="255332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1254,7 +1253,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18499044" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32803813" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32803813" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24976122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1323,7 +1322,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="if-then-else, if-then, switch-case statements" />
     <MESSAGE value="changed base address to 100" />
     <MESSAGE value="while-do &amp; do-while" />
     <MESSAGE value="uploaded test code that I forgot" />
@@ -1348,7 +1346,8 @@
     <MESSAGE value="nightly. fixed constants' display type issue." />
     <MESSAGE value="procedure call parameter check" />
     <MESSAGE value="improvement on the GUI. u can now output results to files" />
-    <option name="LAST_COMMIT_MESSAGE" value="improvement on the GUI. u can now output results to files" />
+    <MESSAGE value="updated icon and README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated icon and README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1831,13 +1830,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/ACompilerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="227" column="40" lean-forward="true" selection-start-line="227" selection-start-column="40" selection-end-line="227" selection-end-column="40" />
+        <state relative-caret-position="2179">
+          <caret line="209" column="64" lean-forward="false" selection-start-line="209" selection-start-column="64" selection-end-line="209" selection-end-column="64" />
           <folding>
             <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
             <element signature="method#handleOutputTokenButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#handleOutputSyntaxTreeButton#0;class#Controller#0" expanded="false" />
             <element signature="method#handleOutputQuadButton#0;class#Controller#0" expanded="false" />
             <element signature="method#printTokenList#0;class#Controller#0" expanded="false" />
             <element signature="method#generateSyntaxTree#0;class#Controller#0" expanded="false" />
@@ -1848,19 +1856,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/ACompilerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="288">
-            <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <first_editor relative-caret-position="168">
+            <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
             <folding />
           </first_editor>
           <second_editor />
