@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -57,8 +56,8 @@ public class AssignmentStatement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         Expression expression = (Expression) children.get(2);
         if (children.get(0) instanceof Identifier) {
             Identifier identifier = (Identifier) children.get(0);

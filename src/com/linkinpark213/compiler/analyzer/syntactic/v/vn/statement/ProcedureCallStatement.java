@@ -1,8 +1,6 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
-import com.linkinpark213.compiler.analyzer.semantic.Quad;
-import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
-import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
+import com.linkinpark213.compiler.analyzer.semantic.*;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.ArgumentList;
@@ -10,6 +8,8 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Keyword;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
+import com.linkinpark213.compiler.error.semantic.IdentifierNotDefinedError;
+import com.linkinpark213.compiler.error.semantic.ParameterTypeDoesNotMatchError;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
@@ -34,13 +34,25 @@ public class ProcedureCallStatement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        Identifier identifier = (Identifier) productions.get(0).get(1);
-        ArgumentList argumentList = (ArgumentList) productions.get(0).get(3);
-        argumentList.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        Identifier identifier = (Identifier) children.get(1);
+        ArgumentList argumentList = (ArgumentList) children.get(3);
+        argumentList.semanticAction(quadQueue, symbolList);
         ArrayList<String> argumentNameList = new ArrayList<String>();
         argumentList.getArgumentNameList(argumentNameList);
-        for (String argumentName : argumentNameList) {
+        int[] argumentTypeList = argumentList.getArgumentTypeList();
+        Function function = symbolList.retrieveFunction(identifier.getName());
+        if (function == null)
+            throw new IdentifierNotDefinedError(identifier.getToken().getRow(),
+                    identifier.getToken().getColumn(), identifier.getName());
+        int[] expectedTypeList = function.getParameterTypes();
+        for (int i = 0; i < argumentTypeList.length; i++) {
+            String argumentName = argumentNameList.get(i);
+            if (argumentTypeList[i] > expectedTypeList[i]) {
+                throw new ParameterTypeDoesNotMatchError(identifier.getToken().getRow(),
+                        identifier.getToken().getColumn(), Symbol.typeCodeToString(expectedTypeList[i]),
+                        Symbol.typeCodeToString(argumentTypeList[i]));
+            }
             Quad parQuad = new Quad("par", "_", "_", argumentName);
             quadQueue.add(parQuad);
         }

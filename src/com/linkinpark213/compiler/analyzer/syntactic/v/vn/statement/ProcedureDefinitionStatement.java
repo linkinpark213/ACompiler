@@ -18,7 +18,6 @@ import java.util.ArrayList;
  */
 public class ProcedureDefinitionStatement extends VN {
     private int address;
-    private int returnAddress;
 
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
@@ -56,13 +55,13 @@ public class ProcedureDefinitionStatement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         StatementString statementString = (StatementString) productions.get(0).get(6);
         Quad jumpAcrossQuad = new Quad("j", "_", "_", "0");
         quadQueue.add(jumpAcrossQuad);
         address = jumpAcrossQuad.getAddress() + 1;
-        statementString.semanticAction(quadQueue);
+        statementString.semanticAction(quadQueue, symbolList);
         jumpAcrossQuad.setResult("" + quadQueue.nxq());
         Quad returnQuad = new Quad("ret", "_", "_", "_");
         quadQueue.add(returnQuad);

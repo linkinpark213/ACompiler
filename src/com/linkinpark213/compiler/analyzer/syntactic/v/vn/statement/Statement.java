@@ -1,8 +1,10 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
+import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
 
@@ -50,8 +52,8 @@ public class Statement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         switch (productionNum) {
             case 0:
                 break;

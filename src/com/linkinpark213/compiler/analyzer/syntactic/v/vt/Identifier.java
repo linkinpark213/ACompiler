@@ -45,6 +45,14 @@ public class Identifier extends VT {
         this.name = name;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public String getTypeString() {
         String typeString = "";
         switch (type) {

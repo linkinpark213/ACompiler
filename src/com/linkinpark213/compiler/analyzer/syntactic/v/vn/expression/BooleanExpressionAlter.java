@@ -1,7 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
@@ -37,8 +35,8 @@ public class BooleanExpressionAlter extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         if (children.size() > 0) {
             this.variableName = ((Expression) children.get(1)).getVariableName();
         }

@@ -64,9 +64,9 @@ public class SymbolList {
         return symbolHashMap.get(name);
     }
 
-    public Symbol retrieveFunction(String name) {
+    public Function retrieveFunction(String name) {
         try {
-            return functionHashMap.get(name).getSymbol();
+            return functionHashMap.get(name);
         } catch (Exception e) {
             return null;
         }

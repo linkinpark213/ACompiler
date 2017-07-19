@@ -1,12 +1,12 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.Operator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.RelationOperator;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
@@ -31,8 +31,8 @@ public class RelationExpression extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         ArithmeticExpression arithmeticExpression1 = (ArithmeticExpression) children.get(0);
         Operator operator = (Operator) children.get(1);
         ArithmeticExpression arithmeticExpression2 = (ArithmeticExpression) children.get(2);
@@ -68,5 +68,9 @@ public class RelationExpression extends VN {
         quadQueue.add(falseQuad);
         quadQueue.add(finishQuad);
         quadQueue.add(trueQuad);
+    }
+
+    public int getType() {
+        return Constant.TYPE_BOOL;
     }
 }

@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -53,7 +52,7 @@ public class LoopStatement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
         Expression expression;
         StatementString statementString;
         Quad checkQuad = new Quad();
@@ -64,7 +63,7 @@ public class LoopStatement extends VN {
 //                while-do
                 expression = (Expression) children.get(2);
                 statementString = (StatementString) children.get(6);
-                expression.semanticAction(quadQueue);
+                expression.semanticAction(quadQueue, symbolList);
                 checkQuad.setOperator("jnz");
                 checkQuad.setVariableA(expression.getVariableName());
                 checkQuad.setVariableB("_");
@@ -79,7 +78,7 @@ public class LoopStatement extends VN {
 
                 checkQuad.setResult("" + quadQueue.nxq());
 
-                statementString.semanticAction(quadQueue);
+                statementString.semanticAction(quadQueue, symbolList);
 
                 returnQuad.setOperator("j");
                 returnQuad.setVariableA("_");
@@ -92,7 +91,7 @@ public class LoopStatement extends VN {
                 statementString = (StatementString) children.get(2);
                 expression = (Expression) children.get(6);
                 int backAddress = quadQueue.nxq();
-                statementString.semanticAction(quadQueue);
+                statementString.semanticAction(quadQueue, symbolList);
                 checkQuad.setOperator("jnz");
                 checkQuad.setVariableA(expression.getVariableName());
                 checkQuad.setVariableB("_");

@@ -19,6 +19,7 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/18 0018.
  */
 public class ArrayVariable extends VN {
+    private int type;
     private String offset;
     private String place;
     private int[] dimensions;
@@ -61,18 +62,18 @@ public class ArrayVariable extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         Identifier identifier = (Identifier) children.get(0);
         IndexList indexList = (IndexList) children.get(2);
-        ArrayList<String> variableNamesList = new ArrayList<String>();
-        indexList.getIndexNameList(variableNamesList);
-        String passedTemp = variableNamesList.get(0);
-        for (int i = 0; i < variableNamesList.size() - 1; i++) {
+        ArrayList<String> indexNamesList = new ArrayList<String>();
+        indexList.getIndexNameList(indexNamesList);
+        String passedTemp = indexNamesList.get(0);
+        for (int i = 0; i < indexNamesList.size() - 1; i++) {
             String tempString = "T" + quadQueue.newTemp();
             Quad multipleQuad = new Quad("*", passedTemp, "" + dimensions[i + 1], tempString);
             quadQueue.add(multipleQuad);
-            Quad plusQuad = new Quad("+", variableNamesList.get(i + 1), tempString, tempString);
+            Quad plusQuad = new Quad("+", indexNamesList.get(i + 1), tempString, tempString);
             quadQueue.add(plusQuad);
             passedTemp = tempString;
         }
@@ -82,6 +83,7 @@ public class ArrayVariable extends VN {
             c++;
         }
         this.variableName = "T" + quadQueue.newTemp();
+        this.type = identifier.getType();
         this.offset = passedTemp;
         Quad addressCalculationQuad = new Quad("-", identifier.getName(), "" + c, getVariableName());
         quadQueue.add(addressCalculationQuad);
@@ -94,5 +96,13 @@ public class ArrayVariable extends VN {
 
     public String getPlace() {
         return place;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -33,11 +32,11 @@ public class VN implements V, Cloneable {
         variableName = "";
     }
 
-    public void semanticAction(QuadQueue quadQueue) {
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
 //        DFS
         for (V child : children) {
             if (child instanceof VN) {
-                ((VN) child).semanticAction(quadQueue);
+                ((VN) child).semanticAction(quadQueue, symbolList);
             }
         }
     }

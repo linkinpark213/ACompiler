@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -88,9 +87,20 @@ public class ArithmeticExpression extends VN {
         return result;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        /*
+        * When calculating, the type of the final result should be kept the same to the broader one
+        * */
+        super.semanticAction(quadQueue, symbolList);
         Identifier identifier;
         ArithmeticExpression arithmeticExpression;
         ArithmeticExpressionAlter arithmeticExpressionAlter;
@@ -100,10 +110,14 @@ public class ArithmeticExpression extends VN {
         ArrayVariable arrayVariable;
         switch (productionNum) {
             case 0:
+                /*
+                * ( <Arithmetic Expression> ) <Alter>
+                * */
                 arithmeticExpression = (ArithmeticExpression) children.get(1);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(3);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
+                    this.setType(Math.max(arithmeticExpression.getType(), arithmeticExpressionAlter.getType()));
                     quad = new Quad();
                     quad.setOperator(operator.toString());
                     quad.setVariableA("T" + arithmeticExpression.getTempID());
@@ -114,9 +128,13 @@ public class ArithmeticExpression extends VN {
                     quadQueue.add(quad);
                 } else {
                     this.variableName = arithmeticExpression.getVariableName();
+                    this.setType(arithmeticExpression.getType());
                 }
                 break;
             case 1:
+                /*
+                * <Array Variable> <Alter>
+                * */
                 arrayVariable = (ArrayVariable) children.get(0);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
                 Quad fetchValueQuad = new Quad("=[]", arrayVariable.getPlace() + "[" + arrayVariable.getOffset() + "]",
@@ -124,6 +142,7 @@ public class ArithmeticExpression extends VN {
                 quadQueue.add(fetchValueQuad);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
+                    this.setType(Math.max(arrayVariable.getType(), arithmeticExpressionAlter.getType()));
                     quad = new Quad();
                     quad.setOperator(operator.toString());
                     quad.setVariableA(fetchValueQuad.getResult());
@@ -137,8 +156,12 @@ public class ArithmeticExpression extends VN {
                 }
                 break;
             case 2:
+                /*
+                *  <Identifier> <Increment/Decrement Operator>
+                * */
                 identifier = (Identifier) children.get(0);
                 operator = (Operator) children.get(1);
+                this.setType(identifier.getType());
                 quad = new Quad();
                 quad.setOperator(operator.toString());
                 quad.setVariableA("1");
@@ -148,10 +171,14 @@ public class ArithmeticExpression extends VN {
                 this.variableName = identifier.getName();
                 break;
             case 3:
+                /*
+                * <Identifier> <Alter>
+                * */
                 identifier = (Identifier) children.get(0);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
+                    this.setType(Math.max(identifier.getType(), arithmeticExpressionAlter.getType()));
                     quad = new Quad();
                     quad.setOperator(operator.toString());
                     quad.setVariableA(identifier.getName());
@@ -161,14 +188,19 @@ public class ArithmeticExpression extends VN {
                     quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
                 } else {
+                    this.setType(identifier.getType());
                     this.variableName = identifier.getName();
                 }
                 break;
             case 4:
+                /*
+                * <Constant> <Alter>
+                * */
                 constant = (Constant) children.get(0);
                 arithmeticExpressionAlter = (ArithmeticExpressionAlter) children.get(1);
                 if (arithmeticExpressionAlter.getChildren().size() > 0) {
                     operator = (Operator) arithmeticExpressionAlter.getChildren().get(0);
+                    this.setType(Math.max(constant.getType(), arithmeticExpressionAlter.getType()));
                     quad = new Quad();
                     quad.setOperator(operator.toString());
                     String valueString = constant.getFormattedValue();
@@ -179,6 +211,7 @@ public class ArithmeticExpression extends VN {
                     quad.setResult(this.getVariableName());
                     quadQueue.add(quad);
                 } else {
+                    this.setType(constant.getType());
                     this.variableName = "" + constant.getFormattedValue();
                 }
                 break;

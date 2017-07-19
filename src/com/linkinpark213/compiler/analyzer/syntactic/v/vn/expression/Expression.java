@@ -5,7 +5,7 @@ import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Constant;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 
 import java.util.ArrayList;
@@ -60,18 +60,22 @@ public class Expression extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         V expression = children.get(0);
         switch (productionNum) {
             case 0:
+                this.type = Constant.TYPE_BOOL;
                 this.variableName = ((BooleanExpression) expression).getVariableName();
                 break;
             case 1:
+                this.type = Constant.TYPE_BOOL;
                 this.variableName = ((RelationExpression) expression).getVariableName();
                 break;
             case 2:
-                this.variableName = ((ArithmeticExpression) expression).getVariableName();
+                ArithmeticExpression arithmeticExpression = (ArithmeticExpression) expression;
+                this.type = arithmeticExpression.getType();
+                this.variableName = (arithmeticExpression).getVariableName();
                 break;
         }
     }

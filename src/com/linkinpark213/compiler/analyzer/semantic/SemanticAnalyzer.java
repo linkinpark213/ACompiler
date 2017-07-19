@@ -9,23 +9,8 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/16 0016.
  */
 public class SemanticAnalyzer {
-    private SymbolList symbolList;
-    private ArrayList<Quad> quadQueue;
 
-    public SemanticAnalyzer() {
-        symbolList = new SymbolList();
-        quadQueue = new ArrayList<Quad>();
-    }
-
-    public void analyze(Program program, QuadQueue quadQueue) throws AnalysisError {
-        program.semanticAction(quadQueue);
-    }
-
-    public SymbolList getSymbolList() {
-        return symbolList;
-    }
-
-    public ArrayList<Quad> getQuadQueue() {
-        return quadQueue;
+    public void analyze(Program program, QuadQueue quadQueue, SymbolList symbolList) throws AnalysisError {
+        program.semanticAction(quadQueue, symbolList);
     }
 }

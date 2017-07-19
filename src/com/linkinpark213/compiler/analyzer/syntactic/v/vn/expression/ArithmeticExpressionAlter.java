@@ -1,7 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
-import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
@@ -16,8 +14,10 @@ import java.util.ArrayList;
  * Created by ooo on 2017/7/12 0012.
  */
 public class ArithmeticExpressionAlter extends VN {
+    private int type;
     public ArithmeticExpressionAlter() {
         super();
+        this.type = 0;
         this.nullable = true;
     }
 
@@ -45,10 +45,20 @@ public class ArithmeticExpressionAlter extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
         if (children.size() > 0) {
-            this.variableName = ((ArithmeticExpression) children.get(1)).getVariableName();
+            ArithmeticExpression arithmeticExpression = (ArithmeticExpression) children.get(1);
+            this.setType(arithmeticExpression.getType());
+            this.variableName = arithmeticExpression.getVariableName();
         }
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

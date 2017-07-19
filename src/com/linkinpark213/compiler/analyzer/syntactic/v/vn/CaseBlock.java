@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -32,7 +31,7 @@ public class CaseBlock extends VN {
         return super.analyze(tokenQueue, symbolList);
     }
 
-    public void semanticAction(QuadQueue quadQueue, Identifier identifier, int chain) {
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList, Identifier identifier, int chain) {
         Constant constant = (Constant) children.get(1);
         StatementString statementString = (StatementString) children.get(3);
 
@@ -54,7 +53,11 @@ public class CaseBlock extends VN {
 
         trueQuad.setResult("" + quadQueue.nxq());
 
-        statementString.semanticAction(quadQueue);
+        try {
+            statementString.semanticAction(quadQueue, symbolList);
+        } catch (SemanticError semanticError) {
+            semanticError.printStackTrace();
+        }
 
         falseQuad.setResult("" + (quadQueue.nxq() + 1));
 

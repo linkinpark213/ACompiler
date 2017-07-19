@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -13,7 +12,6 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.operator.BooleanOperator;
 import com.linkinpark213.compiler.error.semantic.IdentifierNotDefinedError;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.ArrayList;
 
@@ -83,7 +81,7 @@ public class BooleanExpression extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Boolean Expression> ::= <Relation Expression> <Alter>
         *                           | <'Not' Operator> <Identifier> <Alter>
@@ -91,7 +89,7 @@ public class BooleanExpression extends VN {
         *                           | <Boolean Constant> <Alter>
         *                           | <Identifier> <Alter>
         * */
-        super.semanticAction(quadQueue);
+        super.semanticAction(quadQueue, symbolList);
         Quad quad = new Quad();
         Identifier identifier;
         RelationExpression relationExpression;
@@ -192,5 +190,9 @@ public class BooleanExpression extends VN {
                 }
                 break;
         }
+    }
+
+    public int getType() {
+        return Constant.TYPE_BOOL;
     }
 }

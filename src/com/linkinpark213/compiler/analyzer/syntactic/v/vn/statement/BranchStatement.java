@@ -1,6 +1,5 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn.statement;
 
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
@@ -71,7 +70,7 @@ public class BranchStatement extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
         /*
         * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> } else { <Statement String }
         *                      | if ( <Expression> ) then { <Statement String> }
@@ -93,7 +92,7 @@ public class BranchStatement extends VN {
                 expression = (Expression) children.get(2);
                 statementString1 = (StatementString) children.get(6);
                 statementString2 = (StatementString) children.get(10);
-                expression.semanticAction(quadQueue);
+                expression.semanticAction(quadQueue, symbolList);
 
                 trueQuad.setOperator("jnz");
                 trueQuad.setVariableA(expression.getVariableName());
@@ -107,7 +106,7 @@ public class BranchStatement extends VN {
                 falseQuad.setResult("0");
                 quadQueue.add(falseQuad);
 
-                statementString1.semanticAction(quadQueue);
+                statementString1.semanticAction(quadQueue, symbolList);
 
                 jumpQuad.setOperator("j");
                 jumpQuad.setVariableA("_");
@@ -116,7 +115,7 @@ public class BranchStatement extends VN {
                 quadQueue.add(jumpQuad);
                 falseQuad.setResult("" + quadQueue.nxq());
 
-                statementString2.semanticAction(quadQueue);
+                statementString2.semanticAction(quadQueue, symbolList);
                 jumpQuad.setResult("" + quadQueue.nxq());
                 break;
             case 1:
@@ -124,7 +123,7 @@ public class BranchStatement extends VN {
                 falseQuad = new Quad();
                 expression = (Expression) children.get(2);
                 statementString1 = (StatementString) children.get(6);
-                expression.semanticAction(quadQueue);
+                expression.semanticAction(quadQueue, symbolList);
 
                 trueQuad.setOperator("jnz");
                 trueQuad.setVariableA(expression.getVariableName());
@@ -138,14 +137,14 @@ public class BranchStatement extends VN {
                 falseQuad.setResult("0");
                 quadQueue.add(falseQuad);
 
-                statementString1.semanticAction(quadQueue);
+                statementString1.semanticAction(quadQueue, symbolList);
 
                 falseQuad.setResult("" + quadQueue.nxq());
                 break;
             case 2:
                 identifier = (Identifier) children.get(2);
                 caseBlockString = (CaseBlockString) children.get(5);
-                caseBlockString.semanticAction(quadQueue, identifier, 0);
+                caseBlockString.semanticAction(quadQueue, symbolList, identifier, 0);
                 break;
         }
     }

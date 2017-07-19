@@ -4,7 +4,6 @@ import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
-import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 
@@ -32,8 +31,8 @@ public class ArgumentList extends VN {
     }
 
     @Override
-    public void semanticAction(QuadQueue quadQueue) {
-        super.semanticAction(quadQueue);
+    public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
+        super.semanticAction(quadQueue, symbolList);
     }
 
     public void getArgumentNameList(ArrayList<String> tempList) {
@@ -43,5 +42,25 @@ public class ArgumentList extends VN {
             tempList.add(expression.getVariableName());
             argumentListAlter.getArgumentNameList(tempList);
         }
+    }
+
+    public int[] getArgumentTypeList() {
+        if (children.size() > 0) {
+            Expression expression = (Expression) children.get(0);
+            ArgumentListAlter argumentListAlter = (ArgumentListAlter) children.get(1);
+            int[] afterList = argumentListAlter.getArgumentTypeList();
+            int[] result;
+            if (afterList != null) {
+                result = new int[afterList.length + 1];
+                for (int i = 0; i < afterList.length; i++) {
+                    result[i + 1] = afterList[i];
+                }
+            } else {
+                result = new int[1];
+            }
+            result[0] = expression.getType();
+            return result;
+        }
+        return null;
     }
 }

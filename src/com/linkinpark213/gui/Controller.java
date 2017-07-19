@@ -114,7 +114,7 @@ public class Controller {
             //  Semantic Analysis
             log("Semantics Analyzing...");
             SemanticAnalyzer semanticAnalyzer = new SemanticAnalyzer();
-            semanticAnalyzer.analyze(program, quadQueue);
+            semanticAnalyzer.analyze(program, quadQueue, symbolList);
 
             compilerCore.printSemanticAnalysisResult(quadQueue.getQuadList());
             printQuadList(quadQueue);
