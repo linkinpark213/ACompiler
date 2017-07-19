@@ -1,5 +1,9 @@
-# ACompiler
--- A fake compiler, implementing a language with following features:
+# CoQCompiler
+![CoQ](icon/CoQ_small.png)
+
+XJTU-SE Grade 3 Compiler Practice.
+-- A fake compiler, implementing a simple language.
+Language features are as follows:
 
 ## Data types
 Supports basic types including integers(int), real numbers(float), characters(char), booleans(bool)
