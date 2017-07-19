@@ -103,4 +103,14 @@ public class Constant implements Token {
     public void setColumn(int column) {
         this.col = column;
     }
+
+    @Override
+    public String getName() {
+        return symbol;
+    }
+
+    @Override
+    public String getFullTypeString() {
+        return "Constant (" + getTypeString() + ")";
+    }
 }

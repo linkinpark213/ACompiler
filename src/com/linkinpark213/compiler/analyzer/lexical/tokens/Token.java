@@ -5,9 +5,18 @@ package com.linkinpark213.compiler.analyzer.lexical.tokens;
  */
 public interface Token {
     public String fullString();
+
     public int getType();
+
+    public String getName();
+
+    public String getFullTypeString();
+
     public int getRow();
+
     public void setRow(int row);
+
     public int getColumn();
+
     public void setColumn(int column);
 }

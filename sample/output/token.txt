@@ -1,0 +1,39 @@
+Keyword: function   Line: 1, Column: 1
+Identifier: a   Line: 1, Column: 10
+Separator: (   Line: 1, Column: 11
+Keyword: int   Line: 1, Column: 12
+Identifier: param1   Line: 1, Column: 16
+Separator: ,   Line: 1, Column: 22
+Keyword: float   Line: 1, Column: 24
+Identifier: param2   Line: 1, Column: 30
+Separator: )   Line: 1, Column: 36
+Separator: {   Line: 1, Column: 37
+Keyword: int   Line: 2, Column: 1
+Identifier: d   Line: 2, Column: 5
+Separator: ;   Line: 2, Column: 6
+Identifier: d   Line: 3, Column: 1
+Operator: :=   Line: 3, Column: 3
+Constant (Integer): 9   Line: 3, Column: 6
+Separator: ;   Line: 3, Column: 7
+Keyword: if   Line: 4, Column: 1
+Separator: (   Line: 4, Column: 3
+Identifier: d   Line: 4, Column: 4
+Operator: >   Line: 4, Column: 6
+Constant (Integer): 3   Line: 4, Column: 8
+Separator: )   Line: 4, Column: 9
+Keyword: then   Line: 4, Column: 11
+Separator: {   Line: 4, Column: 16
+Identifier: d   Line: 5, Column: 1
+Operator: :=   Line: 5, Column: 3
+Constant (Integer): 3   Line: 5, Column: 6
+Separator: }   Line: 6, Column: 1
+Separator: }   Line: 7, Column: 1
+Separator: ;   Line: 7, Column: 2
+Keyword: call   Line: 8, Column: 1
+Identifier: a   Line: 8, Column: 6
+Separator: (   Line: 8, Column: 7
+Constant (Integer): 3   Line: 8, Column: 8
+Separator: ,   Line: 8, Column: 9
+Constant (Integer): 5   Line: 8, Column: 11
+Separator: )   Line: 8, Column: 12
+Separator: ;   Line: 8, Column: 13

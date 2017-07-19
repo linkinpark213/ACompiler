@@ -46,4 +46,14 @@ public class Identifier implements Token {
     public void setColumn(int column) {
         this.column = column;
     }
+
+    @Override
+    public String getName() {
+        return symbol;
+    }
+
+    @Override
+    public String getFullTypeString() {
+        return "Identifier";
+    }
 }

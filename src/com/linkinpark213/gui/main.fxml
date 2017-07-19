@@ -37,17 +37,32 @@
                         <children>
                             <TabPane prefHeight="385.0" prefWidth="465.0" tabClosingPolicy="UNAVAILABLE">
                                 <tabs>
-                                    <Tab text="Code">
+                                    <Tab fx:id="codeTab" text="Code">
                                         <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="200.0" />
-                                            <TextArea fx:id="codeTextArea" prefHeight="383.0" prefWidth="465.0">
-                                                <font>
-                                                    <Font name="Consolas" size="16.0" />
-                                                </font>
-                                            </TextArea>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="362.0" prefWidth="200.0">
+                                                <TextArea fx:id="codeTextArea" prefHeight="383.0" prefWidth="465.0">
+                                                    <font>
+                                                        <Font name="Consolas" size="16.0" />
+                                                    </font>
+                                                </TextArea>
+                                            </AnchorPane>
                                         </content>
                                     </Tab>
-                                    <Tab text="Syntax Tree">
+                                    <Tab fx:id="tokenListTab" disable="true" text="Token List">
+                                        <content>
+                                            <AnchorPane prefHeight="362.0" prefWidth="465.0">
+                                                <TableView fx:id="tokenList" prefHeight="342.0" prefWidth="465.0">
+                                                    <columns>
+                                                        <TableColumn fx:id="tokenNameColumn" editable="false" prefWidth="116.0" sortable="false" text="Name" />
+                                                        <TableColumn fx:id="tokenTypeColumn" editable="false" prefWidth="116.0" sortable="false" text="Type" />
+                                                        <TableColumn fx:id="tokenLineColumn" editable="false" prefWidth="116.0" sortable="false" text="Line" />
+                                                        <TableColumn fx:id="tokenColumnColumn" editable="false" prefWidth="116.0" sortable="false" text="Column" />
+                                                    </columns>
+                                                </TableView>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
+                                    <Tab fx:id="syntaxTreeTab" disable="true" text="Syntax Tree">
                                         <content>
                                             <AnchorPane>
                                                 <children>
@@ -56,7 +71,7 @@
                                             </AnchorPane>
                                         </content>
                                     </Tab>
-                                    <Tab text="Quad List">
+                                    <Tab fx:id="quadListTab" disable="true" text="Quad List">
                                         <content>
                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="200.0">
                                                 <children>
@@ -73,6 +88,26 @@
                                             </AnchorPane>
                                         </content>
                                     </Tab>
+                                    <Tab fx:id="outputTab" disable="true" text="Output To File">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="342.0" prefWidth="200.0">
+                                                <VBox alignment="CENTER" prefHeight="355.0" prefWidth="465.0">
+                                                    <Button fx:id="outputTokenButton" onAction="#handleOutputTokenButton" prefWidth="200.0" text="Output Token List to File">
+                                          <VBox.margin>
+                                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </VBox.margin></Button>
+                                                    <Button fx:id="outputSyntaxTreeButton" onAction="#handleOutputSyntaxTreeButton" prefWidth="200.0" text="Output Syntax Tree to File">
+                                          <VBox.margin>
+                                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </VBox.margin></Button>
+                                                    <Button fx:id="outputQuadListButton" onAction="#handleOutputQuadButton" prefWidth="200.0" text="Output Quad List to File">
+                                          <VBox.margin>
+                                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                          </VBox.margin></Button>
+                                                </VBox>
+                                            </AnchorPane>
+                                        </content>
+                                    </Tab>
                                 </tabs>
                             </TabPane>
                         </children>
@@ -81,8 +116,8 @@
                         <children>
                             <TableView fx:id="symbolList" prefHeight="385.0" prefWidth="200.0">
                                 <columns>
-                                    <TableColumn fx:id="nameColumn" prefWidth="100.0" text="Name" />
-                                    <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type" />
+                                    <TableColumn fx:id="symbolNameColumn" prefWidth="100.0" text="Name" />
+                                    <TableColumn fx:id="symbolTypeColumn" prefWidth="100.0" text="Type" />
                                 </columns>
                             </TableView>
                         </children>

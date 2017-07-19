@@ -120,4 +120,14 @@ public class Operator implements Token {
     public void setColumn(int column) {
         this.column = column;
     }
+
+    @Override
+    public String getName() {
+        return symbol;
+    }
+
+    @Override
+    public String getFullTypeString() {
+        return "Operator";
+    }
 }

@@ -5,6 +5,7 @@ import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -49,7 +50,7 @@ public abstract class VT implements V, Cloneable {
     }
 
     @Override
-    public void printSyntacticalAnalysisTree(int depth) {
+    public void printSyntacticalAnalysisTree(int depth, PrintWriter printWriter) {
         for (int i = 0; i < depth; i++) {
             System.out.print("\t\t");
         }

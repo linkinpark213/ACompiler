@@ -81,4 +81,14 @@ public class Keyword implements Token {
     public void setTypeDef(boolean typeDef) {
         this.typeDef = typeDef;
     }
+
+    @Override
+    public String getName() {
+        return symbol;
+    }
+
+    @Override
+    public String getFullTypeString() {
+        return "Keyword";
+    }
 }

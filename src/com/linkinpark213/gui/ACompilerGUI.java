@@ -3,9 +3,12 @@ package com.linkinpark213.gui;/**
  */
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -24,6 +27,7 @@ public class ACompilerGUI extends Application {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.setScene(new Scene(anchorPane));
         primaryStage.setTitle("A Simple Compiler");
+        primaryStage.getIcons().add(new Image("file:icon\\CoQ.png"));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

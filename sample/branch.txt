@@ -1,12 +1,8 @@
-int a,b,c;
-bool d;
-a:=2.5;
-d := true;
-if(a>1) then {
-switch(a) {
-case 1: b :=3 + c;
-case 2: b := 5 + 6
-}
-} else {
-c := 9
+bool b;
+b := false;
+if(b) then {
+int a;
+a:=3
+}else {
+b:=true
 };

@@ -1,16 +1,12 @@
 package com.linkinpark213.compiler;
 
-import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
 import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.Quad;
-import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
-import com.linkinpark213.compiler.analyzer.semantic.SemanticAnalyzer;
-import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
-import com.linkinpark213.compiler.analyzer.syntactic.SyntacticalAnalyzer;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.Program;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,7 +29,8 @@ public class CompilerCore {
         System.out.println("=============================");
         System.out.println("=       Syntax Tree         =");
         System.out.println("=============================");
-        program.printSyntacticalAnalysisTree(0);
+        PrintWriter printWriter = new PrintWriter(System.out);
+        program.printSyntacticalAnalysisTree(0, printWriter);
         System.out.println("=============================");
     }
 

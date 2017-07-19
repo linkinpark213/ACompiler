@@ -2,6 +2,7 @@ package com.linkinpark213.gui;
 
 import com.linkinpark213.compiler.CompilerCore;
 import com.linkinpark213.compiler.analyzer.lexical.LexicalAnalyzer;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
 import com.linkinpark213.compiler.analyzer.semantic.*;
 import com.linkinpark213.compiler.analyzer.syntactic.SyntacticalAnalyzer;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
@@ -21,7 +22,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.util.HashMap;
+import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.BiConsumer;
 
@@ -45,6 +48,8 @@ public class Controller {
     @FXML
     private TableView quadList;
     @FXML
+    private TableView tokenList;
+    @FXML
     private TableColumn addressColumn;
     @FXML
     private TableColumn operatorColumn;
@@ -55,11 +60,40 @@ public class Controller {
     @FXML
     private TableColumn resultColumn;
     @FXML
-    private TableColumn nameColumn;
+    private TableColumn symbolNameColumn;
     @FXML
-    private TableColumn typeColumn;
+    private TableColumn symbolTypeColumn;
+    @FXML
+    private TableColumn tokenNameColumn;
+    @FXML
+    private TableColumn tokenTypeColumn;
+    @FXML
+    private TableColumn tokenLineColumn;
+    @FXML
+    private TableColumn tokenColumnColumn;
     @FXML
     private TextArea statusText;
+    @FXML
+    private Tab codeTab;
+    @FXML
+    private Tab tokenListTab;
+    @FXML
+    private Tab syntaxTreeTab;
+    @FXML
+    private Tab quadListTab;
+    @FXML
+    private Tab outputTab;
+    @FXML
+    private Button outputTokenButton;
+    @FXML
+    private Button outputSyntaxTreeButton;
+    @FXML
+    private Button outputQuadListButton;
+    private TokenQueue tokenQueue;
+    private ArrayList<Token> tokens;
+    private QuadQueue quadQueue;
+    private Program program;
+
 
     @FXML
     public void handleFileChooserButtonClicked(ActionEvent actionEvent) {
@@ -77,7 +111,8 @@ public class Controller {
                 codeTextArea.appendText(fileScanner.nextLine() + "\n");
             }
         } catch (Exception e) {
-            System.out.println("File not found.");
+            clearLog();
+            log("Can't write to file");
         }
     }
 
@@ -87,21 +122,28 @@ public class Controller {
         CompilerCore compilerCore = new CompilerCore();
         try {
             clearLog();
+            tokenListTab.setDisable(true);
+            syntaxTreeTab.setDisable(true);
+            quadListTab.setDisable(true);
+            outputTab.setDisable(true);
+
             log("Starting compilation.");
 
             //  Lexical Analysis
             log("Lexicon analyzing...");
             LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
-            TokenQueue tokenQueue = new TokenQueue(lexicalAnalyzer.analyze(code));
-            QuadQueue quadQueue = new QuadQueue();
+            tokenQueue = new TokenQueue(lexicalAnalyzer.analyze(code));
+            quadQueue = new QuadQueue();
             compilerCore.printLexicalAnalysisResult(tokenQueue.getTokens());
-
+            printTokenList(tokenQueue);
+            tokens = (ArrayList<Token>) tokenQueue.getTokens().clone();
 
             //  Syntactic Analysis
             log("Syntax Analyzing...");
             SyntacticalAnalyzer syntacticalAnalyzer = new SyntacticalAnalyzer();
             SymbolList symbolList = new SymbolList();
-            Program program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
+            program = syntacticalAnalyzer.analyze(tokenQueue, symbolList);
+            compilerCore.printSyntacticalAnalysisResult(program);
 
             TreeItem<String> treeRoot = new TreeItem<String>("Program");
             syntaxTree.setRoot(treeRoot);
@@ -121,6 +163,10 @@ public class Controller {
 
             log("Compilation Finished.");
             log("Syntax Tree and Quad List Generated.");
+            tokenListTab.setDisable(false);
+            syntaxTreeTab.setDisable(false);
+            quadListTab.setDisable(false);
+            outputTab.setDisable(false);
         } catch (AnalysisError e) {
             log(e.getMessage());
         } catch (Exception e) {
@@ -128,6 +174,103 @@ public class Controller {
             clearLog();
             log("Invalid code.");
         }
+    }
+
+    @FXML
+    public void handleOutputTokenButton(ActionEvent event) {
+        Stage primaryStage = (Stage) mainPane.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("sample"));
+        fileChooser.setTitle("Choose output file");
+        File tokenFile = fileChooser.showOpenDialog(primaryStage);
+        try {
+            if (!tokenFile.exists()) {
+                tokenFile.createNewFile();
+            }
+            PrintWriter printWriter = new PrintWriter(tokenFile);
+            for (Token token : tokens) {
+                printWriter.print(token.getFullTypeString());
+                printWriter.print(": ");
+                printWriter.print(token.getName());
+                printWriter.print("   Line: " + token.getRow());
+                printWriter.print(", Column: " + token.getColumn());
+                printWriter.println();
+            }
+            printWriter.flush();
+            printWriter.close();
+            clearLog();
+            log("Successfully wrote token list to file.");
+        } catch (Exception e) {
+            clearLog();
+            log("Can't write to file.");
+        }
+    }
+
+    @FXML
+    public void handleOutputSyntaxTreeButton(ActionEvent event) {
+        Stage primaryStage = (Stage) mainPane.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("sample"));
+        fileChooser.setTitle("Choose output file");
+        File tokenFile = fileChooser.showOpenDialog(primaryStage);
+        try {
+            if (!tokenFile.exists()) {
+                tokenFile.createNewFile();
+            }
+            PrintWriter printWriter = new PrintWriter(tokenFile);
+            program.printSyntacticalAnalysisTree(0, printWriter);
+            printWriter.flush();
+            printWriter.close();
+            clearLog();
+            log("Successfully wrote syntax tree to file.");
+        } catch (Exception e) {
+            clearLog();
+            log("Can't write to file.");
+        }
+    }
+
+    @FXML
+    public void handleOutputQuadButton(ActionEvent event) {
+        Stage primaryStage = (Stage) mainPane.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File("sample"));
+        fileChooser.setTitle("Choose output file");
+        File quadFile = fileChooser.showOpenDialog(primaryStage);
+        try {
+            if (!quadFile.exists()) {
+                quadFile.createNewFile();
+            }
+            PrintWriter printWriter = new PrintWriter(quadFile);
+            for (Quad quad : quadQueue.getQuadList()) {
+                printWriter.print(quad.getAddress());
+                printWriter.print(" (");
+                printWriter.print(quad.getOperator());
+                printWriter.print(", ");
+                printWriter.print(quad.getVariableA());
+                printWriter.print(", ");
+                printWriter.print(quad.getVariableB());
+                printWriter.print(", ");
+                printWriter.print(quad.getResult());
+                printWriter.println(")");
+            }
+            printWriter.flush();
+            printWriter.close();
+            clearLog();
+            log("Successfully wrote quad list to file.");
+        } catch (Exception e) {
+            clearLog();
+            log("Can't write to file.");
+        }
+    }
+
+    public void printTokenList(TokenQueue tokenQueue) {
+        ObservableList<Token> tokens = FXCollections.observableArrayList();
+        tokenNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tokenTypeColumn.setCellValueFactory(new PropertyValueFactory<>("fullTypeString"));
+        tokenLineColumn.setCellValueFactory(new PropertyValueFactory<>("row"));
+        tokenColumnColumn.setCellValueFactory(new PropertyValueFactory<>("column"));
+        tokenList.setItems(tokens);
+        tokens.addAll(tokenQueue.getTokens());
     }
 
     public void generateSyntaxTree(TreeItem<String> item, V v) {
@@ -160,8 +303,8 @@ public class Controller {
 
     public void printSymbolList(SymbolList symbolList) {
         ObservableList<Symbol> symbols = FXCollections.observableArrayList();
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("typeString"));
+        symbolNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        symbolTypeColumn.setCellValueFactory(new PropertyValueFactory<>("typeString"));
         this.symbolList.setItems(symbols);
         symbolList.getSymbolHashMap().forEach(new BiConsumer<String, Symbol>() {
             @Override

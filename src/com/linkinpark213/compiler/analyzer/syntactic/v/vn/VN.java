@@ -8,6 +8,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.VT;
 import com.linkinpark213.compiler.error.semantic.SemanticError;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 /**
@@ -132,13 +133,15 @@ public class VN implements V, Cloneable {
     }
 
     @Override
-    public void printSyntacticalAnalysisTree(int depth) {
+    public void printSyntacticalAnalysisTree(int depth, PrintWriter printWriter) {
         for (int i = 0; i < depth; i++) {
             System.out.print("\t\t");
+            printWriter.print("\t");
         }
         System.out.println(this.getClass().getSimpleName());
+        printWriter.println(this.getClass().getSimpleName());
         for (int i = 0; i < children.size(); i++) {
-            children.get(i).printSyntacticalAnalysisTree(depth + 1);
+            children.get(i).printSyntacticalAnalysisTree(depth + 1, printWriter);
         }
     }
 }
