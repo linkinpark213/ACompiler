@@ -38,7 +38,7 @@ public class BooleanExpressionAlter extends VN {
     public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
         super.semanticAction(quadQueue, symbolList);
         if (children.size() > 0) {
-            this.variableName = ((Expression) children.get(1)).getVariableName();
+            this.variableName = ((BooleanExpression) children.get(1)).getVariableName();
         }
     }
 }

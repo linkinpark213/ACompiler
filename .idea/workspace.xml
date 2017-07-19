@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="updated README.md. AGAIN.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,7 +64,7 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2179">
+            <state relative-caret-position="2376">
               <caret line="209" column="64" lean-forward="false" selection-start-line="209" selection-start-column="64" selection-end-line="209" selection-end-column="64" />
               <folding>
                 <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
@@ -81,15 +81,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="168">
-                <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-                <folding />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="BooleanExpressionAlter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="32" column="40" lean-forward="true" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -183,7 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/IndexList.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ConstantIndexStringAlter.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ConstantIndexString.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariableInitialization.java" />
@@ -234,6 +230,7 @@
         <option value="$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/VN.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java" />
       </list>
     </option>
   </component>
@@ -874,14 +871,7 @@
       <workItem from="1500345704654" duration="32688000" />
       <workItem from="1500382436127" duration="85000" />
       <workItem from="1500382753633" duration="7578000" />
-      <workItem from="1500429584704" duration="15184000" />
-    </task>
-    <task id="LOCAL-00017" summary="finished Vt definitions">
-      <created>1499177898470</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1499177898470</updated>
+      <workItem from="1500429584704" duration="16136000" />
     </task>
     <task id="LOCAL-00018" summary="another fix on Vt, fatal bugs remain">
       <created>1499179057544</created>
@@ -1219,11 +1209,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500445647045</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="updated README.md. AGAIN.">
+      <created>1500445905080</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1500445905081</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255332000" />
+    <option name="totallyTimeSpent" value="256284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1247,7 +1244,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32999045" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2969121" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27323273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27323273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2922955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1322,7 +1319,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="changed base address to 100" />
     <MESSAGE value="while-do &amp; do-while" />
     <MESSAGE value="uploaded test code that I forgot" />
     <MESSAGE value="simple GUI added" />
@@ -1347,7 +1343,8 @@
     <MESSAGE value="procedure call parameter check" />
     <MESSAGE value="improvement on the GUI. u can now output results to files" />
     <MESSAGE value="updated icon and README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated icon and README.md" />
+    <MESSAGE value="updated README.md. AGAIN." />
+    <option name="LAST_COMMIT_MESSAGE" value="updated README.md. AGAIN." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1369,14 +1366,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/lexical/LexicalAnalyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -1838,9 +1827,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="456">
+            <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2179">
+        <state relative-caret-position="2376">
           <caret line="209" column="64" lean-forward="false" selection-start-line="209" selection-start-column="64" selection-end-line="209" selection-end-column="64" />
           <folding>
             <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
@@ -1856,14 +1856,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="168">
-            <caret line="7" column="44" lean-forward="false" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" column="40" lean-forward="true" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
