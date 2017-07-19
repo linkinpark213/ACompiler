@@ -8,6 +8,7 @@ import com.linkinpark213.compiler.analyzer.syntactic.v.V;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.CaseBlockString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.StatementString;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.VN;
+import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.BooleanExpression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vn.expression.Expression;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Identifier;
 import com.linkinpark213.compiler.analyzer.syntactic.v.vt.Separator;
@@ -32,7 +33,7 @@ public class BranchStatement extends VN {
         ArrayList<V> switchCaseProduction = new ArrayList<V>();
         withElseProduction.add(new Keyword("if"));
         withElseProduction.add(new Separator("("));
-        withElseProduction.add(new Expression());
+        withElseProduction.add(new BooleanExpression());
         withElseProduction.add(new Separator(")"));
         withElseProduction.add(new Keyword("then"));
         withElseProduction.add(new Separator("{"));
@@ -45,7 +46,7 @@ public class BranchStatement extends VN {
 
         noElseProduction.add(new Keyword("if"));
         noElseProduction.add(new Separator("("));
-        noElseProduction.add(new Expression());
+        noElseProduction.add(new BooleanExpression());
         noElseProduction.add(new Separator(")"));
         noElseProduction.add(new Keyword("then"));
         noElseProduction.add(new Separator("{"));
@@ -72,15 +73,15 @@ public class BranchStatement extends VN {
     @Override
     public void semanticAction(QuadQueue quadQueue, SymbolList symbolList) throws SemanticError {
         /*
-        * <Branch Statement> ::= if ( <Expression> ) then { <Statement String> } else { <Statement String }
-        *                      | if ( <Expression> ) then { <Statement String> }
+        * <Branch Statement> ::= if ( <Boolean Expression> ) then { <Statement String> } else { <Statement String }
+        *                      | if ( <Boolean Expression> ) then { <Statement String> }
         *                      | switch ( <Identifier> ) { <Case Block String> }
         * */
 //        super.semanticAction(quadQueue);
         Quad trueQuad;
         Quad falseQuad;
         Quad jumpQuad;
-        Expression expression;
+        BooleanExpression expression;
         Identifier identifier;
         StatementString statementString1, statementString2;
         CaseBlockString caseBlockString;
@@ -89,7 +90,7 @@ public class BranchStatement extends VN {
                 trueQuad = new Quad();
                 falseQuad = new Quad();
                 jumpQuad = new Quad();
-                expression = (Expression) children.get(2);
+                expression = (BooleanExpression) children.get(2);
                 statementString1 = (StatementString) children.get(6);
                 statementString2 = (StatementString) children.get(10);
                 expression.semanticAction(quadQueue, symbolList);
@@ -121,7 +122,7 @@ public class BranchStatement extends VN {
             case 1:
                 trueQuad = new Quad();
                 falseQuad = new Quad();
-                expression = (Expression) children.get(2);
+                expression = (BooleanExpression) children.get(2);
                 statementString1 = (StatementString) children.get(6);
                 expression.semanticAction(quadQueue, symbolList);
 
