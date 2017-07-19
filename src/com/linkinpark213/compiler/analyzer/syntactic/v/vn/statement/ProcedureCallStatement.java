@@ -40,21 +40,23 @@ public class ProcedureCallStatement extends VN {
         argumentList.semanticAction(quadQueue, symbolList);
         ArrayList<String> argumentNameList = new ArrayList<String>();
         argumentList.getArgumentNameList(argumentNameList);
-        int[] argumentTypeList = argumentList.getArgumentTypeList();
         Function function = symbolList.retrieveFunction(identifier.getName());
-        if (function == null)
-            throw new IdentifierNotDefinedError(identifier.getToken().getRow(),
-                    identifier.getToken().getColumn(), identifier.getName());
-        int[] expectedTypeList = function.getParameterTypes();
-        for (int i = 0; i < argumentTypeList.length; i++) {
-            String argumentName = argumentNameList.get(i);
-            if (argumentTypeList[i] > expectedTypeList[i]) {
-                throw new ParameterTypeDoesNotMatchError(identifier.getToken().getRow(),
-                        identifier.getToken().getColumn(), Symbol.typeCodeToString(expectedTypeList[i]),
-                        Symbol.typeCodeToString(argumentTypeList[i]));
+        int[] argumentTypeList = argumentList.getArgumentTypeList();
+        if (argumentTypeList != null) {
+            if (function == null)
+                throw new IdentifierNotDefinedError(identifier.getToken().getRow(),
+                        identifier.getToken().getColumn(), identifier.getName());
+            int[] expectedTypeList = function.getParameterTypes();
+            for (int i = 0; i < argumentTypeList.length; i++) {
+                String argumentName = argumentNameList.get(i);
+                if (argumentTypeList[i] > expectedTypeList[i]) {
+                    throw new ParameterTypeDoesNotMatchError(identifier.getToken().getRow(),
+                            identifier.getToken().getColumn(), Symbol.typeCodeToString(expectedTypeList[i]),
+                            Symbol.typeCodeToString(argumentTypeList[i]));
+                }
+                Quad parQuad = new Quad("par", "_", "_", argumentName);
+                quadQueue.add(parQuad);
             }
-            Quad parQuad = new Quad("par", "_", "_", argumentName);
-            quadQueue.add(parQuad);
         }
         Quad callQuad = new Quad("call", "_", "_", identifier.getName());
         quadQueue.add(callQuad);
