@@ -137,8 +137,8 @@ public class BooleanExpression extends VN {
                 }
                 break;
             case 2:
-                booleanExpression = (BooleanExpression) children.get(1);
-                booleanExpressionAlter = (BooleanExpressionAlter) children.get(2);
+                booleanExpression = (BooleanExpression) children.get(2);
+                booleanExpressionAlter = (BooleanExpressionAlter) children.get(4);
                 if (booleanExpressionAlter.getChildren().size() > 0) {
                     Quad notQuad = new Quad();
                     notQuad.setOperator("!");
