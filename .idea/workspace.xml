@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentDefinitionList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentDefinitionListAlter.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/LoopStatement.java" afterPath="$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/LoopStatement.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,8 +65,8 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+            <state relative-caret-position="144">
+              <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
               <folding>
                 <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
                 <element signature="method#handleOutputTokenButton#0;class#Controller#0" expanded="false" />
@@ -81,21 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BranchStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java">
+      <file leaf-file-name="Expression.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="85" column="59" lean-forward="true" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoopStatement.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/LoopStatement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1855">
-              <caret line="92" column="47" lean-forward="false" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
+            <state relative-caret-position="238">
+              <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -104,28 +95,38 @@
       <file leaf-file-name="BooleanExpression.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpression.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="38" column="71" lean-forward="true" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
+            <state relative-caret-position="355">
+              <caret line="34" column="61" lean-forward="true" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Program.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/Program.java">
+      <file leaf-file-name="ArithmeticExpressionAlter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpressionAlter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="259">
+              <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefinitionStatement.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/DefinitionStatement.java">
+      <file leaf-file-name="ArgumentList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="42" column="53" lean-forward="true" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
+            <state relative-caret-position="626">
+              <caret line="60" column="45" lean-forward="true" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArgumentListAlter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentListAlter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -428,30 +429,6 @@
               <item name="syntactic" type="462c0819:PsiDirectoryNode" />
               <item name="v" type="462c0819:PsiDirectoryNode" />
               <item name="vn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ACompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ACompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="linkinpark213" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="syntactic" type="462c0819:PsiDirectoryNode" />
-              <item name="v" type="462c0819:PsiDirectoryNode" />
-              <item name="vn" type="462c0819:PsiDirectoryNode" />
-              <item name="expression" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ACompiler" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ACompiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="linkinpark213" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="syntactic" type="462c0819:PsiDirectoryNode" />
-              <item name="v" type="462c0819:PsiDirectoryNode" />
-              <item name="vn" type="462c0819:PsiDirectoryNode" />
-              <item name="statement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ACompiler" type="b2602c69:ProjectViewProjectNode" />
@@ -980,14 +957,7 @@
       <workItem from="1500345704654" duration="32688000" />
       <workItem from="1500382436127" duration="85000" />
       <workItem from="1500382753633" duration="7578000" />
-      <workItem from="1500429584704" duration="18074000" />
-    </task>
-    <task id="LOCAL-00021" summary="merge???">
-      <created>1499832163564</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1499832163564</updated>
+      <workItem from="1500429584704" duration="18903000" />
     </task>
     <task id="LOCAL-00022" summary="a := a + 3 syntactical analysis passed (or not?)">
       <created>1499839540909</created>
@@ -1325,11 +1295,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500449972283</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="fine, loop statements too">
+      <created>1500450113684</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1500450113684</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258222000" />
+    <option name="totallyTimeSpent" value="259051000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1342,7 +1319,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="2182" height="1462" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990506" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1357,7 +1333,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2922955" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2748566" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2748566" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32803813" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24976122" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1428,7 +1404,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
-    <MESSAGE value="lexical &amp; syntactical error report" />
     <MESSAGE value="error report improvement" />
     <MESSAGE value="duplicate definition detection" />
     <MESSAGE value="error report bug fix" />
@@ -1453,7 +1428,8 @@
     <MESSAGE value="a little bug fix" />
     <MESSAGE value="???" />
     <MESSAGE value="branch statement new ver" />
-    <option name="LAST_COMMIT_MESSAGE" value="branch statement new ver" />
+    <MESSAGE value="fine, loop statements too" />
+    <option name="LAST_COMMIT_MESSAGE" value="fine, loop statements too" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1475,22 +1451,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vt/Keyword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/semantic/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ParameterDefinitionString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
@@ -1586,59 +1546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpressionAlter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="835">
-          <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
-          <folding>
-            <element signature="e#2246#2247#0" expanded="true" />
-            <element signature="e#2273#2274#0" expanded="true" />
-            <element signature="e#2310#2311#0" expanded="true" />
-            <element signature="e#2342#2343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="23" column="21" lean-forward="true" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding>
-            <element signature="e#3756#3757#0" expanded="true" />
-            <element signature="e#3783#3784#0" expanded="true" />
-            <element signature="e#3820#3821#0" expanded="true" />
-            <element signature="e#3852#3853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/RelationExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1298">
-          <caret line="74" column="34" lean-forward="false" selection-start-line="74" selection-start-column="34" selection-end-line="74" selection-end-column="34" />
-          <folding>
-            <element signature="e#2940#2941#0" expanded="false" />
-            <element signature="e#2981#2982#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="54" column="20" lean-forward="true" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentListAlter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArrayVariable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="698">
@@ -1663,14 +1570,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="470">
           <caret line="41" column="66" lean-forward="false" selection-start-line="41" selection-start-column="66" selection-end-line="41" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="60" column="45" lean-forward="true" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1850,22 +1749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="32" column="40" lean-forward="true" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="38" column="71" lean-forward="true" selection-start-line="38" selection-start-column="71" selection-end-line="38" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/StatementString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1930,10 +1813,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/LoopStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="25" column="80" lean-forward="true" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="85" column="59" lean-forward="true" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/gui/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="31" column="3" lean-forward="true" selection-start-line="31" selection-start-column="3" selection-end-line="31" selection-end-column="3" />
+        <state relative-caret-position="144">
+          <caret line="32" column="36" lean-forward="true" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
           <folding>
             <element signature="method#handleCompileButtonClicked#0;class#Controller#0" expanded="false" />
             <element signature="method#handleOutputTokenButton#0;class#Controller#0" expanded="false" />
@@ -1948,18 +1847,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/BranchStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/Expression.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="85" column="59" lean-forward="true" selection-start-line="85" selection-start-column="59" selection-end-line="85" selection-end-column="59" />
+        <state relative-caret-position="238">
+          <caret line="30" column="49" lean-forward="true" selection-start-line="30" selection-start-column="49" selection-end-line="30" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/statement/LoopStatement.java">
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpressionAlter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1855">
-          <caret line="92" column="47" lean-forward="false" selection-start-line="92" selection-start-column="47" selection-end-line="92" selection-end-column="47" />
+        <state relative-caret-position="278">
+          <caret line="24" column="86" lean-forward="true" selection-start-line="24" selection-start-column="86" selection-end-line="24" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/RelationExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="22" column="103" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="103" />
+          <folding>
+            <element signature="e#2940#2941#0" expanded="true" />
+            <element signature="e#2981#2982#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="36" column="58" lean-forward="true" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/BooleanExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="34" column="61" lean-forward="true" selection-start-line="34" selection-start-column="61" selection-end-line="34" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/expression/ArithmeticExpressionAlter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="29" column="47" lean-forward="true" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentDefinitionList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="10" column="48" lean-forward="true" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentDefinitionListAlter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="626">
+          <caret line="60" column="45" lean-forward="true" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/linkinpark213/compiler/analyzer/syntactic/v/vn/ArgumentListAlter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="51" column="44" lean-forward="true" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
           <folding />
         </state>
       </provider>
