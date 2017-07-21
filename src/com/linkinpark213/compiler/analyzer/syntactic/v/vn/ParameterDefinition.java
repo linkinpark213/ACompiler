@@ -12,6 +12,9 @@ import com.linkinpark213.compiler.error.semantic.SemanticError;
 import java.util.ArrayList;
 
 public class ParameterDefinition extends VN {
+    private String name;
+    private int type;
+
     @Override
     public boolean analyze(TokenQueue tokenQueue, SymbolList symbolList) throws SemanticError {
         /*
@@ -21,7 +24,31 @@ public class ParameterDefinition extends VN {
         production.add(new Keyword("int", "bool", "char", "float"));
         production.add(new Identifier());
         productions.add(production);
-        return super.analyze(tokenQueue, symbolList);
+        if (super.analyze(tokenQueue, symbolList)) {
+            Keyword keyword = (Keyword) children.get(0);
+            Identifier identifier = (Identifier) children.get(1);
+            this.name = identifier.getName();
+            this.type = Symbol.typeStringToCode(keyword.getValue());
+            return true;
+        }
+        return false;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.linkinpark213.compiler.analyzer.syntactic.v.vn;
 
 import com.linkinpark213.compiler.analyzer.semantic.QuadQueue;
+import com.linkinpark213.compiler.analyzer.semantic.Symbol;
 import com.linkinpark213.compiler.analyzer.semantic.SymbolList;
 import com.linkinpark213.compiler.analyzer.syntactic.TokenQueue;
 import com.linkinpark213.compiler.analyzer.syntactic.v.V;
@@ -26,7 +27,13 @@ public class ParameterDefinitionString extends VN {
         production.add(new ParameterDefinitionStringAlter());
         productions.add(production);
         productions.add(nullProduction);
-        return super.analyze(tokenQueue, symbolList);
+        if (super.analyze(tokenQueue, symbolList)) {
+            if (children.size() > 0) {
+                ParameterDefinition parameterDefinition = (ParameterDefinition) children.get(0);
+                symbolList.enterSymbol(new Symbol(parameterDefinition.getName(), parameterDefinition.getType()));
+            }
+            return true;
+        } else return false;
     }
 
     @Override
