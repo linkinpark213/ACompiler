@@ -1,5 +1,14 @@
-int a;
-a := 1;
-do{
-a := a + 1
-} while(a<3);
+function a(int param1, float param2){
+int d;
+d := 9;
+if(d > 3) then {
+d := 3;
+switch(d) {
+case 1: d := 3;
+case 3: while(d>0) do {
+	d := d - 1
+}
+}
+}
+};
+call a(3, 5);

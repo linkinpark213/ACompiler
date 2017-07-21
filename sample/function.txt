@@ -2,7 +2,11 @@ function a(int param1, float param2){
 int d;
 d := 9;
 if(d > 3) then {
-d := 3
+d := 3;
+switch(d) {
+case 1: d := 3;
+case 3: d := d - 1
+}
 }
 };
 call a(3, 5);

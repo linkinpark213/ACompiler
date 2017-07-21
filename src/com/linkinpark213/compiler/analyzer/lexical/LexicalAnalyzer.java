@@ -3,10 +3,7 @@ package com.linkinpark213.compiler.analyzer.lexical;
 import com.linkinpark213.compiler.analyzer.lexical.dfa.ConstantDFA;
 import com.linkinpark213.compiler.analyzer.lexical.dfa.IdentifierDFA;
 import com.linkinpark213.compiler.analyzer.lexical.dfa.OperatorDFA;
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Constant;
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Operator;
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Separator;
-import com.linkinpark213.compiler.analyzer.lexical.tokens.Token;
+import com.linkinpark213.compiler.analyzer.lexical.tokens.*;
 import com.linkinpark213.compiler.error.AnalysisError;
 import com.linkinpark213.compiler.error.lexical.InvalidSymbolError;
 import com.linkinpark213.compiler.error.lexical.LexicalError;
@@ -66,7 +63,15 @@ public class LexicalAnalyzer {
                 }
                 Token nextToken = null;
                 if (firstChar == '-' && Constant.isDigit(secondChar)
-                        || Constant.isDigit(firstChar) || firstChar == '\'') {
+                        && !(tokenQueue.get(tokenQueue.size() - 1) instanceof Constant)
+                        && !(tokenQueue.get(tokenQueue.size() - 1) instanceof Identifier)) {
+                    //  Minus Constant Value
+                    nextToken = ConstantDFA.getInstance().nextSymbol(tempCode, this);
+                    if (nextToken.getType() == Constant.TYPE_CHAR) {
+                        tempCode = tempCode.substring(2);
+                    }
+                    tokenQueue.add(nextToken);
+                } else if (Constant.isDigit(firstChar) || firstChar == '\'') {
                     //  Constant Value
                     nextToken = ConstantDFA.getInstance().nextSymbol(tempCode, this);
                     if (nextToken.getType() == Constant.TYPE_CHAR) {
